@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Cart</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-dim": "#131313",
+                    "secondary-container": "#00cdd0",
+                    "on-secondary-container": "#005253",
+                    "secondary-fixed": "#5af8fb",
+                    "surface": "#131313",
+                    "on-error": "#690005",
+                    "outline": "#9b8f79",
+                    "surface-bright": "#3a3939",
+                    "surface-variant": "#353534",
+                    "primary": "#ffd471",
+                    "on-surface-variant": "#d3c5ac",
+                    "background": "#131313",
+                    "on-primary-fixed-variant": "#5a4300",
+                    "on-primary-fixed": "#251a00",
+                    "inverse-surface": "#e5e2e1",
+                    "error-container": "#93000a",
+                    "tertiary-container": "#c4bdab",
+                    "on-surface": "#e5e2e1",
+                    "surface-container-highest": "#353534",
+                    "on-secondary": "#003738",
+                    "primary-fixed": "#ffdf99",
+                    "surface-container-lowest": "#0e0e0e",
+                    "surface-container": "#201f1f",
+                    "primary-fixed-dim": "#f6bf20",
+                    "error": "#ffb4ab",
+                    "on-secondary-fixed-variant": "#004f51",
+                    "tertiary-fixed": "#eae2cf",
+                    "on-primary": "#3f2e00",
+                    "primary-container": "#ecb613",
+                    "surface-tint": "#f6bf20",
+                    "on-tertiary-container": "#514c3e",
+                    "inverse-on-surface": "#313030",
+                    "secondary-fixed-dim": "#2ddbde",
+                    "secondary": "#46eaed",
+                    "surface-container-high": "#2a2a2a",
+                    "on-tertiary-fixed": "#1f1b10",
+                    "on-primary-container": "#614900",
+                    "on-secondary-fixed": "#002020",
+                    "outline-variant": "#4f4633",
+                    "on-background": "#e5e2e1",
+                    "on-error-container": "#ffdad6",
+                    "inverse-primary": "#775a00",
+                    "on-tertiary-fixed-variant": "#4b4739",
+                    "tertiary-fixed-dim": "#cdc6b4",
+                    "surface-container-low": "#1c1b1b",
+                    "tertiary": "#e1d9c6",
+                    "on-tertiary": "#343023"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit": "8px",
+                    "margin-desktop": "64px",
+                    "container-max-width": "1280px",
+                    "gutter": "24px",
+                    "margin-mobile": "20px"
+            },
+            "fontFamily": {
+                    "headline-md": ["EB Garamond"],
+                    "headline-xl": ["EB Garamond"],
+                    "label-md": ["Hanken Grotesk"],
+                    "headline-lg": ["EB Garamond"],
+                    "body-md": ["Hanken Grotesk"],
+                    "label-sm": ["Hanken Grotesk"],
+                    "headline-lg-mobile": ["EB Garamond"],
+                    "body-lg": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                    "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0A0A0A;
+            color: #e5e2e1;
+            overflow-x: hidden;
+            font-family: 'Hanken Grotesk', sans-serif;
+        }
+
+        .glass-card {
+            background: rgba(18, 18, 18, 0.7);
+            backdrop-filter: blur(24px);
+            border: 1px solid #393528;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .glass-card:hover {
+            border-color: #ffd471;
+            box-shadow: 0 0 15px rgba(236, 182, 19, 0.1);
+        }
+
+        .active-step {
+            border-color: #ffd471;
+            box-shadow: 0 0 20px rgba(236, 182, 19, 0.15);
+        }
+
+        .step-transition {
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+
+        .hieroglyph-bg {
+            mask-image: linear-gradient(to bottom, transparent, black, transparent);
+            opacity: 0.05;
+            pointer-events: none;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #393528;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ffd471;
+        }
+
+        .primary-glow {
+            box-shadow: 0 0 15px rgba(236, 182, 19, 0.2);
+        }
+
+        .wizard-container {
+            min-height: 600px;
+        }
+
+        @keyframes pulse-gold {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; transform: scale(1.05); }
+        }
+
+        .animate-gold-pulse {
+            animation: pulse-gold 3s infinite ease-in-out;
+        }
+    </style>
+</head>
+
+<body class="bg-[#F8F6F1] dark:bg-[#0A0A0A] text-[#1A1A1A] dark:text-[#F5F5F5] min-h-screen transition-colors duration-300">
+  <div class="max-w-6xl mx-auto px-6 py-10">
+
+  <!-- Header -->
+   
+  <div class="flex justify-between items-center mb-10">
+    <h1 class="text-3xl font-bold text-primary">Your Cart 🛒</h1>
+    <button onclick="goToShopping()" 
+      class="bg-primary text-black px-5 py-2 rounded-lg font-semibold hover:opacity-80">
+      Back
+    </button>
+    <button id="themeToggle"
+  class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-[#27241c] hover:bg-primary/20 transition-all text-primary border border-slate-200 dark:border-[#393528]">
+  
+  <span id="themeIcon" class="material-symbols-outlined text-[20px]">
+    dark_mode
+  </span>
+
+</button>
+  </div>
+
+  <div class="grid md:grid-cols-3 gap-8">
+
+    <!-- Items -->
+     
+    <div id="cartItems" class="md:col-span-2 flex flex-col gap-5"></div>
+
+    <!-- Summary -->
+     
+    <div class="bg-card border border-primary/20 rounded-xl p-6">
+
+      <h2 class="text-xl font-bold mb-4 text-primary">Summary</h2>
+
+      <div class="flex justify-between mb-2">
+        <span>Items</span>
+        <span id="itemsCount">0</span>
+      </div>
+
+      <div class="flex justify-between mb-2">
+        <span>Subtotal</span>
+        <span id="subtotal">0 EGP</span>
+      </div>
+
+      <div class="flex justify-between mb-2">
+        <span>Shipping</span>
+        <span>50 EGP</span>
+      </div>
+
+      <hr class="my-3 border-gray-700">
+
+      <div class="flex justify-between font-bold text-lg">
+        <span>Total</span>
+        <span id="total">0 EGP</span>
+      </div>
+     <button onclick="openOrderModal()" 
+  class="w-full mt-6 bg-primary text-black py-3 rounded-lg font-bold hover:opacity-80">
+  🛍️ Order Now
+</button>
+
+    </div>
+    
+
+  </div>
+  
+</div>
+<div id="orderModal" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-50">
+
+  <div class="relative bg-card p-6 rounded-xl w-[90%] max-w-md">
+
+    <!-- زرار X -->
+    <button onclick="closeOrderModal()" 
+      class="absolute top-2 right-2 bg-red-600 w-8 h-8 rounded-full">
+      ✕
+    </button>
+
+    <h2 class="text-xl font-bold mb-4 text-primary">بيانات الطلب 📝</h2>
+
+    <input id="phoneInput" type="text" placeholder="رقم الموبايل"
+      class="w-full mb-3 p-3 rounded bg-black/40">
+
+    <input id="cityInput" type="text" placeholder="المدينة"
+      class="w-full mb-3 p-3 rounded bg-black/40">
+
+    <input id="addressInput" type="text" placeholder="العنوان"
+      class="w-full mb-3 p-3 rounded bg-black/40">
+
+<select title="pay" id="paymentSelect" class="w-full mb-3 p-3 rounded bg-black/40">
+  <option value="CashOnDelivery">الدفع عند الاستلام</option>
+</select>
+
+<button onclick="confirmOrder()"
+  class="w-full bg-primary py-3 rounded font-bold">
+  تأكيد الطلب 🚀
+</button>
+
+  </div>
+
+</div>
+
+<script>
+const BASE_URL = "https://egyptdiscover2.runasp.net";
+
+// 🔙 رجوع
+function goToShopping() {
+  window.location.href = "./shopping.html";
+}
+
+// 🟡 تحميل الكارت
+async function loadCart() {
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+  localStorage.setItem("redirectAfterLogin", "cart.html");
+  window.location.href = "/login.html";
+  return;
+}
+  try {
+    const res = await fetch(`${BASE_URL}/api/Cart/MyCart`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (res.status === 401) {
+      alert("Session expired 🔐");
+      localStorage.removeItem("token");
+      return;
+    }
+
+    const data = await res.json();
+    renderCart(data.items || data.data || []);
+
+  } catch (err) {
+    console.log(err);
+
+    // fallback
+    renderCart([]);
+  }
+}
+
+// 🟡 رسم الكارت
+function renderCart(items) {
+    
+  const container = document.getElementById("cartItems");
+  container.innerHTML = "";
+
+  if (!items.length) {
+    container.innerHTML = `<div class="text-center opacity-60 py-20">Cart is empty 🛒</div>`;
+    updateSummary(0, 0);
+    return;
+  }
+
+  let total = 0;
+  let count = 0;
+
+  items.forEach(item => {
+    const id = item.productId || item.id;
+   const price =
+  item.price ||
+  item.productPrice ||
+  item.product?.price ||
+  item.unitPrice ||
+  0;
+   const savedQty = getSavedQty(id);
+const qty = savedQty ?? item.quantity ?? 1;
+    total += price * qty;
+    count += qty;
+
+    container.innerHTML += `
+      <div class="flex gap-5 bg-card p-4 rounded-xl border border-primary/20 items-center">
+
+        <img src="${item.imageUrl ? BASE_URL + item.imageUrl : 'https://via.placeholder.com/100'}"
+          class="w-24 h-24 rounded-lg object-cover">
+
+        <div class="flex-1">
+          <h3 class="font-bold">${item.name || "Product"}</h3>
+
+          <p class="text-primary">${price} EGP</p>
+
+          <div class="flex justify-between mt-3">
+
+            <div class="flex gap-3 items-center bg-black/40 px-3 rounded-full">
+
+              <button onclick="changeQty(${id}, -1)">-</button>
+
+              <span id="qty-${id}">${qty}</span>
+
+              <button onclick="changeQty(${id}, 1)">+</button>
+
+            </div>
+
+            <p id="price-${id}" data-price="${price}">
+              ${price * qty} EGP
+            </p>
+
+          </div>
+        </div>
+
+        <button onclick="removeItem(${id})"
+          class="bg-red-600 px-3 py-1 rounded">
+          Remove
+        </button>
+
+      </div>
+    `;
+  });
+
+  updateSummary(count, total);
+}
+function saveQty(id, qty) {
+  let cart = JSON.parse(localStorage.getItem("cartQty")) || {};
+  cart[id] = qty;
+  localStorage.setItem("cartQty", JSON.stringify(cart));
+}
+
+function getSavedQty(id) {
+  let cart = JSON.parse(localStorage.getItem("cartQty")) || {};
+  return cart[id];
+}
+// 🟡 تغيير الكمية
+async function changeQty(id, change) {
+  const token = localStorage.getItem("token");
+
+  const qtyEl = document.getElementById(`qty-${id}`);
+  const priceEl = document.getElementById(`price-${id}`);
+
+  let qty = parseInt(qtyEl.innerText);
+  let price = parseFloat(priceEl.dataset.price);
+
+  qty += change;
+
+  // 🔥 لو العدد بقى صفر
+  if (qty <= 0) {
+    return removeItem(id);
+  }
+
+  qtyEl.innerText = qty;
+  priceEl.innerText = (price * qty) + " EGP";
+
+  // 🔥 تحديث cart
+  let mainCart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  const item = mainCart.find(
+    i => Number(i.productId) === Number(id)
+  );
+
+  if (item) {
+    item.quantity = qty;
+  }
+
+  localStorage.setItem("cart", JSON.stringify(mainCart));
+
+  // 🔥 تحديث cartQty
+  saveQty(id, qty);
+
+  // 🔥 تحديث السيرفر
+  try {
+    await fetch(`${BASE_URL}/api/Cart/update-item-in-cart?productId=${id}&quantity=${qty}`, {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+  } catch (err) {
+    console.log(err);
+  }
+
+  updateSummaryUI();
+}
+
+// 🟡 تحديث السامري
+function updateSummaryUI() {
+  let total = 0;
+  let count = 0;
+
+  document.querySelectorAll("[id^='price-']").forEach(p => {
+    total += parseFloat(p.innerText);
+  });
+
+  document.querySelectorAll("[id^='qty-']").forEach(q => {
+    count += parseInt(q.innerText);
+  });
+
+  updateSummary(count, total);
+}
+
+// 🟡 عرض السامري
+function updateSummary(count, subtotal) {
+  document.getElementById("itemsCount").innerText = count;
+  document.getElementById("subtotal").innerText = subtotal + " EGP";
+  document.getElementById("total").innerText = (subtotal + 50) + " EGP";
+}
+
+// 🗑️ حذف
+async function removeItem(id) {
+  const token = localStorage.getItem("token");
+
+  try {
+    await fetch(`${BASE_URL}/api/Cart/remove-item-from-cart?productId=${id}`, {
+      method: "DELETE",
+      headers: { Authorization: `Bearer ${token}` }
+    });
+
+    // 🔥 تحديث cart الأساسي
+    let mainCart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    mainCart = mainCart.filter(
+      item => Number(item.productId) !== Number(id)
+    );
+
+    localStorage.setItem("cart", JSON.stringify(mainCart));
+
+    // 🔥 حذف من cartQty
+    let qtyCart = JSON.parse(localStorage.getItem("cartQty")) || {};
+
+    delete qtyCart[id];
+
+    localStorage.setItem("cartQty", JSON.stringify(qtyCart));
+
+    // 🔥 إعادة تحميل
+    loadCart();
+
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+// 🚀 تشغيل
+loadCart();
+async function confirmOrder() {
+  const token = localStorage.getItem("token");
+
+  const phoneInput = document.getElementById("phoneInput");
+  const cityInput = document.getElementById("cityInput");
+  const addressInput = document.getElementById("addressInput");
+  const paymentSelect = document.getElementById("paymentSelect");
+
+  if (!token) {
+  localStorage.setItem("redirectAfterLogin", "cart.html");
+  window.location.href = "/login.html";
+  return;
+}
+
+  if (!phoneInput.value || !cityInput.value || !addressInput.value) {
+    alert("املي كل البيانات ❗");
+    return;
+  }
+
+  try {
+    const res = await fetch(`${BASE_URL}/api/Orders/Checkout->Create-Order`, {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${token}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        phoneNumber: phoneInput.value,
+        city: cityInput.value,
+        address: addressInput.value,
+        paymentMethod: paymentSelect.value
+      })
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      alert("Error: " + (data.message || "فشل الطلب"));
+      return;
+    }
+
+    alert("تم الطلب بنجاح 🎉");
+    localStorage.removeItem("cartQty");
+    loadCart();
+
+  } catch (err) {
+    console.error(err);
+    alert("حصل خطأ ❗");
+  }
+}
+function openOrderModal() {
+  document.getElementById("orderModal").classList.remove("hidden");
+}
+
+function closeOrderModal() {
+  document.getElementById("orderModal").classList.add("hidden");
+}
+const toggleBtn = document.getElementById("themeToggle");
+const icon = document.getElementById("themeIcon");
+
+// تحميل الثيم
+function loadTheme() {
+  const savedTheme = localStorage.getItem("theme");
+
+  if (
+    savedTheme === "dark" ||
+    (!savedTheme &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches)
+  ) {
+    document.documentElement.classList.add("dark");
+    icon.textContent = "light_mode";
+  } else {
+    document.documentElement.classList.remove("dark");
+    icon.textContent = "dark_mode";
+  }
+}
+
+// تغيير الثيم
+toggleBtn.addEventListener("click", () => {
+  document.documentElement.classList.toggle("dark");
+
+  if (document.documentElement.classList.contains("dark")) {
+    localStorage.setItem("theme", "dark");
+    icon.textContent = "light_mode";
+  } else {
+    localStorage.setItem("theme", "light");
+    icon.textContent = "dark_mode";
+  }
+});
+
+// تشغيل
+loadTheme();
+
+/////ت
+
+setInterval(() => {
+  const before = new Date().getTime();
+  debugger;
+  const after = new Date().getTime();
+
+  if (after - before > 100) {
+    document.body.innerHTML = "";
+    window.location.href = "about:blank";
+  }
+}, 1000);
+
+document.addEventListener('contextmenu', e => e.preventDefault());
+
+document.onkeydown = function(e) {
+  if (
+    e.keyCode === 123 ||
+    (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key)) ||
+    (e.ctrlKey && e.key === 'U')
+  ) {
+    return false;
+  }
+};
+
+</script>
+
+</body>
+</html>
+
+

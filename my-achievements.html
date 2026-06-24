@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Egypt Discover</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;family=Noto+Sans+Arabic:wght@100..900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style-home.css">
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-dim": "#131313",
+                    "secondary-container": "#00cdd0",
+                    "on-secondary-container": "#005253",
+                    "secondary-fixed": "#5af8fb",
+                    "surface": "#131313",
+                    "on-error": "#690005",
+                    "outline": "#9b8f79",
+                    "surface-bright": "#3a3939",
+                    "surface-variant": "#353534",
+                    "primary": "#ffd471",
+                    "on-surface-variant": "#d3c5ac",
+                    "background": "#131313",
+                    "on-primary-fixed-variant": "#5a4300",
+                    "on-primary-fixed": "#251a00",
+                    "inverse-surface": "#e5e2e1",
+                    "error-container": "#93000a",
+                    "tertiary-container": "#c4bdab",
+                    "on-surface": "#e5e2e1",
+                    "surface-container-highest": "#353534",
+                    "on-secondary": "#003738",
+                    "primary-fixed": "#ffdf99",
+                    "surface-container-lowest": "#0e0e0e",
+                    "surface-container": "#201f1f",
+                    "primary-fixed-dim": "#f6bf20",
+                    "error": "#ffb4ab",
+                    "on-secondary-fixed-variant": "#004f51",
+                    "tertiary-fixed": "#eae2cf",
+                    "on-primary": "#3f2e00",
+                    "primary-container": "#ecb613",
+                    "surface-tint": "#f6bf20",
+                    "on-tertiary-container": "#514c3e",
+                    "inverse-on-surface": "#313030",
+                    "secondary-fixed-dim": "#2ddbde",
+                    "secondary": "#46eaed",
+                    "surface-container-high": "#2a2a2a",
+                    "on-tertiary-fixed": "#1f1b10",
+                    "on-primary-container": "#614900",
+                    "on-secondary-fixed": "#002020",
+                    "outline-variant": "#4f4633",
+                    "on-background": "#e5e2e1",
+                    "on-error-container": "#ffdad6",
+                    "inverse-primary": "#775a00",
+                    "on-tertiary-fixed-variant": "#4b4739",
+                    "tertiary-fixed-dim": "#cdc6b4",
+                    "surface-container-low": "#1c1b1b",
+                    "tertiary": "#e1d9c6",
+                    "on-tertiary": "#343023"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit": "8px",
+                    "margin-desktop": "64px",
+                    "container-max-width": "1280px",
+                    "gutter": "24px",
+                    "margin-mobile": "20px"
+            },
+            "fontFamily": {
+                    "headline-md": ["EB Garamond"],
+                    "headline-xl": ["EB Garamond"],
+                    "label-md": ["Hanken Grotesk"],
+                    "headline-lg": ["EB Garamond"],
+                    "body-md": ["Hanken Grotesk"],
+                    "label-sm": ["Hanken Grotesk"],
+                    "headline-lg-mobile": ["EB Garamond"],
+                    "body-lg": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                    "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0A0A0A;
+            color: #e5e2e1;
+            overflow-x: hidden;
+            font-family: 'Hanken Grotesk', sans-serif;
+            overflow: hidden
+        }
+
+        .glass-card {
+            background: rgba(18, 18, 18, 0.7);
+            backdrop-filter: blur(24px);
+            border: 1px solid #393528;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .glass-card:hover {
+            border-color: #ffd471;
+            box-shadow: 0 0 15px rgba(236, 182, 19, 0.1);
+        }
+
+        .active-step {
+            border-color: #ffd471;
+            box-shadow: 0 0 20px rgba(236, 182, 19, 0.15);
+        }
+
+        .step-transition {
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+
+        .hieroglyph-bg {
+            mask-image: linear-gradient(to bottom, transparent, black, transparent);
+            opacity: 0.05;
+            pointer-events: none;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #393528;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ffd471;
+        }
+
+        .primary-glow {
+            box-shadow: 0 0 15px rgba(236, 182, 19, 0.2);
+        }
+
+        .wizard-container {
+            min-height: 600px;
+        }
+
+        @keyframes pulse-gold {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; transform: scale(1.05); }
+        }
+
+        .animate-gold-pulse {
+            animation: pulse-gold 3s infinite ease-in-out;
+        }
+        .achievement-unlocked{
+  opacity:1;
+  border:1px solid #ffd471;
+  box-shadow:0 0 20px rgba(255,212,113,.3);
+}
+
+.achievement-unlocked .material-symbols-outlined{
+  color:#ffd471;
+}
+    </style>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .achievement-locked {
+            opacity: 0.6;
+        }
+        .gold-gradient {
+            background: linear-gradient(90deg, #ffd471, #ecb613);
+        }
+        .text-gold-gradient {
+            background: linear-gradient(90deg, #ffd471, #ecb613);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .grain-overlay {
+            position: relative;
+        }
+        .grain-overlay::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+            opacity: 0.1;
+            pointer-events: none;
+        }
+        .radial-progress-container {
+            position: relative;
+            width: 240px;
+            height: 240px;
+        }
+        .progress-ring-circle {
+            transition: stroke-dashoffset 0.35s;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+            stroke: #ecb613;
+        }
+    </style>
+</head>
+
+    <body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white min-h-screen relative">
+
+      <!-- Subtle Background Pattern -->
+<div class="fixed inset-0 egyptian-pattern pointer-events-none"></div>
+<div class="relative flex flex-col min-h-screen w-full">
+
+<!-- Top Navigation Bar -->
+
+<header id="navbar" class="relative sticky top-0 z-50 w-full border-b border-solid border-slate-200 dark:border-[#393528] bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md px-6 lg:px-20 py-3">
+<div class="max-w-[1440px] mx-auto flex items-center justify-between gap-4">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3">
+<div  class="text-primary">
+<span class="material-symbols-outlined text-3xl" translate="no">star_rate</span>
+</div>
+<h2 id="logo" class="text-xl font-extrabold leading-tight tracking-[-0.015em]">
+Egypt 
+<span class="text-primary">Discover</span>
+</h2>
+</div>
+<nav id="navLinks" class="hidden lg:flex items-center gap-8">
+
+<a class="hover:text-primary text-sm font-semibold" href="/home.html">Home</a>
+<a class="hover:text-primary text-sm font-semibold" href="/history.html">History</a>
+<a class="hover:text-primary text-sm font-semibold" href="/shopping.html">Shopping</a>
+<a class="hover:text-primary text-sm font-semibold" href="/Booking.html">Booking</a>
+<a class="hover:text-primary text-sm font-semibold" href="/EXPLOR.HTML">Visit</a>
+<a id="dashboardLink"
+   class="hidden hover:text-primary text-sm font-semibold"
+   href="/dashboard.html">
+   Dashboard
+</a>
+
+</nav>
+</div>
+<div class="flex flex-1 justify-end gap-4 items-center">
+<label class="flex flex-col w-full max-w-64">
+<div class="flex w-full items-stretch rounded-lg h-10 bg-slate-100 dark:bg-[#27241c] border border-slate-200 dark:border-[#393528]">
+<div class="text-slate-400 flex items-center justify-center pl-4">
+   
+<span id="search-box" class="material-symbols-outlined text-[20px]" translate="no">search</span>
+
+</div>
+<input class="w-full bg-transparent border-none focus:ring-0 text-sm px-3 placeholder:text-slate-500" placeholder="Search " value="">
+</div>
+</label>
+<div class="flex items-center gap-3">
+
+  <!-- زرار الترجمة -->
+  <button id="translateBtn"
+    class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-[#27241c] hover:bg-primary/20 transition-all text-primary border border-slate-200 dark:border-[#393528]">
+    
+    <span class="material-symbols-outlined text-[20px]" translate="no">translate</span>
+  
+  </button>
+  <button id="themeToggle"
+  class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-[#27241c] hover:bg-primary/20 transition-all text-primary border border-slate-200 dark:border-[#393528]">
+  
+  <span id="themeIcon" class="material-symbols-outlined text-[20px]" translate="no">
+    dark_mode
+  </span>
+
+</button>
+
+  <!-- صورة البروفايل -->
+  <div id="profileContainer" class="hidden relative">
+
+  <button id="profileBtn"
+          class="flex items-center gap-1">
+
+    <img src="/photo/admin.png" title="profile"
+         class="h-10 w-10 rounded-full border-2 border-primary object-cover">
+
+    <span class="material-symbols-outlined" translate="no">
+      keyboard_arrow_down
+    </span>
+
+  </button>
+
+ <div id="profileMenu"
+     class="hidden absolute right-0 top-12 min-w-[220px] z-[9999]
+       border border-slate-200 dark:border-[#393528]
+                   bg-white dark:bg-[#121212]
+
+              rounded-xl shadow-xl overflow-hidden">
+
+    <a href="/profile.html" class="block px-4 py-3 hover:bg-slate-100 dark:hover:bg-[#27241c]">
+      My Profile
+    </a>
+
+   <a href="/my-orders.html"
+   class="relative block px-4 py-3 hover:bg-slate-100 dark:hover:bg-[#27241c]">
+
+  My Orders
+
+  <span id="ordersCount"
+        class="absolute right-3 top-3
+               bg-red-500 text-white
+               text-xs px-2 py-0.5
+               rounded-full hidden">
+    0
+  </span>
+
+</a>
+
+    <a href="/my-plan.html" class="block px-4 py-3 hover:bg-slate-100 dark:hover:bg-[#27241c]">
+      My Plan
+    </a>
+
+    <button id="logoutMenuBtn"
+            class="w-full text-left px-4 py-3 text-red-500 hover:bg-slate-100 dark:hover:bg-[#27241c]">
+      Logout
+    </button>
+
+  </div>
+
+</div>
+
+<div id="authButtons" class="flex items-center gap-3">
+
+  <a id="registerBtn"
+    class="hover:text-primary text-sm font-semibold"
+    href="/register.html">
+    Sign Up
+  </a>
+
+  <a id="loginBtn"
+    class="hover:text-primary text-sm font-semibold"
+    href="/login.html">
+    Login
+  </a>
+
+  <button id="logoutBtn"
+    class="hidden hover:text-red-500 text-sm font-semibold">
+    Logout
+  </button>
+
+</div>
+</div>
+
+</div>
+<button id="menuBtn" class="lg:hidden flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-[#27241c] border border-slate-200 dark:border-[#393528]">
+<span class="material-symbols-outlined" translate="no">menu</span>
+</button>
+</div>
+<div id="languageMenuNav"
+     class="hidden absolute top-16 right-6 z-50 w-44 bg-black/80 text-white rounded-lg p-2 space-y-1">
+     
+<button onclick="changeLanguage('ar')" class="block w-full text-left px-3 py-2 hover:bg-primary/30 rounded">العربية</button>
+
+<button onclick="changeLanguage('en')" class="block w-full text-left px-3 py-2 hover:bg-primary/30 rounded">English</button>
+
+<button onclick="changeLanguage('fr')" class="block w-full text-left px-3 py-2 hover:bg-primary/30 rounded">Français</button>
+
+<button onclick="changeLanguage('de')" class="block w-full text-left px-3 py-2 hover:bg-primary/30 rounded">Deutsch</button>
+
+<button onclick="changeLanguage('es')" class="block w-full text-left px-3 py-2 hover:bg-primary/30 rounded">Español</button>
+
+</div>
+
+
+</header>
+<div id="mobileMenu" class="hidden lg:hidden flex flex-col bg-background-light dark:bg-background-dark border-b border-slate-200 dark:border-[#393528] px-6 py-4 gap-4">
+<a class="hover:text-primary text-sm font-semibold" href="/home.html">Home</a>
+<a class="hover:text-primary text-sm font-semibold" href="/history.html">History</a>
+<a class="hover:text-primary text-sm font-semibold" href="/shopping.html">Shopping</a>
+<a class="hover:text-primary text-sm font-semibold" href="/Booking.html">Booking</a>
+<a class="hover:text-primary text-sm font-semibold" href="/EXPLOR.HTML">Visit</a>
+
+</div>
+
+
+
+
+<main class="pt-32 pb-section-padding px-margin-desktop max-w-container-max mx-auto">
+<!-- Hero Section -->
+<section class="mb-section-padding flex flex-col md:flex-row items-center gap-12">
+<div class="flex-1 space-y-6">
+<span class="font-label-caps text-label-caps text-primary tracking-[0.2em] uppercase">Archeological Status</span>
+<h1 class="font-display-lg text-display-lg text-on-surface">🏆 My Achievements</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+            Every step you take in Egypt Discover brings you closer to becoming a true explorer of Egypt. Unlock badges by discovering history, completing journeys, visiting landmarks, interacting with museums, and exploring the platform's unique experiences.
+        </p>
+
+</div>
+
+<!-- Circular Progress Indicator -->
+<div class="radial-progress-container flex items-center justify-center">
+<svg class="w-full h-full">
+<circle class="text-surface-container-low" cx="120" cy="120" fill="transparent" r="100" stroke="currentColor" stroke-width="8"></circle>
+<circle class="progress-ring-circle" cx="120" cy="120" fill="transparent" r="100" stroke-dasharray="628.3" stroke-dashoffset="628.3" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<div class="absolute flex flex-col items-center">
+<span class="font-display-lg text-headline-lg text-primary">3 / 20</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase tracking-widest">Unlocked</span>
+</div>
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+
+    const circle = document.querySelector('.progress-ring-circle');
+
+    const total = 20;
+    const unlocked = 3;
+
+    const radius = circle.r.baseVal.value;
+    const circumference = radius * 2 * Math.PI;
+
+    const progress = unlocked / total;
+
+    circle.style.strokeDasharray = circumference;
+
+    circle.style.strokeDashoffset =
+      circumference - (progress * circumference);
+
+});
+</script>
+</div>
+</section>
+
+<!-- Achievement Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Achievement Card 1 -->
+<div id="firstLoginCard" class=" relative bg-surface-container-low p-8 border border-outline flex flex-col items-center text-center group hover:border-primary/50 transition-all duration-300">
+<div class="absolute top-4 right-4">
+<span class="material-symbols-outlined text-locked">verified</span>
+</div>
+<div class="w-20 h-20 mb-6 flex items-center justify-center bg-tertiary-container/20 rounded-full">
+<span class="material-symbols-outlined text-locked text-4xl">login</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface mb-2">First Login</h3>
+<p class="text-sm text-on-surface-variant">Successfully logged into Egypt Discover for the first time.</p>
+</div>
+<!-- Achievement Card 2 -->
+<div id="firstChatCard" class="achievement-locked relative bg-surface-container-low p-8 border border-outline flex flex-col items-center text-center group hover:border-primary/50 transition-all duration-300">
+<div class="absolute top-4 right-4">
+<span class="material-symbols-outlined text-locked">lock</span>
+</div>
+<div class="w-20 h-20 mb-6 flex items-center justify-center bg-tertiary-container/20 rounded-full">
+<span class="material-symbols-outlined text-locked text-4xl">chat_bubble</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface mb-2">First Conversation</h3>
+<p class="text-sm text-on-surface-variant">Asked Imhotep AI your first question.</p>
+</div>
+<!-- Achievement Card 3 -->
+<div id="firstPurchaseCard" class="achievement-locked relative bg-surface-container-low p-8 border border-outline flex flex-col items-center text-center group hover:border-primary/50 transition-all duration-300">
+<div class="absolute top-4 right-4">
+<span class="material-symbols-outlined text-locked">lock</span>
+</div>
+<div class="w-20 h-20 mb-6 flex items-center justify-center bg-tertiary-container/20 rounded-full">
+<span class="material-symbols-outlined text-locked text-4xl">shopping_bag</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface mb-2">First Purchase</h3>
+<p class="text-sm text-on-surface-variant">Completed your first order from the marketplace.</p>
+</div>
+<!-- Achievement Card 4 -->
+<div id="firstLocationCard" class="achievement-locked relative bg-surface-container-low p-8 border border-outline flex flex-col items-center text-center group hover:border-primary/50 transition-all duration-300">
+<div class="absolute top-4 right-4">
+<span class="material-symbols-outlined text-locked">lock</span>
+</div>
+<div class="w-20 h-20 mb-6 flex items-center justify-center bg-tertiary-container/20 rounded-full">
+<span class="material-symbols-outlined text-locked text-4xl">location_on</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface mb-2">First Check-in</h3>
+<p class="text-sm text-on-surface-variant">Visited your first location on the Egypt map.</p>
+</div>
+<!-- Achievement Card 5 -->
+<div id="firstMuseumCard" class="achievement-locked relative bg-surface-container-low p-8 border border-outline flex flex-col items-center text-center group hover:border-primary/50 transition-all duration-300">
+<div class="absolute top-4 right-4">
+<span class="material-symbols-outlined text-locked">lock</span>
+</div>
+<div class="w-20 h-20 mb-6 flex items-center justify-center bg-tertiary-container/20 rounded-full">
+<span class="material-symbols-outlined text-locked text-4xl">museum</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface mb-2">Museum Visitor</h3>
+<p class="text-sm text-on-surface-variant">Explored the Virtual Museum experience.</p>
+</div>
+<!-- Achievement Card 6 -->
+<div id="firstTimelineCard" class="achievement-locked relative bg-surface-container-low p-8 border border-outline flex flex-col items-center text-center group hover:border-primary/50 transition-all duration-300">
+<div class="absolute top-4 right-4">
+<span class="material-symbols-outlined text-locked">lock</span>
+</div>
+<div class="w-20 h-20 mb-6 flex items-center justify-center bg-tertiary-container/20 rounded-full">
+<span class="material-symbols-outlined text-locked text-4xl">timeline</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface mb-2">Timeline Explorer</h3>
+<p class="text-sm text-on-surface-variant">Viewed the complete Egyptian Civilization Timeline.</p>
+</div>
+<!-- Achievement Card 7 -->
+<div id="firstHistoryCard" class=" relative bg-surface-container-low p-8 border border-outline flex flex-col items-center text-center group hover:border-primary/50 transition-all duration-300">
+<div class="absolute top-4 right-4">
+<span class="material-symbols-outlined text-locked">verified
+</span>
+</div>
+<div class="w-20 h-20 mb-6 flex items-center justify-center bg-tertiary-container/20 rounded-full">
+<span class="material-symbols-outlined text-locked text-4xl">temple_hindu</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface mb-2">History Explorer</h3>
+<p class="text-sm text-on-surface-variant">Visited all historical civilization sections.</p>
+</div>
+<!-- Achievement Card 8 -->
+<div id="first3DCard" class=" relative bg-surface-container-low p-8 border border-outline flex flex-col items-center text-center group hover:border-primary/50 transition-all duration-300">
+<div class="absolute top-4 right-4">
+<span class="material-symbols-outlined text-locked">verified</span>
+</div>
+<div class="w-20 h-20 mb-6 flex items-center justify-center bg-tertiary-container/20 rounded-full">
+<span class="material-symbols-outlined text-locked text-4xl">view_in_ar</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface mb-2">3D Explorer</h3>
+<p class="text-sm text-on-surface-variant">Interacted with your first 3D artifact.</p>
+</div>
+<!-- Achievement Card 9 -->
+<div id="firstChatCard" class="achievement-locked relative bg-surface-container-low p-8 border border-outline flex flex-col items-center text-center group hover:border-primary/50 transition-all duration-300">
+<div class="absolute top-4 right-4">
+<span class="material-symbols-outlined text-locked">lock</span>
+</div>
+<div class="w-20 h-20 mb-6 flex items-center justify-center bg-tertiary-container/20 rounded-full">
+<span class="material-symbols-outlined text-locked text-4xl">face</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface mb-2">Tutankhamun Fan</h3>
+<p class="text-sm text-on-surface-variant">Explored the famous Golden Mask of Tutankhamun.</p>
+</div>
+<!-- Achievement Card 10 -->
+<div id="firstPyramidCard" class="achievement-locked relative bg-surface-container-low p-8 border border-outline flex flex-col items-center text-center group hover:border-primary/50 transition-all duration-300">
+<div class="absolute top-4 right-4">
+<span class="material-symbols-outlined text-locked">lock</span>
+</div>
+<div class="w-20 h-20 mb-6 flex items-center justify-center bg-tertiary-container/20 rounded-full">
+<span class="material-symbols-outlined text-locked text-4xl">account_balance</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface mb-2">Pyramid Expert</h3>
+<p class="text-sm text-on-surface-variant">Viewed all available 3D monuments.</p>
+</div>
+<!-- Achievement Card 11 -->
+<div id="firstCairoCard" class="achievement-locked relative bg-surface-container-low p-8 border border-outline flex flex-col items-center text-center group hover:border-primary/50 transition-all duration-300">
+<div class="absolute top-4 right-4">
+<span class="material-symbols-outlined text-locked">lock</span>
+</div>
+<div class="w-20 h-20 mb-6 flex items-center justify-center bg-tertiary-container/20 rounded-full">
+<span class="material-symbols-outlined text-locked text-4xl">apartment</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface mb-2">Cairo Explorer</h3>
+<p class="text-sm text-on-surface-variant">Completed the Cairo Journey.</p>
+</div>
+<!-- Achievement Card 12 -->
+<div id="firstAlexandriaCard" class="achievement-locked relative bg-surface-container-low p-8 border border-outline flex flex-col items-center text-center group hover:border-primary/50 transition-all duration-300">
+<div class="absolute top-4 right-4">
+<span class="material-symbols-outlined text-locked">lock</span>
+</div>
+<div class="w-20 h-20 mb-6 flex items-center justify-center bg-tertiary-container/20 rounded-full">
+<span class="material-symbols-outlined text-locked text-4xl">light_mode</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface mb-2">Alexandria Explorer</h3>
+<p class="text-sm text-on-surface-variant">Completed the Alexandria Journey.</p>
+</div>
+<!-- Achievement Card 13 -->
+<div id="firstSinaiCard" class="achievement-locked relative bg-surface-container-low p-8 border border-outline flex flex-col items-center text-center group hover:border-primary/50 transition-all duration-300">
+<div class="absolute top-4 right-4">
+<span class="material-symbols-outlined text-locked">lock</span>
+</div>
+<div class="w-20 h-20 mb-6 flex items-center justify-center bg-tertiary-container/20 rounded-full">
+<span class="material-symbols-outlined text-locked text-4xl">landscape</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface mb-2">Sinai Adventurer</h3>
+<p class="text-sm text-on-surface-variant">Completed the Sinai Journey.</p>
+</div>
+<!-- Achievement Card 14 -->
+<div id="firstLuxorCard" class="achievement-locked relative bg-surface-container-low p-8 border border-outline flex flex-col items-center text-center group hover:border-primary/50 transition-all duration-300">
+<div class="absolute top-4 right-4">
+<span class="material-symbols-outlined text-locked">lock</span>
+</div>
+<div class="w-20 h-20 mb-6 flex items-center justify-center bg-tertiary-container/20 rounded-full">
+<span class="material-symbols-outlined text-locked text-4xl">foundation</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface mb-2">Luxor Heritage</h3>
+<p class="text-sm text-on-surface-variant">Completed the Luxor Heritage Journey.</p>
+</div>
+<!-- Achievement Card 15 -->
+<div id="firstAswanCard" class="achievement-locked relative bg-surface-container-low p-8 border border-outline flex flex-col items-center text-center group hover:border-primary/50 transition-all duration-300">
+<div class="absolute top-4 right-4">
+<span class="material-symbols-outlined text-locked">lock</span>
+</div>
+<div class="w-20 h-20 mb-6 flex items-center justify-center bg-tertiary-container/20 rounded-full">
+<span class="material-symbols-outlined text-locked text-4xl">sailing</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface mb-2">Aswan Experience</h3>
+<p class="text-sm text-on-surface-variant">Completed the Aswan Experience.</p>
+</div>
+<!-- Achievement Card 16 -->
+<div id="firstExploredCard" class="achievement-locked relative bg-surface-container-low p-8 border border-outline flex flex-col items-center text-center group hover:border-primary/50 transition-all duration-300">
+<div class="absolute top-4 right-4">
+<span class="material-symbols-outlined text-locked">lock</span>
+</div>
+<div class="w-20 h-20 mb-6 flex items-center justify-center bg-tertiary-container/20 rounded-full">
+<span class="material-symbols-outlined text-locked text-4xl">explore</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface mb-2">Egypt Traveler</h3>
+<p class="text-sm text-on-surface-variant">Visited multiple locations across Egypt.</p>
+</div>
+<!-- Achievement Card 17 -->
+<div id="firstArtifactCard" class="achievement-locked relative bg-surface-container-low p-8 border border-outline flex flex-col items-center text-center group hover:border-primary/50 transition-all duration-300">
+<div class="absolute top-4 right-4">
+<span class="material-symbols-outlined text-locked">lock</span>
+</div>
+<div class="w-20 h-20 mb-6 flex items-center justify-center bg-tertiary-container/20 rounded-full">
+<span class="material-symbols-outlined text-locked text-4xl">category</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface mb-2">Artifact Collector</h3>
+<p class="text-sm text-on-surface-variant">Purchased an Ancient Egyptian souvenir.</p>
+</div>
+<!-- Achievement Card 18 -->
+<div id="firstRoyalCard" class="achievement-locked relative bg-surface-container-low p-8 border border-outline flex flex-col items-center text-center group hover:border-primary/50 transition-all duration-300">
+<div class="absolute top-4 right-4">
+<span class="material-symbols-outlined text-locked">lock</span>
+</div>
+<div class="w-20 h-20 mb-6 flex items-center justify-center bg-tertiary-container/20 rounded-full">
+<span class="material-symbols-outlined text-locked text-4xl">diamond</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface mb-2">Royal Shopper</h3>
+<p class="text-sm text-on-surface-variant">Completed multiple purchases.</p>
+</div>
+<!-- Achievement Card 19 -->
+<div id="firstMasterCard" class="achievement-locked relative bg-surface-container-low p-8 border border-primary/30 flex flex-col items-center text-center group hover:border-primary/50 transition-all duration-300">
+<div class="absolute top-4 right-4">
+<span class="material-symbols-outlined text-locked">lock</span>
+</div>
+<div class="w-20 h-20 mb-6 flex items-center justify-center bg-tertiary-container/20 rounded-full">
+<span class="material-symbols-outlined text-locked text-4xl">star</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface mb-2">Egypt Discover Master</h3>
+<p class="text-sm text-on-surface-variant">Unlocked all achievements.</p>
+</div>
+<!-- Achievement Card 20 -->
+<div id="firstCompletionCard" class="achievement-locked relative bg-surface-container-low p-8 border border-primary/30 flex flex-col items-center text-center group hover:border-primary/50 transition-all duration-300">
+<div class="absolute top-4 right-4">
+<span class="material-symbols-outlined text-locked">lock</span>
+</div>
+<div class="w-20 h-20 mb-6 flex items-center justify-center bg-tertiary-container/20 rounded-full">
+<span class="material-symbols-outlined text-locked text-4xl">emoji_events</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface mb-2">100% Completion</h3>
+<p class="text-sm text-on-surface-variant">Completed every challenge and unlocked every badge.</p>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-section-padding px-margin-desktop flex flex-col items-center gap-base text-center bg-surface-container-lowest border-t border-outline/20">
+<div class="font-display-lg text-headline-lg-mobile text-gold-gradient mb-4">AEON EGYPT</div>
+<div class="flex flex-wrap justify-center gap-8 mb-8">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Archaeological Credits</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Contact Us</a>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant/80 max-w-2xl">
+        © 2024 AEON EGYPT. ALL RIGHTS RESERVED. PRESERVING THE MAJESTY OF THE NILE.
+    </p>
+<div class="mt-8 flex gap-6">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:scale-110 transition-transform">share</span>
+<span class="material-symbols-outlined text-primary cursor-pointer hover:scale-110 transition-transform">public</span>
+<span class="material-symbols-outlined text-primary cursor-pointer hover:scale-110 transition-transform">mail</span>
+</div>
+</footer>
+<script>
+    document.addEventListener('scroll', () => {
+        const nav = document.querySelector('nav');
+        if (window.scrollY > 20) {
+            nav.classList.add('shadow-xl', 'bg-surface/98');
+        } else {
+            nav.classList.remove('shadow-xl', 'bg-surface/98');
+        }
+    });
+    const achievements =
+  JSON.parse(localStorage.getItem("achievements")) || {};
+
+achievements.firstLogin = true;
+
+localStorage.setItem(
+  "achievements",
+  JSON.stringify(achievements)
+);
+const achievements =
+  JSON.parse(localStorage.getItem("achievements")) || {};
+
+achievements.firstPurchase = true;
+
+localStorage.setItem(
+  "achievements",
+  JSON.stringify(achievements)
+);
+const achievements =
+  JSON.parse(localStorage.getItem("achievements")) || {};
+
+achievements.firstChat = true;
+
+localStorage.setItem(
+  "achievements",
+  JSON.stringify(achievements)
+);
+const achievements =
+  JSON.parse(localStorage.getItem("achievements")) || {};
+
+achievements.firstLocation = true;
+
+localStorage.setItem(
+  "achievements",
+  JSON.stringify(achievements)
+);
+const achievements =
+  JSON.parse(localStorage.getItem("achievements")) || {};
+
+if (achievements.firstLogin) {
+
+  const card =
+    document.getElementById("firstLoginCard");
+
+  card.classList.remove("achievement-locked");
+
+  card.querySelector(".material-symbols-outlined")
+      .textContent = "verified";
+
+}
+</script>
+
+<script>
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'en'
+  }, 'google_translate_element');
+}
+function openGallery() {
+  document.getElementById("galleryModal").classList.remove("hidden");
+  document.getElementById("galleryModal").classList.add("flex");
+}
+
+function closeGallery() {
+  document.getElementById("galleryModal").classList.add("hidden");
+  document.getElementById("galleryModal").classList.remove("flex");
+}
+/////ت
+
+setInterval(() => {
+  const before = new Date().getTime();
+  debugger;
+  const after = new Date().getTime();
+
+  if (after - before > 100) {
+    document.body.innerHTML = "";
+    window.location.href = "about:blank";
+  }
+}, 1000);
+
+document.addEventListener('contextmenu', e => e.preventDefault());
+
+document.onkeydown = function(e) {
+  if (
+    e.keyCode === 123 ||
+    (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key)) ||
+    (e.ctrlKey && e.key === 'U')
+  ) {
+    return false;
+  }
+};
+
+
+</script>
+
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script src="auth.js"></script>
+
+</body>
+</html>

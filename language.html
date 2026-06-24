@@ -1,0 +1,367 @@
+
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ancient Egyptian Language</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+
+<style>
+
+/* Cursor Glow */
+.cursor-glow {
+  position: fixed;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(212,175,55,0.3), transparent);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+/* Fade Animation */
+.hidden-anim {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 0.8s;
+}
+.show-anim {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Glow */
+.glow:hover {
+  box-shadow: 0 0 20px #d4af37;
+}
+
+</style>
+</head>
+
+<body class="bg-black text-white scroll-smooth">
+
+<!-- 🔝 Navigation -->
+<div class="fixed right-4 bottom-6 flex flex-col gap-3 z-50">
+
+  <a href="#alphabet" class="bg-black border border-yellow-700 text-[#d4af37] p-2 rounded-lg hover:scale-110 transition">
+    🔤
+  </a>
+
+  <a href="#translator" class="bg-black border border-yellow-700 text-[#d4af37] p-2 rounded-lg hover:scale-110 transition">
+    ✍️
+  </a>
+
+  <button onclick="scrollToTop()" class="bg-black border border-yellow-700 text-[#d4af37] p-2 rounded-lg hover:scale-110 transition">
+    ↑
+  </button>
+
+</div>
+
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<!-- 🔥 HERO -->
+<section class="h-screen flex flex-col justify-center items-center text-center relative">
+
+<div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1614850523011-8f49ffc73908')] bg-cover bg-center opacity-20"></div>
+
+<h1 class="text-6xl font-black text-[#d4af37] hidden-anim">
+HIEROGLYPHIC LANGUAGE
+</h1>
+
+<p class="mt-4 text-gray-300 hidden-anim">
+Discover the language of Ancient Egypt
+</p>
+
+<a href="#alphabet" class="mt-16 text-[#d4af37] text-5xl animate-bounce">
+↓
+</a>
+
+</section>
+
+<!-- 🏺 CARDS -->
+<section class="p-10 text-center hidden-anim">
+
+<h2 class="text-3xl text-[#d4af37] mb-8">
+Ancient Egyptian Writing
+</h2>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+<div class="border border-yellow-700 rounded-xl overflow-hidden glow hover:scale-105 transition duration-500">
+<img title="1" src="/photo/language herogliph.png" class="w-full h-56 object-cover">
+<div class="p-4">
+<h3 class="text-[#d4af37] font-bold">Papyrus</h3>
+<p class="text-gray-400 text-sm mt-2">
+Early form of paper used for writing texts and daily records.
+</p>
+</div>
+</div>
+
+<div class="border border-yellow-700 rounded-xl overflow-hidden glow hover:scale-105 transition duration-500">
+<img title="2" src="/photo/rashed ston.png" class="w-full h-56 object-cover">
+<div class="p-4">
+<h3 class="text-[#d4af37] font-bold">Rosetta Stone</h3>
+<p class="text-gray-400 text-sm mt-2">
+Key to understanding hieroglyphs through 3 languages.
+</p>
+</div>
+</div>
+
+<div class="border border-yellow-700 rounded-xl overflow-hidden glow hover:scale-105 transition duration-500">
+<img title="3" src="/photo/الكتابه الهيراطيقيه.jpg" class="w-full h-56 object-cover">
+<div class="p-4">
+<h3 class="text-[#d4af37] font-bold">Hieratic</h3>
+<p class="text-gray-400 text-sm mt-2">
+Faster cursive writing used in daily life.
+</p>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<!-- 🔤 Alphabet -->
+<section id="alphabet" class="p-10 text-center hidden-anim">
+
+<h2 class="text-3xl text-[#d4af37] mb-6">
+Hieroglyphic Alphabet
+</h2>
+
+<div class="grid grid-cols-2 md:grid-cols-6 gap-4 text-lg">
+
+<div class="border border-yellow-700 p-3 rounded-lg hover:scale-110 transition">𓀀 A</div>
+<div class="border border-yellow-700 p-3 rounded-lg hover:scale-110 transition">𓃀 B</div>
+<div class="border border-yellow-700 p-3 rounded-lg hover:scale-110 transition">𓍿 C</div>
+<div class="border border-yellow-700 p-3 rounded-lg hover:scale-110 transition">𓂧 D</div>
+<div class="border border-yellow-700 p-3 rounded-lg hover:scale-110 transition">𓇌 E</div>
+<div class="border border-yellow-700 p-3 rounded-lg hover:scale-110 transition">𓆑 F</div>
+
+<div class="border border-yellow-700 p-3 rounded-lg hover:scale-110 transition">𓎼 G</div>
+<div class="border border-yellow-700 p-3 rounded-lg hover:scale-110 transition">𓉔 H</div>
+<div class="border border-yellow-700 p-3 rounded-lg hover:scale-110 transition">𓇋 I</div>
+<div class="border border-yellow-700 p-3 rounded-lg hover:scale-110 transition">𓆓 J</div>
+<div class="border border-yellow-700 p-3 rounded-lg hover:scale-110 transition">𓎡 K</div>
+<div class="border border-yellow-700 p-3 rounded-lg hover:scale-110 transition">𓃭 L</div>
+
+<div class="border border-yellow-700 p-3 rounded-lg hover:scale-110 transition">𓅓 M</div>
+<div class="border border-yellow-700 p-3 rounded-lg hover:scale-110 transition">𓈖 N</div>
+<div class="border border-yellow-700 p-3 rounded-lg hover:scale-110 transition">𓂝 O</div>
+<div class="border border-yellow-700 p-3 rounded-lg hover:scale-110 transition">𓊪 P</div>
+<div class="border border-yellow-700 p-3 rounded-lg hover:scale-110 transition">𓈎 Q</div>
+<div class="border border-yellow-700 p-3 rounded-lg hover:scale-110 transition">𓂋 R</div>
+
+<div class="border border-yellow-700 p-3 rounded-lg hover:scale-110 transition">𓋴 S</div>
+<div class="border border-yellow-700 p-3 rounded-lg hover:scale-110 transition">𓏏 T</div>
+<div class="border border-yellow-700 p-3 rounded-lg hover:scale-110 transition">𓅱 U</div>
+<div class="border border-yellow-700 p-3 rounded-lg hover:scale-110 transition">𓆑 V</div>
+<div class="border border-yellow-700 p-3 rounded-lg hover:scale-110 transition">𓅱 W</div>
+<div class="border border-yellow-700 p-3 rounded-lg hover:scale-110 transition">𓐍 X</div>
+
+<div class="border border-yellow-700 p-3 rounded-lg hover:scale-110 transition">𓇌 Y</div>
+<div class="border border-yellow-700 p-3 rounded-lg hover:scale-110 transition">𓊃 Z</div>
+
+</div>
+
+</section>
+
+<!-- ✍️ Translator -->
+<section id="translator" class="p-10 text-center hidden-anim">
+
+<h2 class="text-3xl text-[#d4af37] mb-6">
+Write Your Name in Hieroglyphs
+</h2>
+
+<input id="userInput" oninput="translateText()"
+placeholder="Type your name..."
+class="bg-black border border-yellow-700 p-3 rounded-lg w-80 text-center">
+
+<p id="output" class="mt-6 text-2xl text-[#d4af37] tracking-widest"></p>
+<!-- Hieroglyph Card -->
+<div id="nameCard"
+class="mt-10 mx-auto max-w-md bg-[#1b1305] border-4 border-yellow-700 rounded-2xl p-6 shadow-2xl hidden">
+
+<h3 class="text-[#d4af37] text-xl font-bold mb-4">
+Royal Cartouche
+</h3>
+
+<div id="cardDesign"
+class="bg-[url('/photo/papyrus.jpg')] bg-cover bg-center rounded-xl p-8 border border-yellow-600">
+
+<p class="text-gray-300 mb-3">
+Your Name in Hieroglyphs
+</p>
+
+<div id="cardGlyphs"
+class="text-5xl text-[#d4af37] break-words">
+</div>
+
+</div>
+
+<button onclick="downloadCard()"
+class="mt-5 bg-[#d4af37] text-black px-5 py-2 rounded-lg hover:scale-105 transition">
+Download Card
+</button>
+
+</div>
+
+</section>
+<!-- 📜 Info --> 
+ <section class="p-10 text-center hidden-anim">
+   <h2 class="text-3xl text-[#d4af37] mb-6"> About Hieroglyphics </h2> 
+  <p class="text-gray-400 max-w-2xl mx-auto"> 
+  Hieroglyphics were the formal writing system used in Ancient Egypt, combining logographic and alphabetic elements.
+   They were often carved in temples and written on papyrus. </p>
+ </section>
+<button id="themeToggle"
+  class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-[#27241c] hover:bg-primary/20 transition-all text-primary border border-slate-200 dark:border-[#393528]">
+  
+  <span id="themeIcon" class="material-symbols-outlined text-[20px]">
+    dark_mode
+  </span>
+
+</button>
+<script>
+
+/* Cursor Glow */
+document.addEventListener("mousemove", e => {
+  let glow = document.getElementById("cursorGlow");
+  glow.style.left = e.clientX + "px";
+  glow.style.top = e.clientY + "px";
+});
+
+/* Scroll Animation */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show-anim");
+    }
+  });
+});
+document.querySelectorAll(".hidden-anim").forEach(el => observer.observe(el));
+
+/* Scroll Top */
+function scrollToTop(){
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+/* Translator */
+function translateText() {
+
+  const input = document.getElementById("userInput").value.toLowerCase();
+
+  const map = {
+    a:"𓀀", b:"𓃀", c:"𓍿", d:"𓂧", e:"𓇌",
+    f:"𓆑", g:"𓎼", h:"𓉔", i:"𓇋", j:"𓆓",
+    k:"𓎡", l:"𓃭", m:"𓅓", n:"𓈖", o:"𓂝",
+    p:"𓊪", q:"𓈎", r:"𓂋", s:"𓋴", t:"𓏏",
+    u:"𓅱", v:"𓆑", w:"𓅱", x:"𓐍",
+    y:"𓇌", z:"𓊃"
+  };
+
+  let result = "";
+
+  for (let char of input) {
+    result += char === " "
+      ? "   "
+      : (map[char] || char);
+  }
+
+  document.getElementById("output").innerText = result;
+
+  const card = document.getElementById("nameCard");
+
+  if(input.trim() !== ""){
+      card.classList.remove("hidden");
+      document.getElementById("cardGlyphs").innerText = result;
+  } else {
+      card.classList.add("hidden");
+  }
+}
+// تحميل الثيم المحفوظ
+if (
+  localStorage.getItem("theme") === "dark" ||
+  (!localStorage.getItem("theme") &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches)
+) {
+  document.documentElement.classList.add("dark");
+
+  if (icon) {
+    icon.textContent = "light_mode";
+  }
+} else {
+  document.documentElement.classList.remove("dark");
+
+  if (icon) {
+    icon.textContent = "dark_mode";
+  }
+}
+
+// تغيير الوضع
+if (toggleBtn) {
+  toggleBtn.addEventListener("click", () => {
+    document.documentElement.classList.toggle("dark");
+
+    if (document.documentElement.classList.contains("dark")) {
+      localStorage.setItem("theme", "dark");
+
+      if (icon) {
+        icon.textContent = "light_mode";
+      }
+    } else {
+      localStorage.setItem("theme", "light");
+
+      if (icon) {
+        icon.textContent = "dark_mode";
+      }
+    }
+  });
+}
+/////ت
+setInterval(() => {
+  const before = new Date().getTime();
+  debugger;
+  const after = new Date().getTime();
+
+  if (after - before > 100) {
+    document.body.innerHTML = "";
+    window.location.href = "about:blank";
+  }
+}, 1000);
+
+document.addEventListener('contextmenu', e => e.preventDefault());
+
+document.onkeydown = function(e) {
+  if (
+    e.keyCode === 123 ||
+    (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key)) ||
+    (e.ctrlKey && e.key === 'U')
+  ) {
+    return false;
+  }
+};
+function downloadCard() {
+
+  html2canvas(document.getElementById("cardDesign"), {
+      backgroundColor: null,
+      scale: 3
+  }).then(canvas => {
+
+      const link = document.createElement("a");
+
+      link.download = "hieroglyph-name.png";
+
+      link.href = canvas.toDataURL("image/png");
+
+      link.click();
+  });
+
+}
+</script>
+
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+</body>
+</html>

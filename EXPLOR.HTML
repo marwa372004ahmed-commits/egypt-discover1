@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Egypt Discover</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;family=Noto+Sans+Arabic:wght@100..900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style-home.css">
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+<script id="tailwind-config">
+         tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-dim": "#131313",
+                    "secondary-container": "#00cdd0",
+                    "on-secondary-container": "#005253",
+                    "secondary-fixed": "#5af8fb",
+                    "surface": "#131313",
+                    "on-error": "#690005",
+                    "outline": "#9b8f79",
+                    "surface-bright": "#3a3939",
+                    "surface-variant": "#353534",
+                    "primary": "#ffd471",
+                    "on-surface-variant": "#d3c5ac",
+                    "background": "#131313",
+                    "on-primary-fixed-variant": "#5a4300",
+                    "on-primary-fixed": "#251a00",
+                    "inverse-surface": "#e5e2e1",
+                    "error-container": "#93000a",
+                    "tertiary-container": "#c4bdab",
+                    "on-surface": "#e5e2e1",
+                    "surface-container-highest": "#353534",
+                    "on-secondary": "#003738",
+                    "primary-fixed": "#ffdf99",
+                    "surface-container-lowest": "#0e0e0e",
+                    "surface-container": "#201f1f",
+                    "primary-fixed-dim": "#f6bf20",
+                    "error": "#ffb4ab",
+                    "on-secondary-fixed-variant": "#004f51",
+                    "tertiary-fixed": "#eae2cf",
+                    "on-primary": "#3f2e00",
+                    "primary-container": "#ecb613",
+                    "surface-tint": "#f6bf20",
+                    "on-tertiary-container": "#514c3e",
+                    "inverse-on-surface": "#313030",
+                    "secondary-fixed-dim": "#2ddbde",
+                    "secondary": "#46eaed",
+                    "surface-container-high": "#2a2a2a",
+                    "on-tertiary-fixed": "#1f1b10",
+                    "on-primary-container": "#614900",
+                    "on-secondary-fixed": "#002020",
+                    "outline-variant": "#4f4633",
+                    "on-background": "#e5e2e1",
+                    "on-error-container": "#ffdad6",
+                    "inverse-primary": "#775a00",
+                    "on-tertiary-fixed-variant": "#4b4739",
+                    "tertiary-fixed-dim": "#cdc6b4",
+                    "surface-container-low": "#1c1b1b",
+                    "tertiary": "#e1d9c6",
+                    "on-tertiary": "#343023"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit": "8px",
+                    "margin-desktop": "64px",
+                    "container-max-width": "1280px",
+                    "gutter": "24px",
+                    "margin-mobile": "20px"
+            },
+            "fontFamily": {
+                    "headline-md": ["EB Garamond"],
+                    "headline-xl": ["EB Garamond"],
+                    "label-md": ["Hanken Grotesk"],
+                    "headline-lg": ["EB Garamond"],
+                    "body-md": ["Hanken Grotesk"],
+                    "label-sm": ["Hanken Grotesk"],
+                    "headline-lg-mobile": ["EB Garamond"],
+                    "body-lg": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                    "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0A0A0A;
+            color: #e5e2e1;
+            overflow-x: hidden;
+            font-family: 'Hanken Grotesk', sans-serif;
+        }
+
+        .glass-card {
+            background: rgba(18, 18, 18, 0.7);
+            backdrop-filter: blur(24px);
+            border: 1px solid #393528;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .glass-card:hover {
+            border-color: #ffd471;
+            box-shadow: 0 0 15px rgba(236, 182, 19, 0.1);
+        }
+
+        .active-step {
+            border-color: #ffd471;
+            box-shadow: 0 0 20px rgba(236, 182, 19, 0.15);
+        }
+
+        .step-transition {
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+
+        .hieroglyph-bg {
+            mask-image: linear-gradient(to bottom, transparent, black, transparent);
+            opacity: 0.05;
+            pointer-events: none;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #393528;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ffd471;
+        }
+
+        .primary-glow {
+            box-shadow: 0 0 15px rgba(236, 182, 19, 0.2);
+        }
+
+        .wizard-container {
+            min-height: 600px;
+        }
+
+        @keyframes pulse-gold {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; transform: scale(1.05); }
+        }
+
+        .animate-gold-pulse {
+            animation: pulse-gold 3s infinite ease-in-out;
+        }
+    </style>
+        <style>
+        .regions-section{
+max-width:1400px;
+margin:auto;
+padding:80px 40px;
+}
+
+.regions-title{
+text-align:center;
+font-size:36px;
+font-weight:800;
+margin-bottom:50px;
+}
+
+.regions-title span{
+color:#ffd471;
+}
+
+.regions-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:30px;
+}
+
+/* Card */
+
+.region-card{
+background:#121212;
+border:1px solid #393528;
+border-radius:14px;
+overflow:hidden;
+text-decoration:none;
+color:white;
+transition:0.4s;
+}
+
+.region-card:hover{
+border-color:#ffd471;
+transform:translateY(-6px);
+box-shadow:0 10px 25px rgba(255, 212, 113, 0.2);
+}
+
+.region-card img{
+width:100%;
+height:200px;
+object-fit:cover;
+}
+
+/* info */
+
+.region-info{
+padding:20px;
+}
+
+.region-info h3{
+font-size:20px;
+font-weight:700;
+margin-bottom:6px;
+}
+
+.region-info p{
+color:#aaa;
+font-size:14px;
+margin-bottom:14px;
+}
+
+/* progress */
+
+.progress{
+height:6px;
+background:#2a2a2a;
+border-radius:10px;
+overflow:hidden;
+margin-bottom:14px;
+}
+
+.progress-bar{
+height:100%;
+width:0%;
+background:#ffd471;
+}
+
+/* button */
+
+.start-btn{
+display:inline-block;
+background:#ffd471;
+color:black;
+padding:8px 16px;
+border-radius:6px;
+font-weight:bold;
+font-size:14px;
+}
+.gold-text{
+color:#ffd471;
+}
+
+.regions-title{
+text-align:center;
+font-size:40px;
+font-weight:900;
+margin-bottom:60px;
+color:#ffd471;
+letter-spacing:1px;
+}
+
+.region-info h3{
+font-size:22px;
+font-weight:800;
+margin-bottom:6px;
+color:#ffd471;
+}
+
+.start-btn{
+display:inline-block;
+background:#ffd471;
+color:black;
+padding:10px 18px;
+border-radius:8px;
+font-weight:bold;
+font-size:14px;
+transition:0.3s;
+}
+
+.start-btn:hover{
+background:#ffd471;
+transform:scale(1.05);
+}
+    </style>
+</head>
+   <body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white min-h-screen relative">
+
+      <!-- Subtle Background Pattern -->
+<div class="fixed inset-0 egyptian-pattern pointer-events-none"></div>
+<div class="relative flex flex-col min-h-screen w-full">
+
+<!-- Top Navigation Bar -->
+
+<header id="navbar" class="relative sticky top-0 z-50 w-full border-b border-solid border-slate-200 dark:border-[#393528] bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md px-6 lg:px-20 py-3">
+<div class="max-w-[1440px] mx-auto flex items-center justify-between gap-4">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3">
+<div  class="text-primary">
+<span class="material-symbols-outlined text-3xl" translate="no">star_rate</span>
+</div>
+<h2 id="logo" class="text-xl font-extrabold leading-tight tracking-[-0.015em]">
+Egypt 
+<span class="text-primary">Discover</span>
+</h2>
+</div>
+<nav id="navLinks" class="hidden lg:flex items-center gap-8">
+
+<a class="hover:text-primary text-sm font-semibold" href="/home.html">Home</a>
+<a class="hover:text-primary text-sm font-semibold" href="/history.html">History</a>
+<a class="hover:text-primary text-sm font-semibold" href="/shopping.html">Shopping</a>
+<a class="hover:text-primary text-sm font-semibold" href="/Booking.html">Booking</a>
+<a class="hover:text-primary text-sm font-semibold" href="/EXPLOR.HTML">Visit</a>
+<a id="dashboardLink"
+   class="hidden hover:text-primary text-sm font-semibold"
+   href="/dashboard.html">
+   Dashboard
+</a>
+
+</nav>
+</div>
+<div class="flex flex-1 justify-end gap-4 items-center">
+<label class="flex flex-col w-full max-w-64">
+<div class="flex w-full items-stretch rounded-lg h-10 bg-slate-100 dark:bg-[#27241c] border border-slate-200 dark:border-[#393528]">
+<div class="text-slate-400 flex items-center justify-center pl-4">
+   
+<span id="search-box" class="material-symbols-outlined text-[20px]" translate="no">search</span>
+
+</div>
+<input class="w-full bg-transparent border-none focus:ring-0 text-sm px-3 placeholder:text-slate-500" placeholder="Search " value="">
+</div>
+</label>
+<div class="flex items-center gap-3">
+
+  <!-- زرار الترجمة -->
+  <button id="translateBtn"
+    class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-[#27241c] hover:bg-primary/20 transition-all text-primary border border-slate-200 dark:border-[#393528]">
+    
+    <span class="material-symbols-outlined text-[20px]" translate="no">translate</span>
+  
+  </button>
+  <button id="themeToggle"
+  class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-[#27241c] hover:bg-primary/20 transition-all text-primary border border-slate-200 dark:border-[#393528]">
+  
+  <span id="themeIcon" class="material-symbols-outlined text-[20px]" translate="no">
+    dark_mode
+  </span>
+
+</button>
+
+  <!-- صورة البروفايل -->
+  <div id="profileContainer" class="hidden relative">
+
+  <button id="profileBtn"
+          class="flex items-center gap-1">
+
+    <img src="/photo/admin.png" title="profile"
+         class="h-10 w-10 rounded-full border-2 border-primary object-cover">
+
+    <span class="material-symbols-outlined" translate="no">
+      keyboard_arrow_down
+    </span>
+
+  </button>
+
+ <div id="profileMenu"
+     class="hidden absolute right-0 top-12 min-w-[220px] z-[9999]
+       border border-slate-200 dark:border-[#393528]
+                   bg-white dark:bg-[#121212]
+
+              rounded-xl shadow-xl overflow-hidden">
+
+    <a href="/profile.html" class="block px-4 py-3 hover:bg-slate-100 dark:hover:bg-[#27241c]">
+      My Profile
+    </a>
+
+   <a href="/my-orders.html"
+   class="relative block px-4 py-3 hover:bg-slate-100 dark:hover:bg-[#27241c]">
+
+  My Orders
+
+  <span id="ordersCount"
+        class="absolute right-3 top-3
+               bg-red-500 text-white
+               text-xs px-2 py-0.5
+               rounded-full hidden">
+    0
+  </span>
+
+</a>
+
+    <a href="/my-plan.html" class="block px-4 py-3 hover:bg-slate-100 dark:hover:bg-[#27241c]">
+      My Plan
+    </a>
+
+    <button id="logoutMenuBtn"
+            class="w-full text-left px-4 py-3 text-red-500 hover:bg-slate-100 dark:hover:bg-[#27241c]">
+      Logout
+    </button>
+
+  </div>
+
+</div>
+
+<div id="authButtons" class="flex items-center gap-3">
+
+  <a id="registerBtn"
+    class="hover:text-primary text-sm font-semibold"
+    href="/register.html">
+    Sign Up
+  </a>
+
+  <a id="loginBtn"
+    class="hover:text-primary text-sm font-semibold"
+    href="/login.html">
+    Login
+  </a>
+
+  <button id="logoutBtn"
+    class="hidden hover:text-red-500 text-sm font-semibold">
+    Logout
+  </button>
+
+</div>
+</div>
+
+</div>
+<button id="menuBtn" class="lg:hidden flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-[#27241c] border border-slate-200 dark:border-[#393528]">
+<span class="material-symbols-outlined" translate="no">menu</span>
+</button>
+</div>
+<div id="languageMenuNav"
+     class="hidden absolute top-16 right-6 z-50 w-44 bg-black/80 text-white rounded-lg p-2 space-y-1">
+     
+<button onclick="changeLanguage('ar')" class="block w-full text-left px-3 py-2 hover:bg-primary/30 rounded">العربية</button>
+
+<button onclick="changeLanguage('en')" class="block w-full text-left px-3 py-2 hover:bg-primary/30 rounded">English</button>
+
+<button onclick="changeLanguage('fr')" class="block w-full text-left px-3 py-2 hover:bg-primary/30 rounded">Français</button>
+
+<button onclick="changeLanguage('de')" class="block w-full text-left px-3 py-2 hover:bg-primary/30 rounded">Deutsch</button>
+
+<button onclick="changeLanguage('es')" class="block w-full text-left px-3 py-2 hover:bg-primary/30 rounded">Español</button>
+
+</div>
+
+
+</header>
+<div id="mobileMenu" class="hidden lg:hidden flex flex-col bg-background-light dark:bg-background-dark border-b border-slate-200 dark:border-[#393528] px-6 py-4 gap-4">
+<a class="hover:text-primary text-sm font-semibold" href="/home.html">Home</a>
+<a class="hover:text-primary text-sm font-semibold" href="/history.html">History</a>
+<a class="hover:text-primary text-sm font-semibold" href="/shopping.html">Shopping</a>
+<a class="hover:text-primary text-sm font-semibold" href="/Booking.html">Booking</a>
+<a class="hover:text-primary text-sm font-semibold" href="/EXPLOR.HTML">Visit</a>
+
+</div>
+
+
+
+
+<section class="cards-section">
+
+<section class="regions-section">
+
+<h2 class="regions-title">
+Discover the Regions of <span>Ancient Egypt</span>
+</h2>
+
+<div class="regions-grid">
+
+<!-- Cairo -->
+
+<a href="./cairo.html" class="region-card">
+<img src="https://images.unsplash.com/photo-1539650116574-8efeb43e2750">
+
+<div class="region-info">
+<h3>Cairo & Giza</h3>
+<p>24 Historical Sites</p>
+
+<div class="progress">
+<div class="progress-bar" ></div>
+</div>
+
+<span class="start-btn">Start Journey</span>
+</div>
+</a>
+
+
+<!-- Alexandria -->
+
+<a href="/alx.html" class="region-card">
+<img src="photo/Alexandria_.webp">
+
+<div class="region-info">
+<h3>Alexandria</h3>
+<p>7 Notable Sites</p>
+
+<div class="progress">
+<div class="progress-bar"></div>
+</div>
+
+<span class="start-btn">Start Journey</span>
+</div>
+</a>
+
+
+<!-- Suez Canal -->
+
+<a href="/suez.html" class="region-card">
+<img src="https://images.unsplash.com/photo-1589394815804-964ed0be2eb5">
+
+<div class="region-info">
+<h3>Suez Canal Cities</h3>
+<p>5 Attractions</p>
+
+<div class="progress">
+<div class="progress-bar"></div>
+</div>
+
+<span class="start-btn">Start Journey</span>
+</div>
+</a>
+
+
+<!-- Luxor -->
+
+<a href="/luxor.html" class="region-card">
+<img src="https://images.unsplash.com/photo-1553913861-c0fddf2619ee">
+
+<div class="region-info">
+<h3>Upper Egypt (Luxor)</h3>
+<p>8 Ancient Temples</p>
+
+<div class="progress">
+<div class="progress-bar"></div>
+</div>
+
+<span class="start-btn">Start Journey</span>
+</div>
+</a>
+
+
+<!-- Aswan -->
+
+<a href="/aswan.html" class="region-card">
+<img src="https://images.unsplash.com/photo-1562690868-60bbe7293e94">
+
+<div class="region-info">
+<h3>Aswan & Nubia</h3>
+<p>6 Attractions</p>
+
+<div class="progress">
+<div class="progress-bar"></div>
+</div>
+
+<span class="start-btn">Start Journey</span>
+</div>
+</a>
+
+
+<!-- Red Sea -->
+
+<a href="/redsea.html" class="region-card">
+<img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5">
+
+<div class="region-info">
+<h3>Red Sea & Sinai</h3>
+<p>6 Coastal Destinations</p>
+
+<div class="progress">
+<div class="progress-bar"></div>
+</div>
+
+<span class="start-btn">Start Journey</span>
+</div>
+</a>
+
+
+<!-- Desert -->
+
+<a href="/desert.html" class="region-card">
+<img src="https://images.unsplash.com/photo-1544986581-efac024faf62">
+
+<div class="region-info">
+<h3>Western Desert</h3>
+<p>5 Oases</p>
+
+<div class="progress">
+<div class="progress-bar"></div>
+</div>
+
+<span class="start-btn">Start Journey</span>
+</div>
+</a>
+
+</div>
+
+</section>
+
+
+<script>
+   
+
+const menuBtn = document.getElementById("menuBtn")
+const mobileMenu = document.getElementById("mobileMenu")
+
+menuBtn.addEventListener("click", () => {
+mobileMenu.classList.toggle("hidden")
+})
+
+
+
+/* Map */
+
+var map = L.map('map').setView([26.8206,30.8025],6)
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+attribution:'Egypt Explorer'
+}).addTo(map)
+
+let visited = 0
+let totalPlaces = 5
+
+const visitedIcon = L.icon({
+iconUrl:'https://maps.gstatic.com/mapfiles/ms2/micons/yellow-dot.png',
+iconSize:[32,32]
+})
+
+function visitPlace(marker){
+
+if(!marker.visited){
+
+marker.visited = true
+visited++
+
+marker.setIcon(visitedIcon)
+
+updateProgress()
+
+}
+
+}
+
+function updateProgress(){
+
+let percent = Math.round((visited/totalPlaces)*100)
+
+document.getElementById("progressBar").style.width = percent+"%"
+document.getElementById("progressText").innerText = percent+"% of Egypt discovered"
+
+}
+
+/* Locations */
+
+let cairo = L.marker([30.0444,31.2357]).addTo(map)
+.bindPopup(`<b>Cairo</b><br><button onclick="visitPlace(cairo)">Visit</button>`);
+
+let giza = L.marker([29.9792,31.1342]).addTo(map)
+.bindPopup(`<b>Pyramids</b><br><button onclick="visitPlace(giza)">Visit</button>`);
+
+let luxor = L.marker([25.6872,32.6396]).addTo(map)
+.bindPopup(`<b>Luxor</b><br><button onclick="visitPlace(luxor)">Visit</button>`);
+
+let aswan = L.marker([24.0889,32.8998]).addTo(map)
+.bindPopup(`<b>Aswan</b><br><button onclick="visitPlace(aswan)">Visit</button>`);
+
+let alex = L.marker([31.2001,29.9187]).addTo(map)
+.bindPopup(`<b>Alexandria</b><br><button onclick="visitPlace(alex)">Visit</button>`);
+const toggleBtn = document.getElementById("themeToggle");
+const icon = document.getElementById("themeIcon");
+
+// تحميل الثيم المحفوظ
+if (
+  localStorage.getItem("theme") === "dark" ||
+  (!localStorage.getItem("theme") &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches)
+) {
+  document.documentElement.classList.add("dark");
+
+  if (icon) {
+    icon.textContent = "light_mode";
+  }
+} else {
+  document.documentElement.classList.remove("dark");
+
+  if (icon) {
+    icon.textContent = "dark_mode";
+  }
+}
+
+// تغيير الوضع
+if (toggleBtn) {
+  toggleBtn.addEventListener("click", () => {
+    document.documentElement.classList.toggle("dark");
+
+    if (document.documentElement.classList.contains("dark")) {
+      localStorage.setItem("theme", "dark");
+
+      if (icon) {
+        icon.textContent = "light_mode";
+      }
+    } else {
+      localStorage.setItem("theme", "light");
+
+      if (icon) {
+        icon.textContent = "dark_mode";
+      }
+    }
+  });
+}
+
+/////ت
+setInterval(() => {
+  const before = new Date().getTime();
+  debugger;
+  const after = new Date().getTime();
+
+  if (after - before > 100) {
+    document.body.innerHTML = "";
+    window.location.href = "about:blank";
+  }
+}, 1000);
+
+document.addEventListener('contextmenu', e => e.preventDefault());
+
+document.onkeydown = function(e) {
+  if (
+    e.keyCode === 123 ||
+    (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key)) ||
+    (e.ctrlKey && e.key === 'U')
+  ) {
+    return false;
+  }
+};
+
+</script>
+<script>
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const token = localStorage.getItem("token");
+
+  const loginBtn = document.getElementById("loginBtn");
+  const registerBtn = document.getElementById("registerBtn");
+  const logoutBtn = document.getElementById("logoutBtn");
+
+  // ✅ لو عامل login
+  if (
+    token &&
+    token !== "null" &&
+    token !== "undefined" &&
+    token.trim() !== ""
+  ) {
+
+    if (loginBtn) {
+      loginBtn.style.display = "none";
+    }
+
+    if (registerBtn) {
+      registerBtn.style.display = "none";
+    }
+
+    if (logoutBtn) {
+      logoutBtn.style.display = "block";
+    }
+  }
+
+  // 🔥 logout
+  if (logoutBtn) {
+
+    logoutBtn.addEventListener("click", () => {
+
+      localStorage.removeItem("token");
+      localStorage.removeItem("cart");
+      localStorage.removeItem("cartQty");
+
+      window.location.reload();
+
+    });
+
+  }
+
+});
+
+</script>
+
+</body>
+</html>

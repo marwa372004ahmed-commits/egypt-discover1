@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Egypt Discover</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;family=Noto+Sans+Arabic:wght@100..900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style1.css">
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="./EXPLOR.HTML">
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Manrope&family=Noto+Sans+Arabic&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+
+<!-- Leaflet -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+
+</script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#ecb613",
+                "background-light": "#f8f8f6",
+                "background-dark": "#0a0a0a",
+                "faience": "#00CED1",
+                "stone-950": "#121212",
+              },
+              fontFamily: {
+                "display": ["Manrope", "Noto Sans Arabic", "sans-serif"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+    <style>
+      /* Map Section */
+
+section{
+padding:40px;
+text-align:center;
+}
+
+.progress{
+background:#333;
+height:10px;
+border-radius:20px;
+overflow:hidden;
+margin-bottom:10px;
+}
+
+#progressBar{
+height:10px;
+background:#ecb613;
+width:0%;
+}
+
+#map{
+height:500px;
+border-radius:10px;
+margin-top:20px;
+}
+
+button{
+background:#ecb613;
+border:none;
+padding:10px 20px;
+border-radius: 10px;
+cursor:pointer;
+font-weight:bold;
+}
+
+button:hover{
+background:#d4a511;
+}
+
+/* Section1 */
+
+.cards-section{
+
+max-width:1200px;
+
+margin:80px auto;
+
+padding:20px;
+
+text-align:center;
+
+}
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white min-h-screen relative">
+
+      <!-- Subtle Background Pattern -->
+<div class="fixed inset-0 egyptian-pattern pointer-events-none"></div>
+<div class="relative flex flex-col min-h-screen w-full">
+
+<!-- Top Navigation Bar -->
+
+<header id="navbar" class="relative sticky top-0 z-50 w-full border-b border-solid border-slate-200 dark:border-[#393528] bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md px-6 lg:px-20 py-3">
+<div class="max-w-[1440px] mx-auto flex items-center justify-between gap-4">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3">
+<div  class="text-primary">
+<span class="material-symbols-outlined text-3xl" translate="no">star_rate</span>
+</div>
+<h2 id="logo" class="text-xl font-extrabold leading-tight tracking-[-0.015em]">
+Egypt 
+<span class="text-primary">Discover</span>
+</h2>
+</div>
+<nav id="navLinks" class="hidden lg:flex items-center gap-8">
+
+<a class="hover:text-primary text-sm font-semibold" href="/home.html">Home</a>
+<a class="hover:text-primary text-sm font-semibold" href="/history.html">History</a>
+<a class="hover:text-primary text-sm font-semibold" href="/shopping.html">Shopping</a>
+<a class="hover:text-primary text-sm font-semibold" href="/Booking.html">Booking</a>
+<a class="hover:text-primary text-sm font-semibold" href="/EXPLOR.HTML">Visit</a>
+<a id="dashboardLink"
+   class="hidden hover:text-primary text-sm font-semibold"
+   href="/dashboard.html">
+   Dashboard
+</a>
+
+</nav>
+</div>
+<div class="flex flex-1 justify-end gap-4 items-center">
+<label class="flex flex-col w-full max-w-64">
+<div class="flex w-full items-stretch rounded-lg h-10 bg-slate-100 dark:bg-[#27241c] border border-slate-200 dark:border-[#393528]">
+<div class="text-slate-400 flex items-center justify-center pl-4">
+   
+<span id="search-box" class="material-symbols-outlined text-[20px]" translate="no">search</span>
+
+</div>
+<input class="w-full bg-transparent border-none focus:ring-0 text-sm px-3 placeholder:text-slate-500" placeholder="Search " value="">
+</div>
+</label>
+<div class="flex items-center gap-3">
+
+  <!-- زرار الترجمة -->
+  <button id="translateBtn"
+    class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-[#27241c] hover:bg-primary/20 transition-all text-primary border border-slate-200 dark:border-[#393528]">
+    
+    <span class="material-symbols-outlined text-[20px]" translate="no">translate</span>
+  
+  </button>
+  <button id="themeToggle"
+  class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-[#27241c] hover:bg-primary/20 transition-all text-primary border border-slate-200 dark:border-[#393528]">
+  
+  <span id="themeIcon" class="material-symbols-outlined text-[20px]" translate="no">
+    dark_mode
+  </span>
+
+</button>
+
+  <!-- صورة البروفايل -->
+  <div id="profileContainer" class="hidden relative">
+
+  <button id="profileBtn"
+          class="flex items-center gap-1">
+
+    <img src="/photo/admin.png" title="profile"
+         class="h-10 w-10 rounded-full border-2 border-primary object-cover">
+
+    <span class="material-symbols-outlined" translate="no">
+      keyboard_arrow_down
+    </span>
+
+  </button>
+
+ <div id="profileMenu"
+     class="hidden absolute right-0 top-12 min-w-[220px] z-[9999]
+       border border-slate-200 dark:border-[#393528]
+                   bg-white dark:bg-[#121212]
+
+              rounded-xl shadow-xl overflow-hidden">
+
+    <a href="/profile.html" class="block px-4 py-3 hover:bg-slate-100 dark:hover:bg-[#27241c]">
+      My Profile
+    </a>
+
+   <a href="/my-orders.html"
+   class="relative block px-4 py-3 hover:bg-slate-100 dark:hover:bg-[#27241c]">
+
+  My Orders
+
+  <span id="ordersCount"
+        class="absolute right-3 top-3
+               bg-red-500 text-white
+               text-xs px-2 py-0.5
+               rounded-full hidden">
+    0
+  </span>
+
+</a>
+
+    <a href="/my-plan.html" class="block px-4 py-3 hover:bg-slate-100 dark:hover:bg-[#27241c]">
+      My Plan
+    </a>
+
+    <button id="logoutMenuBtn"
+            class="w-full text-left px-4 py-3 text-red-500 hover:bg-slate-100 dark:hover:bg-[#27241c]">
+      Logout
+    </button>
+
+  </div>
+
+</div>
+
+<div id="authButtons" class="flex items-center gap-3">
+
+  <a id="registerBtn"
+    class="hover:text-primary text-sm font-semibold"
+    href="/register.html">
+    Sign Up
+  </a>
+
+  <a id="loginBtn"
+    class="hover:text-primary text-sm font-semibold"
+    href="/login.html">
+    Login
+  </a>
+
+  <button id="logoutBtn"
+    class="hidden hover:text-red-500 text-sm font-semibold">
+    Logout
+  </button>
+
+</div>
+</div>
+
+</div>
+<button id="menuBtn" class="lg:hidden flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-[#27241c] border border-slate-200 dark:border-[#393528]">
+<span class="material-symbols-outlined" translate="no">menu</span>
+</button>
+</div>
+<div id="languageMenuNav"
+     class="hidden absolute top-16 right-6 z-50 w-44 bg-black/80 text-white rounded-lg p-2 space-y-1">
+     
+<button onclick="changeLanguage('ar')" class="block w-full text-left px-3 py-2 hover:bg-primary/30 rounded">العربية</button>
+
+<button onclick="changeLanguage('en')" class="block w-full text-left px-3 py-2 hover:bg-primary/30 rounded">English</button>
+
+<button onclick="changeLanguage('fr')" class="block w-full text-left px-3 py-2 hover:bg-primary/30 rounded">Français</button>
+
+<button onclick="changeLanguage('de')" class="block w-full text-left px-3 py-2 hover:bg-primary/30 rounded">Deutsch</button>
+
+<button onclick="changeLanguage('es')" class="block w-full text-left px-3 py-2 hover:bg-primary/30 rounded">Español</button>
+
+</div>
+
+
+</header>
+<div id="mobileMenu" class="hidden lg:hidden flex flex-col bg-background-light dark:bg-background-dark border-b border-slate-200 dark:border-[#393528] px-6 py-4 gap-4">
+<a class="hover:text-primary text-sm font-semibold" href="/home.html">Home</a>
+<a class="hover:text-primary text-sm font-semibold" href="/history.html">History</a>
+<a class="hover:text-primary text-sm font-semibold" href="/shopping.html">Shopping</a>
+<a class="hover:text-primary text-sm font-semibold" href="/Booking.html">Booking</a>
+<a class="hover:text-primary text-sm font-semibold" href="/EXPLOR.HTML">Visit</a>
+
+</div>
+    <section>
+
+<h2>Egypt Explorer Map</h2>
+
+<div class="progress">
+<div id="progressBar"></div>
+</div>
+
+<p id="progressText">0% of Egypt discovered</p>
+
+<div id="map"></div>
+
+</section>
+<section class="cards-section">
+  <h2 class="text-2xl font-bold mb-6">Explore Places</h2>
+
+  <div id="placesContainer" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+  </div>
+</section>
+<script>
+
+/* Map */
+
+var map = L.map('map').setView([31.2001,29.9187],12)
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+attribution:'Egypt Explorer'
+}).addTo(map)
+
+
+let visited = 0
+let places = []
+
+
+const visitedIcon = L.icon({
+iconUrl:'https://maps.gstatic.com/mapfiles/ms2/micons/yellow-dot.png',
+iconSize:[32,32]
+})
+
+
+function visitPlace(marker){
+
+if(!marker.visited){
+
+marker.visited = true
+visited++
+
+marker.setIcon(visitedIcon)
+
+updateProgress()
+
+}
+
+}
+
+
+function updateProgress(){
+
+let percent = Math.round((visited / places.length) * 100)
+
+document.getElementById("progressBar").style.width = percent + "%"
+document.getElementById("progressText").innerText = percent + "% of Egypt discovered"
+
+}
+
+
+
+/* Function to create places */
+
+function createPlace(name, lat, lng, image){
+
+let marker = L.marker([lat,lng]).addTo(map)
+
+marker.bindPopup(`
+  <div style="width:200px; text-align:center">
+    <img src="${image}" style="width:100%; height:120px; object-fit:cover; border-radius:10px; margin-bottom:8px;">
+    <h4 style="font-weight:bold; margin-bottom:6px;">${name}</h4>
+    <button onclick="visitPlace(window['${name.replace(/\s/g,'')}'])">
+      Visit
+    </button>
+  </div>
+`)
+
+window[name.replace(/\s/g,'')] = marker
+places.push(marker)
+
+/* ✅ إضافة الكارت تحت الخريطة */
+
+const container = document.getElementById("placesContainer")
+
+const card = document.createElement("div")
+card.className = "bg-white dark:bg-[#1a1a1a] rounded-xl shadow-lg overflow-hidden"
+
+card.innerHTML = `
+  <div class="flex items-center gap-4 p-4">
+    
+    <img src="${image}" 
+      class="w-24 h-24 object-cover rounded-lg">
+
+    <div class="flex-1 text-left">
+      <h3 class="font-bold text-lg mb-2">${name}</h3>
+      
+      <button onclick="goToPlace(${lat}, ${lng}, '${name.replace(/\s/g,'')}')"
+        class="bg-primary px-4 py-2 rounded-lg text-black font-semibold">
+        Visit
+      </button>
+    </div>
+
+  </div>
+`
+
+container.appendChild(card)
+
+}
+function goToPlace(lat, lng, markerName){
+
+map.setView([lat, lng], 13)
+
+let marker = window[markerName]
+
+if(marker){
+marker.openPopup()
+}
+
+}
+
+/* Alexandria */
+
+createPlace("Bibliotheca Alexandrina",31.2089,29.9092,"/photo/bibliotheca.jpg")
+
+createPlace("Qaitbay Citadel",31.2135,29.8853,"/photo/qaitbay.jpg")
+
+createPlace("Montaza Palace",31.2820,30.0125,"/photo/montaza.jpg")
+
+createPlace("Pompey's Pillar",31.1820,29.8969,"/photo/pompey.jpg")
+
+createPlace("Roman Theatre",31.2001,29.9033,"/photo/roman theatre.jpg")
+
+createPlace("Alexandria Corniche",31.2156,29.9553,"/photo/corniche.jpg")
+
+createPlace("Stanley Bridge",31.2450,29.9660,"/photo/stanley.jpg")
+const toggleBtn = document.getElementById("themeToggle");
+const icon = document.getElementById("themeIcon");
+
+// تحميل الثيم المحفوظ
+if (
+  localStorage.getItem("theme") === "dark" ||
+  (!localStorage.getItem("theme") &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches)
+) {
+  document.documentElement.classList.add("dark");
+
+  if (icon) {
+    icon.textContent = "light_mode";
+  }
+} else {
+  document.documentElement.classList.remove("dark");
+
+  if (icon) {
+    icon.textContent = "dark_mode";
+  }
+}
+
+// تغيير الوضع
+if (toggleBtn) {
+  toggleBtn.addEventListener("click", () => {
+    document.documentElement.classList.toggle("dark");
+
+    if (document.documentElement.classList.contains("dark")) {
+      localStorage.setItem("theme", "dark");
+
+      if (icon) {
+        icon.textContent = "light_mode";
+      }
+    } else {
+      localStorage.setItem("theme", "light");
+
+      if (icon) {
+        icon.textContent = "dark_mode";
+      }
+    }
+  });
+}
+/////ت
+setInterval(() => {
+  const before = new Date().getTime();
+  debugger;
+  const after = new Date().getTime();
+
+  if (after - before > 100) {
+    document.body.innerHTML = "";
+    window.location.href = "about:blank";
+  }
+}, 1000);
+
+document.addEventListener('contextmenu', e => e.preventDefault());
+
+document.onkeydown = function(e) {
+  if (
+    e.keyCode === 123 ||
+    (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key)) ||
+    (e.ctrlKey && e.key === 'U')
+  ) {
+    return false;
+  }
+};
+
+</script>
+</body>
+</html>

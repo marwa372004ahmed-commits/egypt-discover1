@@ -1,0 +1,702 @@
+
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Old Kingdom | Egypt Discover</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Cairo:wght@200..1000&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:"Manrope",sans-serif;
+      overflow-x:hidden;
+
+      background:
+      radial-gradient(circle at top,#221708,#050505);
+
+      color:white;
+    }
+
+    .egyptian-pattern{
+      position:fixed;
+      inset:0;
+
+      background-image:
+      radial-gradient(rgba(236,182,19,0.06) 1px, transparent 1px);
+
+      background-size:40px 40px;
+
+      pointer-events:none;
+
+      z-index:-1;
+    }
+
+    /* NAVBAR */
+
+    #navbar{
+      position:sticky;
+      top:0;
+      z-index:999;
+
+      backdrop-filter:blur(12px);
+
+      background:rgba(0,0,0,.75);
+
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .nav-link{
+      color:white;
+      text-decoration:none;
+      font-size:14px;
+      font-weight:700;
+      transition:.3s;
+    }
+
+    .nav-link:hover{
+      color:#ecb613;
+    }
+
+    /* HERO */
+
+    .hero{
+      min-height:100vh;
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      text-align:center;
+
+      padding:120px 20px 80px;
+
+      position:relative;
+    }
+
+    .hero::before{
+      content:"";
+
+      position:absolute;
+      inset:0;
+
+      background:
+      linear-gradient(
+        to bottom,
+        rgba(0,0,0,.65),
+        rgba(0,0,0,.75)
+      );
+    }
+
+    .hero-bg{
+      position:absolute;
+      inset:0;
+
+      background:url('/photo/ابو الهول.webp') center/cover;
+
+      filter:brightness(.45);
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:2;
+
+      max-width:1000px;
+    }
+
+    .hero h1{
+      font-size:90px;
+      font-family:"Amiri",serif;
+      color:#ecb613;
+      margin-bottom:20px;
+      line-height:1.1;
+    }
+
+    .hero h2{
+      font-size:34px;
+      margin-bottom:25px;
+      color:white;
+    }
+
+    .hero p{
+      font-size:22px;
+      line-height:2;
+      color:#d1d5db;
+    }
+
+    .hero-btn{
+      margin-top:40px;
+
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+
+      padding:16px 35px;
+
+      border-radius:999px;
+
+      background:#ecb613;
+
+      color:black;
+
+      font-weight:800;
+
+      text-decoration:none;
+
+      transition:.3s;
+    }
+
+    .hero-btn:hover{
+      transform:translateY(-5px);
+      box-shadow:0 10px 30px rgba(236,182,19,.35);
+    }
+
+    /* NAV DOTS */
+
+    .side-nav{
+      position:fixed;
+      right:25px;
+      top:50%;
+      transform:translateY(-50%);
+
+      display:flex;
+      flex-direction:column;
+      gap:15px;
+
+      z-index:999;
+    }
+
+    .side-nav a{
+      width:14px;
+      height:14px;
+
+      border-radius:50%;
+
+      background:#555;
+
+      transition:.3s;
+    }
+
+    .side-nav a:hover{
+      background:#ecb613;
+      transform:scale(1.3);
+    }
+
+    /* SECTIONS */
+
+    .section{
+      width:92%;
+      max-width:1400px;
+
+      margin:80px auto;
+
+      padding:80px;
+
+      border-radius:35px;
+
+      position:relative;
+
+      overflow:hidden;
+
+      background:
+      linear-gradient(
+        135deg,
+        rgba(20,20,20,.96),
+        rgba(40,25,10,.94)
+      );
+
+      border:1px solid rgba(236,182,19,.18);
+
+      box-shadow:
+      0 25px 60px rgba(0,0,0,.4);
+
+      opacity:0;
+      transform:translateY(60px);
+
+      animation:fadeUp 1s ease forwards;
+    }
+
+    .section::before{
+      content:"";
+
+      position:absolute;
+      inset:0;
+
+      background:
+      radial-gradient(
+        circle at top right,
+        rgba(236,182,19,.08),
+        transparent 40%
+      );
+
+      pointer-events:none;
+    }
+
+    @keyframes fadeUp{
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    .section-title{
+      font-size:55px;
+      color:#ecb613;
+      font-family:"Amiri",serif;
+
+      margin-bottom:50px;
+
+      text-align:center;
+    }
+
+    .two-column{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:60px;
+      align-items:center;
+    }
+
+    .image-box{
+      overflow:hidden;
+      border-radius:28px;
+
+      border:2px solid rgba(236,182,19,.18);
+
+      box-shadow:0 15px 40px rgba(0,0,0,.35);
+    }
+
+    .image-box img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+
+      transition:1s;
+    }
+
+    .image-box:hover img{
+      transform:scale(1.08);
+    }
+
+    .content p{
+      font-size:22px;
+      line-height:2;
+      color:#ddd;
+      margin-bottom:20px;
+    }
+
+    /* CARDS */
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:30px;
+    }
+
+    .card{
+      padding:35px;
+
+      border-radius:25px;
+
+      background:
+      rgba(255,255,255,.03);
+
+      border:1px solid rgba(236,182,19,.15);
+
+      backdrop-filter:blur(10px);
+
+      transition:.4s;
+    }
+
+    .card:hover{
+      transform:translateY(-10px);
+      border-color:#ecb613;
+    }
+
+    .card h3{
+      font-size:32px;
+      color:#ecb613;
+      margin-bottom:20px;
+      font-family:"Amiri",serif;
+    }
+
+    .card p{
+      color:#ddd;
+      line-height:1.9;
+      font-size:18px;
+    }
+
+    /* NUMBER */
+
+    .number-layout{
+      display:flex;
+      align-items:center;
+      gap:50px;
+    }
+
+    .big-number{
+      font-size:180px;
+      font-weight:900;
+      color:#ecb613;
+
+      text-shadow:
+      0 0 35px rgba(236,182,19,.35);
+    }
+
+    /* FOOTER */
+
+    footer{
+      padding:50px 20px;
+      text-align:center;
+      color:#aaa;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:992px){
+
+      .two-column{
+        grid-template-columns:1fr;
+      }
+
+      .number-layout{
+        flex-direction:column;
+        text-align:center;
+      }
+
+      .hero h1{
+        font-size:55px;
+      }
+
+      .hero h2{
+        font-size:26px;
+      }
+
+      .section{
+        padding:45px 25px;
+      }
+
+      .section-title{
+        font-size:38px;
+      }
+
+      .big-number{
+        font-size:110px;
+      }
+
+      .side-nav{
+        display:none;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="egyptian-pattern"></div>
+
+<!-- NAVBAR -->
+<header id="navbar">
+
+  <div class="max-w-[1400px] mx-auto px-6 py-4 flex items-center justify-between">
+
+    <div class="flex items-center gap-3">
+      <span class="material-symbols-outlined text-[#ecb613] text-4xl">
+        temple_buddhist
+      </span>
+
+      <h2 class="text-2xl font-black">
+        Egypt <span class="text-[#ecb613]">Discover</span>
+      </h2>
+    </div>
+
+    <nav class="hidden lg:flex items-center gap-8">
+
+      <a class="nav-link" href="/home.html">Home</a>
+      <a class="nav-link" href="/history.html">History</a>
+      <a class="nav-link" href="/shopping.html">Shopping</a>
+      <a class="nav-link" href="/Booking.html">Booking</a>
+      <a class="nav-link" href="/EXPLOR.HTML">Visit</a>
+
+    </nav>
+
+  </div>
+
+</header>
+
+<!-- SIDE NAV -->
+<div class="side-nav">
+  <a href="#zoser"></a>
+  <a href="#imhotep"></a>
+  <a href="#snefru"></a>
+  <a href="#khufu"></a>
+  <a href="#khafre"></a>
+  <a href="#menkaure"></a>
+  <a href="#end"></a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+
+  <div class="hero-bg"></div>
+
+  <div class="hero-content">
+
+    <h1>
+      عصر الدولة القديمة
+    </h1>
+
+    <h2>
+      عصر بناة الأهرامات وملوك مصر العظام
+    </h2>
+
+    <p>
+      رحلة داخل أعظم فترات الحضارة المصرية القديمة، حيث شُيدت الأهرامات،
+      وازدهرت العمارة، وظهر أعظم الملوك والمهندسين في التاريخ.
+    </p>
+
+    <a href="#zoser" class="hero-btn">
+      Start Exploring
+      <span class="material-symbols-outlined">
+        arrow_downward
+      </span>
+    </a>
+
+  </div>
+
+</section>
+
+<!-- ZOSER -->
+<section class="section" id="zoser">
+
+  <h2 class="section-title">
+    الملك زوسر وهرم سقارة
+  </h2>
+
+  <div class="two-column">
+
+    <div class="image-box">
+      <img src="/photo/saqaraa.jpg">
+    </div>
+
+    <div class="content">
+
+      <p>
+        الملك زوسر مؤسس الأسرة الثالثة، ويُعد أول من أحدث ثورة معمارية في مصر القديمة.
+      </p>
+
+      <p>
+        هرم سقارة المدرج كان أول بناء حجري ضخم في التاريخ البشري، وفتح الطريق أمام بناء الأهرامات العملاقة.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- IMHOTEP -->
+<section class="section" id="imhotep">
+
+  <h2 class="section-title">
+    إيمحتب – العبقري الخالد
+  </h2>
+
+  <div class="two-column">
+
+    <div class="content">
+
+      <p>
+        إيمحتب كان المهندس والطبيب والوزير العبقري خلف بناء الهرم المدرج.
+      </p>
+
+      <p>
+        تحول لاحقًا إلى رمز للحكمة والشفاء، واعتبره المصريون القدماء إلهًا للطب والمعرفة.
+      </p>
+
+    </div>
+
+    <div class="image-box">
+      <img src="/photo/ايمحوتب.jpg">
+    </div>
+
+  </div>
+
+</section>
+
+<!-- SNEFRU -->
+<section class="section" id="snefru">
+
+  <h2 class="section-title">
+    الملك سنفرو المصلح العظيم
+  </h2>
+
+  <div class="two-column">
+
+    <div class="image-box">
+      <img src="/photo/سينيفرو.webp">
+    </div>
+
+    <div class="content">
+
+      <p>
+        سنفرو مؤسس الأسرة الرابعة وأحد أعظم ملوك مصر القديمة.
+      </p>
+
+      <p>
+        بنى الهرم الأحمر والهرم المنحني، ووضع الأساس الحقيقي لعصر الأهرامات العملاقة.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- KHUFU -->
+<section class="section" id="khufu">
+
+  <h2 class="section-title">
+    خوفو والهرم الأكبر
+  </h2>
+
+  <div class="two-column">
+
+    <div class="image-box">
+      <img src="/photo/Egyptian pyramids from grand Egyptian museum.jpg">
+    </div>
+
+    <div class="content">
+
+      <p>
+        الهرم الأكبر بالجيزة يُعد أعظم إنجاز هندسي في العالم القديم.
+      </p>
+
+      <p>
+        أظهر المصريون القدماء قدرة مذهلة على التنظيم والدقة المعمارية والهندسية.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- CARDS -->
+<section class="section">
+
+  <h2 class="section-title">
+    عظمة ملوك الدولة القديمة
+  </h2>
+
+  <div class="cards">
+
+    <div class="card">
+      <h3>خفرع</h3>
+      <p>
+        باني الهرم الثاني وأحد أعظم ملوك الجيزة.
+        يُنسب إليه بناء تمثال أبو الهول العظيم.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>منكاورع</h3>
+      <p>
+        صاحب الهرم الثالث بالجيزة، واشتهر عهده بالاستقرار والهدوء.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>أوسركاف</h3>
+      <p>
+        مؤسس الأسرة الخامسة وباني معابد الشمس الضخمة.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- END -->
+<section class="section" id="end">
+
+  <h2 class="section-title">
+    نهاية عصر الدولة القديمة
+  </h2>
+
+  <div class="number-layout">
+
+    <div class="big-number">
+      94
+    </div>
+
+    <div class="content">
+
+      <p>
+        حكم الملك بيبي الثاني لفترة تُعد الأطول في التاريخ المصري القديم.
+      </p>
+
+      <p>
+        ومع نهاية عهده بدأت السلطة المركزية تضعف وبدأ عصر الاضمحلال الأول.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+<footer>
+
+  <p>
+    © 2026 Egypt Discover — Ancient Egypt Lives Forever
+  </p>
+
+</footer>
+<script>
+  /////ت
+setInterval(() => {
+  const before = new Date().getTime();
+  debugger;
+  const after = new Date().getTime();
+
+  if (after - before > 100) {
+    document.body.innerHTML = "";
+    window.location.href = "about:blank";
+  }
+}, 1000);
+
+document.addEventListener('contextmenu', e => e.preventDefault());
+
+document.onkeydown = function(e) {
+  if (
+    e.keyCode === 123 ||
+    (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key)) ||
+    (e.ctrlKey && e.key === 'U')
+  ) {
+    return false;
+  }
+};
+
+</script>
+<script src="auth.js"></script>
+</body>
+</html>

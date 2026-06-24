@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>My Orders</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#ecb613",
+            "background-dark": "#0a0a0a"
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-background-dark text-white min-h-screen">
+
+  <!-- Header -->
+
+  <div class="border-b border-[#393528] p-6">
+
+    <h1 class="text-4xl font-black text-primary">
+      My Orders
+    </h1>
+
+    <p class="text-gray-400 mt-2">
+      View all your orders
+    </p>
+
+  </div>
+
+  <!-- Orders -->
+
+  <div id="ordersContainer"
+       class="max-w-6xl mx-auto p-6 grid gap-5">
+
+  </div>
+
+<script>
+
+const token = localStorage.getItem("token");
+const container = document.getElementById("ordersContainer");
+
+async function loadOrders() {
+
+  if (!token) {
+    window.location.href = "/login.html";
+    return;
+  }
+
+  try {
+
+    const response = await fetch(
+      "https://egyptdiscover2.runasp.net/api/Orders/My-Orders",
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("Failed to fetch orders");
+    }
+
+    const data = await response.json();
+
+    console.log("Orders:", data);
+
+    if (!data || data.length === 0) {
+
+      container.innerHTML = `
+
+        <div class="text-center py-20">
+
+          <span class="material-symbols-outlined text-7xl text-primary">
+            inventory_2
+          </span>
+
+          <h2 class="text-3xl font-bold mt-4">
+            No Orders Yet
+          </h2>
+
+          <p class="text-gray-400 mt-3">
+            Start shopping and your orders will appear here.
+          </p>
+
+          <a href="/shopping.html"
+             class="inline-block mt-6 bg-primary text-black px-6 py-3 rounded-lg font-bold">
+
+            Start Shopping
+
+          </a>
+
+        </div>
+
+      `;
+
+      return;
+    }
+
+    container.innerHTML = "";
+
+    data.forEach(order => {
+
+      let productsHTML = "";
+
+      if (order.items && order.items.length > 0) {
+
+        order.items.forEach(item => {
+
+          productsHTML += `
+
+            <div class="bg-[#1a1a1a]
+                        border border-[#393528]
+                        rounded-lg
+                        p-4">
+
+              <div class="flex justify-between items-center">
+
+                <h4 class="font-bold text-primary">
+                  ${item.productName}
+                </h4>
+
+                <span>
+                  x${item.quantity}
+                </span>
+
+              </div>
+
+              <p class="text-sm text-gray-400 mt-2">
+                Unit Price: ${item.unitPrice} EGP
+              </p>
+
+              <p class="font-bold text-primary mt-1">
+                Total: ${item.totalPrice} EGP
+              </p>
+
+            </div>
+
+          `;
+        });
+      }
+
+      let statusClass = "bg-yellow-500 text-black";
+
+      if (order.status === "Completed") {
+        statusClass = "bg-green-500 text-white";
+      }
+
+      if (order.status === "Cancelled") {
+        statusClass = "bg-red-500 text-white";
+      }
+
+      container.innerHTML += `
+
+        <div class="bg-[#121212]
+                    border border-[#393528]
+                    rounded-2xl
+                    p-6
+                    shadow-lg">
+
+          <div class="flex justify-between flex-wrap gap-4">
+
+            <div>
+
+              <h2 class="text-2xl font-black text-primary">
+
+                Order #${order.id}
+
+              </h2>
+
+              <p class="text-gray-400 mt-2">
+
+                ${new Date(order.date).toLocaleDateString()}
+
+              </p>
+
+            </div>
+
+            <span class="${statusClass}
+                        px-4 py-2
+                        rounded-full
+                        font-bold">
+
+              ${order.status}
+
+            </span>
+
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-4 mt-6">
+
+            <div>
+
+              <p>
+                <strong>Payment:</strong>
+                ${order.paymentMethod}
+              </p>
+
+              <p class="mt-2">
+                <strong>Phone:</strong>
+                ${order.phoneNumber}
+              </p>
+
+            </div>
+
+            <div>
+
+              <p>
+                <strong>City:</strong>
+                ${order.city}
+              </p>
+
+              <p class="mt-2">
+                <strong>Address:</strong>
+                ${order.address}
+              </p>
+
+            </div>
+
+          </div>
+
+          <div class="mt-6">
+
+            <h3 class="font-bold text-lg text-primary mb-3">
+
+              Products
+
+            </h3>
+
+            <div class="grid gap-3">
+
+              ${productsHTML}
+
+            </div>
+
+          </div>
+
+         <div class="mt-6 pt-4 border-t border-[#393528] flex justify-between items-center flex-wrap gap-3">
+
+  <span class="text-2xl font-black text-primary">
+    Total Order:
+    ${order.totalPrice} EGP
+  </span>
+
+  ${
+    order.status !== "Cancelled"
+      ? `
+      <button
+        onclick="cancelOrder(${order.id})"
+        class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg font-bold transition">
+        Cancel Order
+      </button>
+      `
+      : ""
+  }
+  <button
+    onclick="deleteOrder(${order.id})"
+    class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg font-bold transition">
+    Delete Order
+  </button>
+</div>
+
+        </div>
+
+      `;
+    });
+
+  }
+
+  catch (error) {
+
+    console.error(error);
+
+    container.innerHTML = `
+
+      <div class="text-center py-20">
+
+        <span class="material-symbols-outlined text-7xl text-red-500">
+          error
+        </span>
+
+        <h2 class="text-red-500 text-3xl font-bold mt-4">
+
+          Failed To Load Orders
+
+        </h2>
+
+      </div>
+
+    `;
+  }
+}
+
+loadOrders();
+/////ت
+setInterval(() => {
+  const before = new Date().getTime();
+  debugger;
+  const after = new Date().getTime();
+
+  if (after - before > 100) {
+    document.body.innerHTML = "";
+    window.location.href = "about:blank";
+  }
+}, 1000);
+
+document.addEventListener('contextmenu', e => e.preventDefault());
+
+document.onkeydown = function(e) {
+  if (
+    e.keyCode === 123 ||
+    (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key)) ||
+    (e.ctrlKey && e.key === 'U')
+  ) {
+    return false;
+  }
+};
+
+async function cancelOrder(orderId) {
+
+  const confirmCancel = confirm(
+    "Are you sure you want to cancel this order?"
+  );
+
+  if (!confirmCancel) return;
+
+  try {
+
+    const response = await fetch(
+      `https://egyptdiscover2.runasp.net/api/Orders/${orderId}/Cancel`,
+      {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          accept: "*/*"
+        }
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("Failed to cancel order");
+    }
+
+    alert("Order cancelled successfully");
+
+    loadOrders();
+
+  } catch (error) {
+
+    console.error(error);
+
+    alert("Failed to cancel order");
+
+  }
+
+}
+async function deleteOrder(orderId) {
+
+  try {
+
+    const response = await fetch(
+      `https://egyptdiscover2.runasp.net/api/Orders/${orderId}`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }
+    );
+
+    const result = await response.text();
+
+    console.log("Status:", response.status);
+    console.log("Response:", result);
+
+    if (!response.ok) {
+      alert(`Error ${response.status}\n${result}`);
+      return;
+    }
+
+    alert("Order deleted successfully");
+    loadOrders();
+
+  } catch (error) {
+
+    console.error(error);
+
+  }
+
+}
+/////ت
+
+setInterval(() => {
+  const before = new Date().getTime();
+  debugger;
+  const after = new Date().getTime();
+
+  if (after - before > 100) {
+    document.body.innerHTML = "";
+    window.location.href = "about:blank";
+  }
+}, 1000);
+
+document.addEventListener('contextmenu', e => e.preventDefault());
+
+document.onkeydown = function(e) {
+  if (
+    e.keyCode === 123 ||
+    (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key)) ||
+    (e.ctrlKey && e.key === 'U')
+  ) {
+    return false;
+  }
+};
+
+
+
+</script>
+
+
+</body>
+
+</html>

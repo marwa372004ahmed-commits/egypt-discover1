@@ -1,0 +1,851 @@
+
+<!DOCTYPE html>
+<html lang="ar" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>نشأة الحكومة المركزية | Egypt Discover</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:"Cairo",sans-serif;
+overflow-x:hidden;
+
+background:
+radial-gradient(circle at top,#1f1408,#050505);
+
+color:white;
+}
+
+.pattern{
+position:fixed;
+inset:0;
+
+background-image:
+radial-gradient(rgba(236,182,19,.05) 1px, transparent 1px);
+
+background-size:40px 40px;
+
+pointer-events:none;
+
+z-index:-1;
+}
+
+/* NAVBAR */
+
+header{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+z-index:999;
+
+background:rgba(0,0,0,.75);
+backdrop-filter:blur(12px);
+
+border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.navbar{
+max-width:1400px;
+margin:auto;
+
+padding:20px 30px;
+
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.logo h2{
+font-size:28px;
+font-weight:900;
+}
+
+.logo span{
+color:#ecb613;
+}
+
+.nav-links{
+display:flex;
+gap:30px;
+}
+
+.nav-links a{
+color:white;
+text-decoration:none;
+font-weight:700;
+transition:.3s;
+}
+
+.nav-links a:hover{
+color:#ecb613;
+}
+
+/* HERO */
+
+.hero{
+min-height:100vh;
+
+position:relative;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+text-align:center;
+
+padding:120px 20px;
+}
+
+.hero-bg{
+position:absolute;
+inset:0;
+
+background:
+url('/photo/government-banner.jpg')
+center/cover no-repeat;
+
+filter:brightness(.28);
+}
+
+.hero::after{
+content:"";
+position:absolute;
+inset:0;
+
+background:
+linear-gradient(
+to bottom,
+rgba(0,0,0,.35),
+rgba(0,0,0,.85)
+);
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+max-width:1000px;
+
+animation:heroFade 1.3s ease;
+}
+
+@keyframes heroFade{
+
+from{
+opacity:0;
+transform:translateY(40px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+.hero-badge{
+display:inline-flex;
+align-items:center;
+gap:10px;
+
+padding:12px 25px;
+
+border-radius:999px;
+
+border:1px solid rgba(236,182,19,.25);
+
+background:rgba(236,182,19,.08);
+
+color:#ecb613;
+
+font-weight:700;
+
+margin-bottom:30px;
+}
+
+.hero h1{
+font-size:90px;
+font-family:"Amiri",serif;
+color:#ecb613;
+margin-bottom:20px;
+}
+
+.hero h2{
+font-size:38px;
+margin-bottom:30px;
+}
+
+.hero p{
+font-size:22px;
+line-height:2;
+color:#ddd;
+}
+
+.hero-btn{
+margin-top:40px;
+
+display:inline-flex;
+align-items:center;
+gap:10px;
+
+padding:18px 35px;
+
+border-radius:999px;
+
+background:#ecb613;
+
+color:black;
+
+font-weight:900;
+
+text-decoration:none;
+
+transition:.4s;
+}
+
+.hero-btn:hover{
+transform:translateY(-5px);
+
+box-shadow:
+0 15px 40px rgba(236,182,19,.35);
+}
+
+/* SECTIONS */
+
+.section{
+width:92%;
+max-width:1400px;
+
+margin:80px auto;
+
+padding:80px;
+
+border-radius:35px;
+
+background:
+linear-gradient(
+135deg,
+rgba(18,18,18,.95),
+rgba(35,22,8,.93)
+);
+
+border:1px solid rgba(236,182,19,.18);
+
+box-shadow:0 25px 60px rgba(0,0,0,.45);
+
+overflow:hidden;
+}
+
+.section-title{
+font-size:58px;
+font-family:"Amiri",serif;
+
+color:#ecb613;
+
+text-align:center;
+
+margin-bottom:50px;
+}
+
+.section-title::after{
+content:"";
+
+display:block;
+
+width:120px;
+height:3px;
+
+background:#ecb613;
+
+margin:15px auto 0;
+}
+
+.two-column{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:60px;
+align-items:center;
+}
+
+.content p{
+font-size:22px;
+line-height:2;
+color:#ddd;
+margin-bottom:22px;
+}
+
+/* IMAGE BOX */
+
+.image-box{
+overflow:hidden;
+border-radius:30px;
+
+border:2px solid rgba(236,182,19,.18);
+
+box-shadow:0 15px 40px rgba(0,0,0,.35);
+}
+
+.image-box img{
+width:100%;
+height:100%;
+object-fit:cover;
+
+transition:.8s;
+}
+
+.image-box:hover img{
+transform:scale(1.08);
+}
+
+/* CARDS */
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+}
+
+.card{
+padding:35px;
+
+border-radius:28px;
+
+background:rgba(255,255,255,.03);
+
+border:1px solid rgba(236,182,19,.15);
+
+backdrop-filter:blur(10px);
+
+transition:.4s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+
+border-color:#ecb613;
+}
+
+.card h3{
+font-size:34px;
+font-family:"Amiri",serif;
+
+margin-bottom:20px;
+
+color:#ecb613;
+}
+
+.card p{
+font-size:18px;
+line-height:1.9;
+color:#ddd;
+}
+
+/* TIMELINE */
+
+.timeline{
+max-width:900px;
+margin:auto;
+display:flex;
+flex-direction:column;
+gap:25px;
+}
+
+.timeline-content{
+padding:25px;
+
+border-radius:20px;
+
+background:rgba(255,255,255,.03);
+
+border:1px solid rgba(236,182,19,.15);
+
+transition:.3s;
+}
+
+.timeline-content:hover{
+border-color:#ecb613;
+
+transform:translateY(-5px);
+}
+
+.timeline-content h3{
+color:#ecb613;
+margin-bottom:10px;
+}
+
+/* GALLERY */
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+}
+
+.gallery img{
+width:100%;
+height:320px;
+
+object-fit:cover;
+
+border-radius:25px;
+
+border:2px solid rgba(236,182,19,.18);
+
+transition:.5s;
+}
+
+.gallery img:hover{
+transform:scale(1.04);
+
+border-color:#ecb613;
+}
+
+/* FOOTER */
+
+footer{
+padding:60px 20px;
+text-align:center;
+color:#aaa;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:992px){
+
+.hero h1{
+font-size:55px;
+}
+
+.hero h2{
+font-size:28px;
+}
+
+.section{
+padding:45px 25px;
+}
+
+.section-title{
+font-size:38px;
+}
+
+.two-column{
+grid-template-columns:1fr;
+}
+
+.nav-links{
+display:none;
+}
+
+.content p,
+.hero p{
+font-size:18px;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="pattern"></div>
+
+<!-- NAVBAR -->
+
+<header>
+
+<div class="navbar">
+
+<div class="logo">
+
+<span class="material-symbols-outlined text-[40px] text-[#ecb613]">
+account_balance
+</span>
+
+<h2>
+Egypt <span>Discover</span>
+</h2>
+
+</div>
+
+<nav class="nav-links">
+
+<a href="/home.html">Home</a>
+<a href="/history.html">History</a>
+<a href="/shopping.html">Shopping</a>
+<a href="/Booking.html">Booking</a>
+<a href="/EXPLOR.HTML">Visit</a>
+
+</nav>
+
+</div>
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-bg"></div>
+
+<div class="hero-content">
+
+<div class="hero-badge">
+
+<span class="material-symbols-outlined">
+gavel
+</span>
+
+Middle Kingdom Administration
+
+</div>
+
+<h1>
+نشأة الحكومة المركزية
+</h1>
+
+<h2>
+أساس الاستقرار والازدهار في الدولة الوسطى
+</h2>
+
+<p>
+شهدت الدولة الوسطى تطورًا كبيرًا في نظام الحكم والإدارة، حيث تمكن الملوك من بناء حكومة مركزية قوية ساعدت على تحقيق الأمن والاستقرار وتنظيم شؤون البلاد.
+</p>
+
+<a href="#government" class="hero-btn">
+
+استكشف النظام الإداري
+
+<span class="material-symbols-outlined">
+arrow_downward
+</span>
+
+</a>
+
+</div>
+
+</section>
+
+<!-- SECTION 1 -->
+
+<section class="section" id="government">
+
+<h2 class="section-title">
+الملك مركز السلطة
+</h2>
+
+<div class="two-column">
+
+<div class="image-box">
+<img src="/photo/king-middle-kingdom.jpg" alt="">
+</div>
+
+<div class="content">
+
+<p>
+كان الملك يمثل أعلى سلطة في الدولة، ويُنظر إليه باعتباره المسؤول الأول عن حفظ النظام وتحقيق العدالة.
+</p>
+
+<p>
+أشرف على الإدارة والجيش والمشروعات الكبرى، كما كان يتابع شؤون الأقاليم المختلفة.
+</p>
+
+<p>
+ساهمت قوة الملك في تعزيز وحدة البلاد وترسيخ نفوذ الحكومة المركزية.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- SECTION 2 -->
+
+<section class="section">
+
+<h2 class="section-title">
+أركان الحكومة المركزية
+</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<h3>
+الوزير
+</h3>
+
+<p>
+كان الوزير أعلى مسؤول بعد الملك ويتولى الإشراف على مؤسسات الدولة المختلفة.
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>
+الكتبة
+</h3>
+
+<p>
+سجلوا الضرائب والوثائق الرسمية وساهموا في تنظيم الإدارة الحكومية.
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>
+حكام الأقاليم
+</h3>
+
+<p>
+أداروا الأقاليم المختلفة ونفذوا أوامر الحكومة المركزية.
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>
+الجيش
+</h3>
+
+<p>
+حافظ على الأمن الداخلي وحمى حدود الدولة من التهديدات الخارجية.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- SECTION 3 -->
+
+<section class="section">
+
+<h2 class="section-title">
+إدارة الضرائب والموارد
+</h2>
+
+<div class="two-column">
+
+<div class="content">
+
+<p>
+اعتمدت الحكومة المركزية على نظام دقيق لجمع الضرائب من الأراضي الزراعية والتجارة.
+</p>
+
+<p>
+ساعدت هذه الموارد في تمويل المشروعات العامة والمعابد والجيش.
+</p>
+
+<p>
+ساهم التنظيم المالي في زيادة قوة الدولة وتحقيق الاستقرار الاقتصادي.
+</p>
+
+</div>
+
+<div class="image-box">
+<img src="/photo/tax-egypt.jpg" alt="">
+</div>
+
+</div>
+
+</section>
+
+<!-- SECTION 4 -->
+
+<section class="section">
+
+<h2 class="section-title">
+العدالة والقانون
+</h2>
+
+<div class="two-column">
+
+<div class="image-box">
+<img src="/photo/maat.jpg" alt="">
+</div>
+
+<div class="content">
+
+<p>
+اعتمدت الإدارة المصرية على مفهوم "ماعت" الذي يرمز إلى العدالة والنظام والحق.
+</p>
+
+<p>
+كان المسؤولون والقضاة يعملون على تطبيق القوانين وتسوية النزاعات بين أفراد المجتمع.
+</p>
+
+<p>
+ساعد ذلك على ترسيخ الاستقرار والثقة في مؤسسات الدولة.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- TIMELINE -->
+
+<section class="section">
+
+<h2 class="section-title">
+تطور الحكومة المركزية
+</h2>
+
+<div class="timeline">
+
+<div class="timeline-item">
+<div class="timeline-content">
+<h3>منتوحتب الثاني</h3>
+<p>إعادة توحيد مصر وبداية الدولة الوسطى.</p>
+</div>
+</div>
+
+<div class="timeline-item">
+<div class="timeline-content">
+<h3>أمنمحات الأول</h3>
+<p>تعزيز السلطة المركزية وتقوية الإدارة.</p>
+</div>
+</div>
+
+<div class="timeline-item">
+<div class="timeline-content">
+<h3>سنوسرت الأول</h3>
+<p>تطوير المؤسسات الحكومية.</p>
+</div>
+</div>
+
+<div class="timeline-item">
+<div class="timeline-content">
+<h3>سنوسرت الثالث</h3>
+<p>إصلاحات إدارية وعسكرية واسعة.</p>
+</div>
+</div>
+
+<div class="timeline-item">
+<div class="timeline-content">
+<h3>أمنمحات الثالث</h3>
+<p>ازدهار الإدارة والاقتصاد.</p>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<!-- GALLERY -->
+
+<section class="section">
+
+<h2 class="section-title">
+معرض الإدارة والحكم
+</h2>
+
+<div class="gallery">
+
+<img src="/photo/scribe.jpg" alt="">
+<img src="/photo/vizier.jpg" alt="">
+<img src="/photo/papyrus.jpg" alt="">
+<img src="/photo/administration.jpg" alt="">
+<img src="/photo/senusret3.jpg" alt="">
+<img src="/photo/ancient-court.jpg" alt="">
+
+</div>
+
+</section>
+
+<!-- LEGACY -->
+
+<section class="section">
+
+<h2 class="section-title">
+أثر الحكومة المركزية
+</h2>
+
+<div class="content text-center">
+
+<p>
+ساهمت الحكومة المركزية القوية في تحقيق الاستقرار السياسي والاقتصادي خلال الدولة الوسطى.
+</p>
+
+<p>
+كما دعمت التجارة والزراعة والمشروعات الكبرى، مما جعل الدولة الوسطى واحدة من أكثر الفترات ازدهارًا في تاريخ مصر القديمة.
+</p>
+
+<p>
+ولا تزال إنجازاتها الإدارية مثالًا مبكرًا على التنظيم الحكومي الناجح.
+</p>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>
+© 2026 Egypt Discover — The Establishment of the Central Government
+</p>
+
+</footer>
+<script>
+    /////ت
+
+setInterval(() => {
+  const before = new Date().getTime();
+  debugger;
+  const after = new Date().getTime();
+
+  if (after - before > 100) {
+    document.body.innerHTML = "";
+    window.location.href = "about:blank";
+  }
+}, 1000);
+
+document.addEventListener('contextmenu', e => e.preventDefault());
+
+document.onkeydown = function(e) {
+  if (
+    e.keyCode === 123 ||
+    (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key)) ||
+    (e.ctrlKey && e.key === 'U')
+  ) {
+    return false;
+  }
+};
+
+</script>
+
+</body>
+</html>

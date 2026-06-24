@@ -1,0 +1,814 @@
+
+<!DOCTYPE html>
+<html lang="ar" class="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>نشأة الحكومة المركزية | Egypt Discover</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Amiri:wght@400;700&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:"Cairo",sans-serif;
+overflow-x:hidden;
+
+background:
+radial-gradient(circle at top,#1f1408,#050505);
+
+color:white;
+}
+
+.pattern{
+position:fixed;
+inset:0;
+
+background-image:
+radial-gradient(rgba(236,182,19,.05) 1px, transparent 1px);
+
+background-size:40px 40px;
+
+pointer-events:none;
+
+z-index:-1;
+}
+
+/* NAVBAR */
+
+header{
+position:sticky;
+top:0;
+z-index:999;
+
+background:rgba(0,0,0,.75);
+backdrop-filter:blur(12px);
+
+border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.navbar{
+max-width:1400px;
+margin:auto;
+
+padding:20px 30px;
+
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.logo h2{
+font-size:28px;
+font-weight:900;
+}
+
+.logo span{
+color:#ecb613;
+}
+
+.nav-links{
+display:flex;
+gap:30px;
+}
+
+.nav-links a{
+color:white;
+text-decoration:none;
+font-weight:700;
+transition:.3s;
+}
+
+.nav-links a:hover{
+color:#ecb613;
+}
+
+/* HERO */
+
+.hero{
+min-height:100vh;
+
+position:relative;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+text-align:center;
+
+padding:120px 20px;
+}
+
+.hero-bg{
+position:absolute;
+inset:0;
+
+background:url('/photo/saqaraa.jpg') center/cover;
+
+filter:brightness(.3);
+}
+
+.hero::after{
+content:"";
+position:absolute;
+inset:0;
+
+background:linear-gradient(to bottom,rgba(0,0,0,.4),rgba(0,0,0,.85));
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+max-width:1000px;
+}
+
+.hero h1{
+font-size:90px;
+font-family:"Amiri",serif;
+color:#ecb613;
+margin-bottom:20px;
+}
+
+.hero h2{
+font-size:38px;
+margin-bottom:30px;
+}
+
+.hero p{
+font-size:24px;
+line-height:2;
+color:#ddd;
+}
+
+.hero-btn{
+margin-top:40px;
+
+display:inline-flex;
+align-items:center;
+gap:10px;
+
+padding:18px 35px;
+
+border-radius:999px;
+
+background:#ecb613;
+
+color:black;
+
+font-weight:900;
+
+text-decoration:none;
+
+transition:.3s;
+}
+
+.hero-btn:hover{
+transform:translateY(-5px);
+box-shadow:0 15px 40px rgba(236,182,19,.35);
+}
+
+/* SIDE NAV */
+
+.side-nav{
+position:fixed;
+right:25px;
+top:50%;
+transform:translateY(-50%);
+
+z-index:999;
+
+display:flex;
+flex-direction:column;
+gap:14px;
+}
+
+.side-nav a{
+width:14px;
+height:14px;
+
+border-radius:50%;
+
+background:#555;
+
+transition:.3s;
+}
+
+.side-nav a:hover{
+background:#ecb613;
+transform:scale(1.3);
+}
+
+/* SECTIONS */
+
+.section{
+width:92%;
+max-width:1400px;
+
+margin:80px auto;
+
+padding:80px;
+
+border-radius:35px;
+
+position:relative;
+
+background:
+linear-gradient(
+135deg,
+rgba(18,18,18,.95),
+rgba(35,22,8,.93)
+);
+
+border:1px solid rgba(236,182,19,.18);
+
+box-shadow:0 25px 60px rgba(0,0,0,.45);
+
+overflow:hidden;
+
+opacity:0;
+transform:translateY(60px);
+
+animation:fadeUp 1s ease forwards;
+}
+
+.section::before{
+content:"";
+position:absolute;
+inset:0;
+
+background:
+radial-gradient(circle at top right,rgba(236,182,19,.08),transparent 40%);
+
+pointer-events:none;
+}
+
+@keyframes fadeUp{
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+.section-title{
+font-size:58px;
+font-family:"Amiri",serif;
+
+color:#ecb613;
+
+margin-bottom:50px;
+
+text-align:center;
+}
+
+.two-column{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:60px;
+align-items:center;
+}
+
+.image-box{
+overflow:hidden;
+border-radius:30px;
+
+border:2px solid rgba(236,182,19,.18);
+
+box-shadow:0 15px 40px rgba(0,0,0,.35);
+}
+
+.image-box img{
+width:100%;
+height:100%;
+object-fit:cover;
+
+transition:1s;
+}
+
+.image-box:hover img{
+transform:scale(1.08);
+}
+
+.content p{
+font-size:22px;
+line-height:2;
+color:#ddd;
+margin-bottom:22px;
+}
+
+/* CARDS */
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+}
+
+.card{
+padding:35px;
+
+border-radius:28px;
+
+background:rgba(255,255,255,.03);
+
+border:1px solid rgba(236,182,19,.15);
+
+backdrop-filter:blur(10px);
+
+transition:.4s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+border-color:#ecb613;
+}
+
+.card h3{
+font-size:34px;
+font-family:"Amiri",serif;
+
+margin-bottom:20px;
+
+color:#ecb613;
+}
+
+.card p{
+font-size:18px;
+line-height:1.9;
+color:#ddd;
+}
+
+/* TIMELINE */
+
+.timeline{
+position:relative;
+padding-right:30px;
+}
+
+.timeline::before{
+content:"";
+position:absolute;
+right:0;
+top:0;
+
+width:4px;
+height:100%;
+
+background:#ecb613;
+}
+
+.timeline-item{
+margin-bottom:45px;
+position:relative;
+}
+
+.timeline-item::before{
+content:"";
+position:absolute;
+right:-38px;
+top:10px;
+
+width:16px;
+height:16px;
+
+border-radius:50%;
+
+background:#ecb613;
+}
+
+.timeline-item h3{
+font-size:30px;
+margin-bottom:10px;
+color:#ecb613;
+font-family:"Amiri",serif;
+}
+
+.timeline-item p{
+font-size:20px;
+line-height:1.9;
+color:#ddd;
+}
+
+/* FOOTER */
+
+footer{
+padding:60px 20px;
+text-align:center;
+color:#aaa;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:992px){
+
+.hero h1{
+font-size:55px;
+}
+
+.hero h2{
+font-size:28px;
+}
+
+.section{
+padding:45px 25px;
+}
+
+.section-title{
+font-size:38px;
+}
+
+.two-column{
+grid-template-columns:1fr;
+}
+
+.nav-links{
+display:none;
+}
+
+.side-nav{
+display:none;
+}
+
+.content p,
+.hero p{
+font-size:18px;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<div class="pattern"></div>
+
+<!-- NAVBAR -->
+<header>
+
+<div class="navbar">
+
+<div class="logo">
+
+<span class="material-symbols-outlined text-[40px] text-[#ecb613]">
+account_balance
+</span>
+
+<h2>
+Egypt <span>Discover</span>
+</h2>
+
+</div>
+
+<nav class="nav-links">
+
+<a href="/home.html">Home</a>
+<a href="/history.html">History</a>
+<a href="/shopping.html">Shopping</a>
+<a href="/Booking.html">Booking</a>
+<a href="/EXPLOR.HTML">Visit</a>
+
+</nav>
+
+</div>
+
+</header>
+
+<!-- SIDE NAV -->
+<div class="side-nav">
+<a href="#start"></a>
+<a href="#king"></a>
+<a href="#vizier"></a>
+<a href="#nomes"></a>
+<a href="#army"></a>
+<a href="#collapse"></a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="start">
+
+<div class="hero-bg"></div>
+
+<div class="hero-content">
+
+<h1>
+نشأة الحكومة المركزية
+</h1>
+
+<h2>
+في عصر الدولة القديمة
+</h2>
+
+<p>
+كيف تحولت مصر القديمة إلى واحدة من أقوى الدول المركزية في التاريخ؟
+اكتشف دور الملك والوزير وحكام الأقاليم في بناء أعظم حضارة عرفتها البشرية.
+</p>
+
+<a href="#king" class="hero-btn">
+ابدأ الرحلة
+<span class="material-symbols-outlined">
+arrow_downward
+</span>
+</a>
+
+</div>
+
+</section>
+
+<!-- KING -->
+<section class="section" id="king">
+
+<h2 class="section-title">
+الملك أساس الحكومة المركزية
+</h2>
+
+<div class="two-column">
+
+<div class="image-box">
+<img src="/photo/الملك_خفرع.png">
+</div>
+
+<div class="content">
+
+<p>
+كان الملك في الدولة القديمة يُعتبر الحاكم الأعلى وصاحب السلطة المطلقة في البلاد.
+</p>
+
+<p>
+اعتقد المصريون القدماء أن الملك يمثل الإله على الأرض، ولذلك كانت جميع السلطات السياسية والدينية والعسكرية تتركز في يده.
+</p>
+
+<p>
+هذا النظام ساعد على توحيد مصر وتحقيق الاستقرار لفترات طويلة.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- VIZIER -->
+<section class="section" id="vizier">
+
+<h2 class="section-title">
+الوزير – اليد اليمنى للملك
+</h2>
+
+<div class="two-column">
+
+<div class="content">
+
+<p>
+الوزير كان أهم موظف في الدولة بعد الملك، وكان مسؤولًا عن إدارة شؤون الحكومة.
+</p>
+
+<p>
+أشرف الوزير على القضاء والضرائب والزراعة والمشروعات الكبرى مثل بناء الأهرامات.
+</p>
+
+<p>
+ومن أشهر الوزراء في الدولة القديمة إيمحتب، الذي جمع بين الهندسة والإدارة والطب.
+</p>
+
+</div>
+
+<div class="image-box">
+<img src="/photo/ايمحوتب.jpg">
+</div>
+
+</div>
+
+</section>
+
+<!-- GOVERNMENT SYSTEM -->
+<section class="section">
+
+<h2 class="section-title">
+أركان الحكومة المركزية
+</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>
+الإدارة
+</h3>
+
+<p>
+اعتمدت الدولة على نظام إداري منظم لتسجيل الضرائب والمحاصيل وتنظيم العمل.
+</p>
+</div>
+
+<div class="card">
+<h3>
+القضاء
+</h3>
+
+<p>
+كان القضاة ينفذون القوانين باسم الملك للحفاظ على العدالة والاستقرار.
+</p>
+</div>
+
+<div class="card">
+<h3>
+الخزانة
+</h3>
+
+<p>
+اهتمت الدولة بجمع الضرائب وتخزين الحبوب لإدارة الاقتصاد ومواجهة المجاعات.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- NOMES -->
+<section class="section" id="nomes">
+
+<h2 class="section-title">
+الأقاليم وحكامها
+</h2>
+
+<div class="two-column">
+
+<div class="image-box">
+<img src="/photo/Egyptian pyramids from grand Egyptian museum.jpg">
+</div>
+
+<div class="content">
+
+<p>
+قُسمت مصر إلى أقاليم إدارية تُعرف باسم "الأقاليم" أو "النوم".
+</p>
+
+<p>
+كان لكل إقليم حاكم مسؤول عن تنفيذ أوامر الملك وجمع الضرائب وإدارة شؤون السكان.
+</p>
+
+<p>
+مع مرور الزمن ازدادت قوة بعض حكام الأقاليم، مما أدى لاحقًا إلى ضعف الحكومة المركزية.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- TIMELINE -->
+<section class="section" id="army">
+
+<h2 class="section-title">
+تطور الحكومة المركزية
+</h2>
+
+<div class="timeline">
+
+<div class="timeline-item">
+<h3>
+بداية التوحيد
+</h3>
+
+<p>
+بدأت الحكومة المركزية بعد توحيد مصر العليا والسفلى تحت حكم ملك واحد.
+</p>
+</div>
+
+<div class="timeline-item">
+<h3>
+تنظيم الإدارة
+</h3>
+
+<p>
+تم إنشاء دواوين حكومية لتنظيم الزراعة والضرائب والمشروعات.
+</p>
+</div>
+
+<div class="timeline-item">
+<h3>
+عصر الأهرامات
+</h3>
+
+<p>
+وصلت الحكومة المركزية إلى قمة قوتها أثناء بناء الأهرامات الكبرى.
+</p>
+</div>
+
+<div class="timeline-item">
+<h3>
+بداية الضعف
+</h3>
+
+<p>
+ازدادت قوة حكام الأقاليم وبدأ نفوذ الملك يضعف تدريجيًا.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- COLLAPSE -->
+<section class="section" id="collapse">
+
+<h2 class="section-title">
+ضعف الحكومة المركزية
+</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>
+ضعف الملوك
+</h3>
+
+<p>
+مع نهاية الدولة القديمة أصبح بعض الملوك أقل قدرة على السيطرة على البلاد.
+</p>
+</div>
+
+<div class="card">
+<h3>
+نفوذ حكام الأقاليم
+</h3>
+
+<p>
+أصبح حكام الأقاليم أكثر استقلالًا مما أضعف سلطة الحكومة المركزية.
+</p>
+</div>
+
+<div class="card">
+<h3>
+المجاعات
+</h3>
+
+<p>
+انخفاض فيضان النيل أدى إلى أزمات اقتصادية ومجاعات أثرت على استقرار الدولة.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>
+© 2026 Egypt Discover — Central Government of Ancient Egypt
+</p>
+
+</footer>
+<script>
+    /////ت
+setInterval(() => {
+  const before = new Date().getTime();
+  debugger;
+  const after = new Date().getTime();
+
+  if (after - before > 100) {
+    document.body.innerHTML = "";
+    window.location.href = "about:blank";
+  }
+}, 1000);
+
+document.addEventListener('contextmenu', e => e.preventDefault());
+
+document.onkeydown = function(e) {
+  if (
+    e.keyCode === 123 ||
+    (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key)) ||
+    (e.ctrlKey && e.key === 'U')
+  ) {
+    return false;
+  }
+};
+
+</script>
+
+</body>
+</html>

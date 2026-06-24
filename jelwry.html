@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Royal Jewelry Experience</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+<style>
+body{
+  background:black;
+  overflow-x:hidden;
+}
+
+/* reveal */
+.reveal{
+  opacity:0;
+  transform:translateY(60px);
+  transition:1s;
+}
+.reveal.active{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* hover */
+.card:hover{
+  transform:scale(1.05);
+  transition:0.4s;
+  box-shadow:0 0 40px #d4af37;
+}
+</style>
+
+</head>
+
+<body class="text-white">
+
+<!-- 🔥 HERO -->
+<section class="min-h-screen flex flex-col justify-center items-center text-center relative px-4">
+
+<div class="absolute inset-0 bg-[url('/photo/back.png')] bg-cover bg-center opacity-30"></div>
+
+<h1 class="text-4xl md:text-6xl lg:text-8xl font-black text-[#d4af37] z-10 reveal">
+ROYAL COLLECTION
+</h1>
+
+<p class="mt-4 md:mt-6 text-sm md:text-lg text-gray-300 z-10 reveal">
+Luxury inspired by Ancient Egypt
+</p>
+
+</section>
+
+
+<!-- 👑 FEATURED -->
+<section class="min-h-screen flex items-center justify-center text-center px-4">
+
+<div class="reveal w-full max-w-xl">
+
+<h2 class="text-2xl md:text-4xl lg:text-5xl text-[#d4af37]">Featured Piece</h2>
+
+<img title="1" src="/photo/nwcklace.png"
+class="w-full max-w-xs md:max-w-md mx-auto mt-6 md:mt-10 rounded-xl card">
+
+<button onclick="openViewer('necklace')" 
+class="mt-6 px-6 md:px-8 py-2 md:py-3 border border-yellow-600 hover:bg-yellow-600 text-sm md:text-base">
+Explore 3D
+</button>
+
+</div>
+
+</section>
+
+
+<!-- 💎 CATEGORIES -->
+<section class="px-4 md:px-10 lg:px-16 py-12">
+
+<h2 class="text-2xl md:text-3xl lg:text-4xl text-center text-[#d4af37] mb-10 md:mb-16 reveal">
+Categories
+</h2>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-10">
+
+<div class="card reveal text-center">
+<img title="2" src="/photo/clothes.png" class="rounded-xl w-full object-cover aspect-square">
+<p class="mt-4">Necklaces</p>
+</div>
+
+<div class="card reveal text-center">
+<img title="3" src="/photo/ring.jpg" class="rounded-xl w-full object-cover aspect-square">
+<p class="mt-4">Rings</p>
+</div>
+
+<div class="card reveal text-center">
+<img title="4" src="/photo/اسواره.jpg" class="rounded-xl w-full object-cover aspect-square">
+<p class="mt-4">Bracelets</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 💎 PRODUCTS -->
+<section class="px-4 md:px-10 py-10 space-y-16 md:space-y-32">
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 items-center reveal">
+
+<img title="5" src="/photo/download (1).jpg" class="rounded-xl card w-full object-cover">
+
+<div>
+<h2 class="text-2xl md:text-3xl lg:text-4xl text-[#d4af37]">Golden Necklace</h2>
+
+<p class="mt-4 text-gray-400 text-sm md:text-base">
+Inspired by ancient Egyptian queens.
+A symbol of power and eternity.
+</p>
+
+<button onclick="openViewer('necklace')" 
+class="mt-6 px-4 md:px-6 py-2 border border-yellow-600 hover:bg-yellow-600 text-sm md:text-base">
+View in 3D
+</button>
+</div>
+
+</div>
+
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 items-center reveal">
+
+<div>
+<h2 class="text-2xl md:text-3xl lg:text-4xl text-[#d4af37]">Royal Ring</h2>
+
+<p class="mt-4 text-gray-400 text-sm md:text-base">
+A masterpiece inspired by pyramids.
+Luxury carved in gold.
+</p>
+
+<button onclick="openViewer('ring')" 
+class="mt-6 px-4 md:px-6 py-2 border border-yellow-600 hover:bg-yellow-600 text-sm md:text-base">
+View in 3D
+</button>
+</div>
+
+<img title="6" src="/photo/download (2).jpg" class="rounded-xl card w-full object-cover">
+
+</div>
+
+</section>
+
+
+<!-- 🖼️ GALLERY (تم تحسينه 💪) -->
+<section class="px-4 md:px-10 lg:px-16 py-12">
+
+<h2 class="text-2xl md:text-3xl lg:text-4xl text-center text-[#d4af37] mb-10 md:mb-16 reveal">
+Luxury Gallery
+</h2>
+
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-6">
+
+<div class="overflow-hidden rounded-xl">
+<img title="1" src="/photo/jelwrey1.png" class="w-full h-full object-cover aspect-square card reveal">
+</div>
+
+<div class="overflow-hidden rounded-xl">
+<img title="7" src="/photo/download (1).jpg" class="w-full h-full object-cover aspect-square card reveal">
+</div>
+
+<div class="overflow-hidden rounded-xl">
+<img title="8" src="/photo/اسواره.jpg" class="w-full h-full object-cover aspect-square card reveal">
+</div>
+
+<div class="overflow-hidden rounded-xl">
+<img title="9" src="/photo/jelwrey.png" class="w-full h-full object-cover aspect-square card reveal">
+</div>
+
+<div class="overflow-hidden rounded-xl">
+<img title="11" src="/photo/خاتم النورس.jpeg" class="w-full h-full object-cover aspect-square card reveal">
+</div>
+
+<div class="overflow-hidden rounded-xl">
+<img title="12" src="/photo/قلاده.avif" class="w-full h-full object-cover aspect-square card reveal">
+</div>
+
+<div class="overflow-hidden rounded-xl">
+<img title="13" src="/photo/ring.jpg" class="w-full h-full object-cover aspect-square card reveal">
+</div>
+
+<div class="overflow-hidden rounded-xl">
+<img title="14" src="/photo/nwcklace.png" class="w-full h-full object-cover aspect-square card reveal">
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 🧿 3D VIEWER -->
+<div id="viewerModal" class="hidden fixed inset-0 bg-black/95 flex items-center justify-center z-50 p-4">
+
+<model-viewer id="viewer"
+auto-rotate camera-controls
+class="w-full max-w-md h-[300px] md:h-[500px]">
+</model-viewer>
+
+<button onclick="closeViewer()" class="absolute top-5 right-5 text-white text-2xl md:text-3xl">
+✖
+</button>
+
+</div>
+
+
+<!-- 👇 FOOTER -->
+<footer class="text-center p-6 md:p-10 border-t border-gray-800">
+
+<h3 class="text-[#d4af37] text-lg md:text-xl">Royal Jewelry</h3>
+<p class="text-gray-500 mt-2 text-sm md:text-base">© 2026 All Rights Reserved</p>
+
+</footer>
+
+
+<script>
+
+/* reveal */
+let elements = document.querySelectorAll(".reveal");
+
+window.addEventListener("scroll", ()=>{
+  elements.forEach(el=>{
+    let pos = el.getBoundingClientRect().top;
+    let screen = window.innerHeight;
+
+    if(pos < screen - 100){
+      el.classList.add("active");
+    }
+  });
+});
+
+/* 3D */
+function openViewer(type){
+  let viewer = document.getElementById("viewer");
+  let modal = document.getElementById("viewerModal");
+
+  modal.classList.remove("hidden");
+
+  if(type==="necklace"){
+    viewer.src = "/egyptian_necklace (1)/scene.gltf";
+  }
+
+  if(type==="ring"){
+    viewer.src = "/3D 2/pyramid_of_menkaure_giza_pyramid_complex_egypt.glb";
+  }
+}
+
+function closeViewer(){
+  document.getElementById("viewerModal").classList.add("hidden");
+}
+const toggleBtn = document.getElementById("themeToggle");
+const icon = document.getElementById("themeIcon");
+
+// تحميل الثيم المحفوظ
+if (
+  localStorage.getItem("theme") === "dark" ||
+  (!localStorage.getItem("theme") &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches)
+) {
+  document.documentElement.classList.add("dark");
+
+  if (icon) {
+    icon.textContent = "light_mode";
+  }
+} else {
+  document.documentElement.classList.remove("dark");
+
+  if (icon) {
+    icon.textContent = "dark_mode";
+  }
+}
+
+// تغيير الوضع
+if (toggleBtn) {
+  toggleBtn.addEventListener("click", () => {
+    document.documentElement.classList.toggle("dark");
+
+    if (document.documentElement.classList.contains("dark")) {
+      localStorage.setItem("theme", "dark");
+
+      if (icon) {
+        icon.textContent = "light_mode";
+      }
+    } else {
+      localStorage.setItem("theme", "light");
+
+      if (icon) {
+        icon.textContent = "dark_mode";
+      }
+    }
+  });
+}
+/////ت
+setInterval(() => {
+  const before = new Date().getTime();
+  debugger;
+  const after = new Date().getTime();
+
+  if (after - before > 100) {
+    document.body.innerHTML = "";
+    window.location.href = "about:blank";
+  }
+}, 1000);
+
+document.addEventListener('contextmenu', e => e.preventDefault());
+
+document.onkeydown = function(e) {
+  if (
+    e.keyCode === 123 ||
+    (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key)) ||
+    (e.ctrlKey && e.key === 'U')
+  ) {
+    return false;
+  }
+};
+
+</script>
+
+</body>
+</html>

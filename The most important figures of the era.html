@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="ar" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>أهم شخصيات الدولة الوسطى | Egypt Discover</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:"Cairo",sans-serif;
+background:
+radial-gradient(circle at top,#1f1408,#050505);
+color:white;
+overflow-x:hidden;
+}
+
+.pattern{
+position:fixed;
+inset:0;
+background-image:
+radial-gradient(rgba(236,182,19,.05) 1px, transparent 1px);
+background-size:40px 40px;
+pointer-events:none;
+z-index:-1;
+}
+
+/* NAVBAR */
+
+header{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+z-index:999;
+background:rgba(0,0,0,.75);
+backdrop-filter:blur(15px);
+border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.navbar{
+max-width:1400px;
+margin:auto;
+padding:20px 30px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.logo h2{
+font-size:28px;
+font-weight:900;
+}
+
+.logo span{
+color:#ecb613;
+}
+
+.nav-links{
+display:flex;
+gap:30px;
+}
+
+.nav-links a{
+text-decoration:none;
+color:white;
+font-weight:700;
+transition:.3s;
+}
+
+.nav-links a:hover{
+color:#ecb613;
+}
+
+/* HERO */
+
+.hero{
+height:100vh;
+position:relative;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+overflow:hidden;
+}
+
+.hero-bg{
+position:absolute;
+inset:0;
+background:
+url('/photo/middle-kingdom-banner.jpg')
+center center/cover no-repeat;
+filter:brightness(.25);
+}
+
+.hero::after{
+content:"";
+position:absolute;
+inset:0;
+background:
+linear-gradient(
+to bottom,
+rgba(0,0,0,.35),
+rgba(0,0,0,.85)
+);
+}
+
+.hero-content{
+position:relative;
+z-index:5;
+max-width:1000px;
+}
+
+.hero-badge{
+display:inline-flex;
+align-items:center;
+gap:10px;
+
+padding:12px 24px;
+
+border:1px solid rgba(236,182,19,.3);
+
+border-radius:999px;
+
+background:rgba(236,182,19,.08);
+
+color:#ecb613;
+
+font-weight:700;
+
+margin-bottom:30px;
+}
+
+.hero h1{
+font-size:95px;
+font-family:"Amiri",serif;
+color:#ecb613;
+margin-bottom:20px;
+line-height:1.2;
+}
+
+.hero h2{
+font-size:38px;
+margin-bottom:30px;
+font-weight:700;
+}
+
+.hero p{
+font-size:22px;
+line-height:2;
+color:#ddd;
+max-width:850px;
+margin:auto;
+}
+
+.hero-btn{
+margin-top:40px;
+
+display:inline-flex;
+align-items:center;
+gap:10px;
+
+padding:18px 35px;
+
+border-radius:999px;
+
+background:#ecb613;
+color:black;
+
+font-weight:900;
+text-decoration:none;
+
+transition:.4s;
+}
+
+.hero-btn:hover{
+transform:translateY(-5px);
+box-shadow:0 15px 40px rgba(236,182,19,.35);
+}
+
+.scroll-indicator{
+position:absolute;
+bottom:40px;
+left:50%;
+transform:translateX(-50%);
+z-index:5;
+animation:float 2s infinite;
+}
+
+@keyframes float{
+50%{
+transform:translateX(-50%) translateY(-10px);
+}
+}
+
+@media(max-width:992px){
+
+.hero h1{
+font-size:55px;
+}
+
+.hero h2{
+font-size:26px;
+}
+
+.hero p{
+font-size:18px;
+}
+
+.nav-links{
+display:none;
+}
+
+}
+/* ===============================
+   MIDDLE KINGDOM FIGURES STYLES
+================================ */
+
+.card{
+position:relative;
+overflow:hidden;
+}
+
+.card::before{
+content:"";
+position:absolute;
+top:0;
+left:-100%;
+width:100%;
+height:100%;
+
+background:linear-gradient(
+90deg,
+transparent,
+rgba(236,182,19,.08),
+transparent
+);
+
+transition:1s;
+}
+
+.card:hover::before{
+left:100%;
+}
+
+.card h3{
+transition:.4s;
+}
+
+.card:hover h3{
+transform:translateY(-5px);
+color:#ffd95e;
+}
+
+.image-box{
+position:relative;
+}
+
+.image-box::after{
+content:"";
+position:absolute;
+inset:0;
+
+background:
+linear-gradient(
+to top,
+rgba(0,0,0,.5),
+transparent
+);
+
+opacity:0;
+transition:.5s;
+}
+
+.image-box:hover::after{
+opacity:1;
+}
+
+.gallery img{
+cursor:pointer;
+}
+
+.gallery img:hover{
+transform:scale(1.08);
+box-shadow:
+0 20px 40px rgba(236,182,19,.25);
+}
+
+/* STATISTICS */
+
+.stats-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+margin-top:40px;
+}
+
+.stat-card{
+padding:40px;
+text-align:center;
+
+border-radius:25px;
+
+background:rgba(255,255,255,.03);
+
+border:1px solid rgba(236,182,19,.15);
+
+transition:.4s;
+}
+
+.stat-card:hover{
+transform:translateY(-10px);
+border-color:#ecb613;
+
+box-shadow:
+0 20px 40px rgba(236,182,19,.12);
+}
+
+.stat-number{
+font-size:55px;
+font-weight:900;
+color:#ecb613;
+margin-bottom:15px;
+}
+
+.stat-title{
+font-size:18px;
+color:#ddd;
+}
+
+/* TIMELINE */
+
+.timeline{
+position:relative;
+max-width:1000px;
+margin:auto;
+padding:50px 0;
+}
+
+.timeline::before{
+content:"";
+position:absolute;
+left:50%;
+top:0;
+transform:translateX(-50%);
+
+width:4px;
+height:100%;
+
+background:#ecb613;
+}
+
+.timeline-item{
+position:relative;
+width:50%;
+padding:30px 40px;
+}
+
+.timeline-item:nth-child(odd){
+left:0;
+text-align:right;
+}
+
+.timeline-item:nth-child(even){
+left:50%;
+}
+
+.timeline-content{
+background:rgba(255,255,255,.03);
+
+padding:25px;
+
+border-radius:20px;
+
+border:1px solid rgba(236,182,19,.15);
+
+backdrop-filter:blur(10px);
+
+transition:.4s;
+}
+
+.timeline-content:hover{
+transform:translateY(-8px);
+
+border-color:#ecb613;
+}
+
+.timeline-dot{
+position:absolute;
+
+top:45px;
+
+width:18px;
+height:18px;
+
+border-radius:50%;
+
+background:#ecb613;
+
+box-shadow:
+0 0 20px rgba(236,182,19,.7);
+}
+
+.timeline-item:nth-child(odd) .timeline-dot{
+right:-9px;
+}
+
+.timeline-item:nth-child(even) .timeline-dot{
+left:-9px;
+}
+
+/* HERO IMPROVEMENTS */
+
+.hero-content{
+animation:heroFade 1.5s ease;
+}
+
+@keyframes heroFade{
+
+from{
+opacity:0;
+transform:translateY(40px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+/* GOLDEN TITLE EFFECT */
+
+.section-title{
+position:relative;
+display:inline-block;
+left:50%;
+transform:translateX(-50%);
+}
+
+.section-title::after{
+content:"";
+display:block;
+
+width:120px;
+height:3px;
+
+background:#ecb613;
+
+margin:15px auto 0;
+}
+
+/* MOBILE */
+
+@media(max-width:992px){
+
+.timeline::before{
+left:20px;
+}
+
+.timeline-item{
+width:100%;
+left:0 !important;
+padding-left:60px;
+padding-right:20px;
+text-align:left !important;
+}
+
+.timeline-dot{
+left:11px !important;
+}
+
+.stat-number{
+font-size:40px;
+}
+
+}
+/* SECTIONS */
+
+.section{
+width:92%;
+max-width:1400px;
+margin:80px auto;
+padding:80px;
+border-radius:35px;
+
+background:
+linear-gradient(
+135deg,
+rgba(18,18,18,.95),
+rgba(35,22,8,.93)
+);
+
+border:1px solid rgba(236,182,19,.18);
+
+box-shadow:0 25px 60px rgba(0,0,0,.45);
+
+overflow:hidden;
+}
+
+.two-column{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:60px;
+align-items:center;
+}
+
+.content p{
+font-size:22px;
+line-height:2;
+color:#ddd;
+margin-bottom:20px;
+}
+
+.image-box{
+overflow:hidden;
+border-radius:25px;
+border:2px solid rgba(236,182,19,.15);
+}
+
+.image-box img{
+width:100%;
+height:100%;
+display:block;
+object-fit:cover;
+transition:.8s;
+}
+
+.image-box:hover img{
+transform:scale(1.08);
+}
+
+/* CARDS */
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+}
+
+.card{
+padding:30px;
+border-radius:25px;
+
+background:rgba(255,255,255,.03);
+
+border:1px solid rgba(236,182,19,.15);
+
+backdrop-filter:blur(10px);
+}
+
+.card h3{
+font-size:30px;
+font-family:"Amiri",serif;
+margin-bottom:15px;
+color:#ecb613;
+}
+
+.card p{
+font-size:18px;
+line-height:1.8;
+color:#ddd;
+}
+
+/* GALLERY */
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+}
+
+.gallery img{
+width:100%;
+height:320px;
+object-fit:cover;
+
+border-radius:20px;
+
+border:2px solid rgba(236,182,19,.15);
+
+transition:.5s;
+}
+
+/* FOOTER */
+
+footer{
+padding:60px 20px;
+text-align:center;
+color:#aaa;
+}
+
+/* MOBILE */
+
+@media(max-width:992px){
+
+.section{
+padding:40px 25px;
+}
+
+.two-column{
+grid-template-columns:1fr;
+}
+
+.section-title{
+font-size:38px;
+}
+
+.content p{
+font-size:18px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="pattern"></div>
+
+<header>
+
+<div class="navbar">
+
+<div class="logo">
+
+<span class="material-symbols-outlined text-[40px] text-[#ecb613]">
+military_tech
+</span>
+
+<h2>
+Egypt <span>Discover</span>
+</h2>
+
+</div>
+
+<nav class="nav-links">
+
+<a href="/home.html">Home</a>
+<a href="/history.html">History</a>
+<a href="/shopping.html">Shopping</a>
+<a href="/Booking.html">Booking</a>
+<a href="/EXPLOR.HTML">Visit</a>
+
+</nav>
+
+</div>
+
+</header>
+
+<section class="hero">
+
+<div class="hero-bg"></div>
+
+<div class="hero-content">
+
+<div class="hero-badge">
+<span class="material-symbols-outlined">
+account_balance
+</span>
+Middle Kingdom
+</div>
+
+<h1>
+أهم شخصيات الدولة الوسطى
+</h1>
+
+<h2>
+القادة الذين أعادوا لمصر قوتها ووحدتها
+</h2>
+
+<p>
+تعرف على أعظم حكام الدولة الوسطى الذين قادوا مصر نحو عصر من الاستقرار والازدهار، وأسهموا في بناء واحدة من أزهى فترات الحضارة المصرية القديمة.
+</p>
+
+<a href="#leaders" class="hero-btn">
+
+استكشف الشخصيات
+
+<span class="material-symbols-outlined">
+arrow_downward
+</span>
+
+</a>
+
+</div>
+
+<div class="scroll-indicator">
+
+<span class="material-symbols-outlined text-[#ecb613] text-5xl">
+expand_more
+</span>
+
+</div>
+
+</section>
+
+<!-- هنا يبدأ أول قسم للشخصيات -->
+<!-- MENTUHOTEP II -->
+
+<section class="section">
+
+<h2 class="section-title">
+الملك منتوحتب الثاني
+</h2>
+
+<div class="two-column">
+
+<div class="image-box">
+<img src="/photo/mentuhotep.jpg" alt="Mentuhotep II">
+</div>
+
+<div class="content">
+
+<p>
+يُعد منتوحتب الثاني المؤسس الحقيقي للدولة الوسطى وأحد أعظم ملوك مصر القديمة.
+</p>
+
+<p>
+نجح في إنهاء فترة الانقسام السياسي وإعادة توحيد مصر العليا والسفلى تحت حكم مركزي قوي.
+</p>
+
+<p>
+بفضل قيادته بدأت مصر مرحلة جديدة من الاستقرار والازدهار استمرت لقرون طويلة.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- KINGS -->
+
+<section class="section">
+
+<h2 class="section-title">
+أبرز حكام الدولة الوسطى
+</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>منتوحتب الثاني</h3>
+<p>
+موحد مصر ومؤسس عصر الدولة الوسطى.
+</p>
+</div>
+
+<div class="card">
+<h3>أمنمحات الأول</h3>
+<p>
+مؤسس الأسرة الثانية عشرة وصاحب الإصلاحات الإدارية الكبرى.
+</p>
+</div>
+
+<div class="card">
+<h3>سنوسرت الأول</h3>
+<p>
+داعم العمارة والمعابد وأحد أشهر ملوك الدولة الوسطى.
+</p>
+</div>
+
+<div class="card">
+<h3>سنوسرت الثالث</h3>
+<p>
+القائد العسكري الأشهر الذي عزز نفوذ مصر جنوباً.
+</p>
+</div>
+
+<div class="card">
+<h3>أمنمحات الثالث</h3>
+<p>
+شهدت مصر في عهده ازدهاراً اقتصادياً وزراعياً كبيراً.
+</p>
+</div>
+
+<div class="card">
+<h3>سوبك نفرو</h3>
+<p>
+أول امرأة تتولى حكم مصر بشكل رسمي في نهاية الدولة الوسطى.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- SENUSRET III -->
+
+<section class="section">
+
+<h2 class="section-title">
+سنوسرت الثالث
+</h2>
+
+<div class="two-column">
+
+<div class="content">
+
+<p>
+يُعتبر سنوسرت الثالث من أعظم الملوك المحاربين في تاريخ مصر القديمة.
+</p>
+
+<p>
+قاد حملات ناجحة في النوبة وعمل على تأمين الحدود الجنوبية للدولة.
+</p>
+
+<p>
+ساهمت إصلاحاته الإدارية في تعزيز قوة الحكومة المركزية وزيادة هيبة الدولة.
+</p>
+
+</div>
+
+<div class="image-box">
+<img src="/photo/senusret3.jpg" alt="Senusret III">
+</div>
+
+</div>
+
+</section>
+
+<!-- AMENEMHAT III -->
+
+<section class="section">
+
+<h2 class="section-title">
+أمنمحات الثالث
+</h2>
+
+<div class="two-column">
+
+<div class="image-box">
+<img src="/photo/amenemhat3.jpg" alt="Amenemhat III">
+</div>
+
+<div class="content">
+
+<p>
+شهدت مصر خلال عهده واحداً من أعظم فترات الازدهار الاقتصادي في الدولة الوسطى.
+</p>
+
+<p>
+اهتم بتطوير منطقة الفيوم وإنشاء مشروعات ضخمة للري والزراعة.
+</p>
+
+<p>
+ساهمت إنجازاته في زيادة الإنتاج الزراعي وتحسين مستوى المعيشة في أنحاء البلاد.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- SOBEKNEFERU -->
+
+<section class="section">
+
+<h2 class="section-title">
+الملكة سوبك نفرو
+</h2>
+
+<div class="two-column">
+
+<div class="content">
+
+<p>
+تُعد سوبك نفرو أول امرأة تتولى عرش مصر بشكل رسمي في التاريخ المصري القديم.
+</p>
+
+<p>
+جاء حكمها في نهاية الأسرة الثانية عشرة واستطاعت إدارة شؤون الدولة بكفاءة.
+</p>
+
+<p>
+أصبحت رمزاً للقوة والقيادة النسائية في الحضارة المصرية القديمة.
+</p>
+
+</div>
+
+<div class="image-box">
+<img src="/photo/sobekneferu.jpg" alt="Sobekneferu">
+</div>
+
+</div>
+
+</section>
+
+<!-- STATS -->
+
+<section class="section">
+
+<h2 class="section-title">
+حقائق سريعة
+</h2>
+
+<div class="cards">
+
+<div class="card text-center">
+<h3>400+</h3>
+<p>عام من الاستقرار والازدهار</p>
+</div>
+
+<div class="card text-center">
+<h3>6</h3>
+<p>شخصيات بارزة في الدولة الوسطى</p>
+</div>
+
+<div class="card text-center">
+<h3>XI-XIII</h3>
+<p>الأسر الحاكمة الرئيسية</p>
+</div>
+
+<div class="card text-center">
+<h3>الفيوم</h3>
+<p>أشهر مشروع تنموي وزراعي</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- GALLERY -->
+
+<section class="section">
+
+<h2 class="section-title">
+معرض حكام الدولة الوسطى
+</h2>
+
+<div class="gallery">
+
+<img src="/photo/mentuhotep.jpg">
+<img src="/photo/amenemhat1.jpg">
+<img src="/photo/senusret1.jpg">
+<img src="/photo/senusret3.jpg">
+<img src="/photo/amenemhat3.jpg">
+<img src="/photo/sobekneferu.jpg">
+
+</div>
+
+</section>
+
+<!-- LEGACY -->
+
+<section class="section">
+
+<h2 class="section-title">
+إرث قادة الدولة الوسطى
+</h2>
+
+<div class="content text-center">
+
+<p>
+ساهم حكام الدولة الوسطى في إعادة بناء قوة مصر بعد سنوات من الانقسام والاضطرابات.
+</p>
+
+<p>
+تركوا إنجازات سياسية وعسكرية واقتصادية جعلت عصرهم من أكثر عصور الحضارة المصرية ازدهاراً.
+</p>
+
+<p>
+ولا تزال آثارهم وتماثيلهم شاهدة على عظمة هذه الفترة التاريخية حتى اليوم.
+</p>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>
+© 2026 Egypt Discover — Great Figures of the Middle Kingdom
+</p>
+
+</footer>
+<script>
+   /////ت
+
+setInterval(() => {
+  const before = new Date().getTime();
+  debugger;
+  const after = new Date().getTime();
+
+  if (after - before > 100) {
+    document.body.innerHTML = "";
+    window.location.href = "about:blank";
+  }
+}, 1000);
+
+document.addEventListener('contextmenu', e => e.preventDefault());
+
+document.onkeydown = function(e) {
+  if (
+    e.keyCode === 123 ||
+    (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key)) ||
+    (e.ctrlKey && e.key === 'U')
+  ) {
+    return false;
+  }
+};
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Egypt Discover</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;family=Noto+Sans+Arabic:wght@100..900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style-home.css">
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-dim": "#131313",
+                    "secondary-container": "#00cdd0",
+                    "on-secondary-container": "#005253",
+                    "secondary-fixed": "#5af8fb",
+                    "surface": "#131313",
+                    "on-error": "#690005",
+                    "outline": "#9b8f79",
+                    "surface-bright": "#3a3939",
+                    "surface-variant": "#353534",
+                    "primary": "#ffd471",
+                    "on-surface-variant": "#d3c5ac",
+                    "background": "#131313",
+                    "on-primary-fixed-variant": "#5a4300",
+                    "on-primary-fixed": "#251a00",
+                    "inverse-surface": "#e5e2e1",
+                    "error-container": "#93000a",
+                    "tertiary-container": "#c4bdab",
+                    "on-surface": "#e5e2e1",
+                    "surface-container-highest": "#353534",
+                    "on-secondary": "#003738",
+                    "primary-fixed": "#ffdf99",
+                    "surface-container-lowest": "#0e0e0e",
+                    "surface-container": "#201f1f",
+                    "primary-fixed-dim": "#f6bf20",
+                    "error": "#ffb4ab",
+                    "on-secondary-fixed-variant": "#004f51",
+                    "tertiary-fixed": "#eae2cf",
+                    "on-primary": "#3f2e00",
+                    "primary-container": "#ecb613",
+                    "surface-tint": "#f6bf20",
+                    "on-tertiary-container": "#514c3e",
+                    "inverse-on-surface": "#313030",
+                    "secondary-fixed-dim": "#2ddbde",
+                    "secondary": "#46eaed",
+                    "surface-container-high": "#2a2a2a",
+                    "on-tertiary-fixed": "#1f1b10",
+                    "on-primary-container": "#614900",
+                    "on-secondary-fixed": "#002020",
+                    "outline-variant": "#4f4633",
+                    "on-background": "#e5e2e1",
+                    "on-error-container": "#ffdad6",
+                    "inverse-primary": "#775a00",
+                    "on-tertiary-fixed-variant": "#4b4739",
+                    "tertiary-fixed-dim": "#cdc6b4",
+                    "surface-container-low": "#1c1b1b",
+                    "tertiary": "#e1d9c6",
+                    "on-tertiary": "#343023"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit": "8px",
+                    "margin-desktop": "64px",
+                    "container-max-width": "1280px",
+                    "gutter": "24px",
+                    "margin-mobile": "20px"
+            },
+            "fontFamily": {
+                    "headline-md": ["EB Garamond"],
+                    "headline-xl": ["EB Garamond"],
+                    "label-md": ["Hanken Grotesk"],
+                    "headline-lg": ["EB Garamond"],
+                    "body-md": ["Hanken Grotesk"],
+                    "label-sm": ["Hanken Grotesk"],
+                    "headline-lg-mobile": ["EB Garamond"],
+                    "body-lg": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                    "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0A0A0A;
+            color: #e5e2e1;
+            overflow-x: hidden;
+            font-family: 'Hanken Grotesk', sans-serif;
+        }
+
+        .glass-card {
+            background: rgba(18, 18, 18, 0.7);
+            backdrop-filter: blur(24px);
+            border: 1px solid #393528;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .glass-card:hover {
+            border-color: #ffd471;
+            box-shadow: 0 0 15px rgba(236, 182, 19, 0.1);
+        }
+
+        .active-step {
+            border-color: #ffd471;
+            box-shadow: 0 0 20px rgba(236, 182, 19, 0.15);
+        }
+
+        .step-transition {
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+
+        .hieroglyph-bg {
+            mask-image: linear-gradient(to bottom, transparent, black, transparent);
+            opacity: 0.05;
+            pointer-events: none;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #393528;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ffd471;
+        }
+
+        .primary-glow {
+            box-shadow: 0 0 15px rgba(236, 182, 19, 0.2);
+        }
+
+        .wizard-container {
+            min-height: 600px;
+        }
+
+        @keyframes pulse-gold {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; transform: scale(1.05); }
+        }
+
+        .animate-gold-pulse {
+            animation: pulse-gold 3s infinite ease-in-out;
+        }
+    </style>
+</head>
+    <body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white min-h-screen relative">
+
+      <!-- Subtle Background Pattern -->
+<div class="fixed inset-0 egyptian-pattern pointer-events-none"></div>
+<div class="relative flex flex-col min-h-screen w-full">
+
+<!-- Top Navigation Bar -->
+
+<header id="navbar" class="relative sticky top-0 z-50 w-full border-b border-solid border-slate-200 dark:border-[#393528] bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md px-6 lg:px-20 py-3">
+<div class="max-w-[1440px] mx-auto flex items-center justify-between gap-4">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3">
+<div  class="text-primary">
+<span class="material-symbols-outlined text-3xl" translate="no">star_rate</span>
+</div>
+<h2 id="logo" class="text-xl font-extrabold leading-tight tracking-[-0.015em]">
+Egypt 
+<span class="text-primary">Discover</span>
+</h2>
+</div>
+<nav id="navLinks" class="hidden lg:flex items-center gap-8">
+
+<a class="hover:text-primary text-sm font-semibold" href="/home.html">Home</a>
+<a class="hover:text-primary text-sm font-semibold" href="/history.html">History</a>
+<a class="hover:text-primary text-sm font-semibold" href="/shopping.html">Shopping</a>
+<a class="hover:text-primary text-sm font-semibold" href="/Booking.html">Booking</a>
+<a class="hover:text-primary text-sm font-semibold" href="/EXPLOR.HTML">Visit</a>
+<a id="dashboardLink"
+   class="hidden hover:text-primary text-sm font-semibold"
+   href="/dashboard.html">
+   Dashboard
+</a>
+
+</nav>
+</div>
+<div class="flex flex-1 justify-end gap-4 items-center">
+<label class="flex flex-col w-full max-w-64">
+<div class="flex w-full items-stretch rounded-lg h-10 bg-slate-100 dark:bg-[#27241c] border border-slate-200 dark:border-[#393528]">
+<div class="text-slate-400 flex items-center justify-center pl-4">
+   
+<span id="search-box" class="material-symbols-outlined text-[20px]" translate="no">search</span>
+
+</div>
+<input class="w-full bg-transparent border-none focus:ring-0 text-sm px-3 placeholder:text-slate-500" placeholder="Search " value="">
+</div>
+</label>
+<div class="flex items-center gap-3">
+
+  <!-- زرار الترجمة -->
+  <button id="translateBtn"
+    class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-[#27241c] hover:bg-primary/20 transition-all text-primary border border-slate-200 dark:border-[#393528]">
+    
+    <span class="material-symbols-outlined text-[20px]" translate="no">translate</span>
+  
+  </button>
+  <button id="themeToggle"
+  class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-[#27241c] hover:bg-primary/20 transition-all text-primary border border-slate-200 dark:border-[#393528]">
+  
+  <span id="themeIcon" class="material-symbols-outlined text-[20px]" translate="no">
+    dark_mode
+  </span>
+
+</button>
+
+  <!-- صورة البروفايل -->
+  <div id="profileContainer" class="hidden relative">
+
+  <button id="profileBtn"
+          class="flex items-center gap-1">
+
+    <img src="/photo/admin.png" title="profile"
+         class="h-10 w-10 rounded-full border-2 border-primary object-cover">
+
+    <span class="material-symbols-outlined" translate="no">
+      keyboard_arrow_down
+    </span>
+
+  </button>
+
+ <div id="profileMenu"
+     class="hidden absolute right-0 top-12 min-w-[220px] z-[9999]
+       border border-slate-200 dark:border-[#393528]
+                   bg-white dark:bg-[#121212]
+
+              rounded-xl shadow-xl overflow-hidden">
+
+    <a href="/profile.html" class="block px-4 py-3 hover:bg-slate-100 dark:hover:bg-[#27241c]">
+      My Profile
+    </a>
+
+   <a href="/my-orders.html"
+   class="relative block px-4 py-3 hover:bg-slate-100 dark:hover:bg-[#27241c]">
+
+  My Orders
+
+  <span id="ordersCount"
+        class="absolute right-3 top-3
+               bg-red-500 text-white
+               text-xs px-2 py-0.5
+               rounded-full hidden">
+    0
+  </span>
+
+</a>
+
+    <a href="/my-plan.html" class="block px-4 py-3 hover:bg-slate-100 dark:hover:bg-[#27241c]">
+      My Plan
+    </a>
+    <a href="/my-achievements.html" class="block px-4 py-3 hover:bg-slate-100 dark:hover:bg-[#27241c]">
+      My Achievements
+    </a>
+
+    <button id="logoutMenuBtn"
+            class="w-full text-left px-4 py-3 text-red-500 hover:bg-slate-100 dark:hover:bg-[#27241c]">
+      Logout
+    </button>
+
+  </div>
+
+</div>
+
+<div id="authButtons" class="flex items-center gap-3">
+
+  <a id="registerBtn"
+    class="hover:text-primary text-sm font-semibold"
+    href="/register.html">
+    Sign Up
+  </a>
+
+  <a id="loginBtn"
+    class="hover:text-primary text-sm font-semibold"
+    href="/login.html">
+    Login
+  </a>
+
+  <button id="logoutBtn"
+    class="hidden hover:text-red-500 text-sm font-semibold">
+    Logout
+  </button>
+
+</div>
+</div>
+
+</div>
+<button id="menuBtn" class="lg:hidden flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-[#27241c] border border-slate-200 dark:border-[#393528]">
+<span class="material-symbols-outlined" translate="no">menu</span>
+</button>
+</div>
+<div id="languageMenuNav"
+     class="hidden absolute top-16 right-6 z-50 w-44 bg-black/80 text-white rounded-lg p-2 space-y-1">
+     
+<button onclick="changeLanguage('ar')" class="block w-full text-left px-3 py-2 hover:bg-primary/30 rounded">العربية</button>
+
+<button onclick="changeLanguage('en')" class="block w-full text-left px-3 py-2 hover:bg-primary/30 rounded">English</button>
+
+<button onclick="changeLanguage('fr')" class="block w-full text-left px-3 py-2 hover:bg-primary/30 rounded">Français</button>
+
+<button onclick="changeLanguage('de')" class="block w-full text-left px-3 py-2 hover:bg-primary/30 rounded">Deutsch</button>
+
+<button onclick="changeLanguage('es')" class="block w-full text-left px-3 py-2 hover:bg-primary/30 rounded">Español</button>
+
+</div>
+
+
+</header>
+<div id="mobileMenu" class="hidden lg:hidden flex flex-col bg-background-light dark:bg-background-dark border-b border-slate-200 dark:border-[#393528] px-6 py-4 gap-4">
+<a class="hover:text-primary text-sm font-semibold" href="/home.html">Home</a>
+<a class="hover:text-primary text-sm font-semibold" href="/history.html">History</a>
+<a class="hover:text-primary text-sm font-semibold" href="/shopping.html">Shopping</a>
+<a class="hover:text-primary text-sm font-semibold" href="/Booking.html">Booking</a>
+<a class="hover:text-primary text-sm font-semibold" href="/EXPLOR.HTML">Visit</a>
+
+</div>
+<div class="ticker-wrapper">
+
+  <!-- الشريط الأول المتحرك -->
+<div class="currency-bar">
+
+  <div class="live-badge">
+    🟢 LIVE RATES
+  </div>
+
+  <div class="ticker-track">
+
+    <span><img src="https://flagcdn.com/24x18/us.png" alt=""> USD <b>53.20</b> <small>▲0.15%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/eu.png" alt=""> EUR <b>54.10</b> <small>▲0.08%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/gb.png" alt=""> GBP <b>63.40</b> <small>▲0.11%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/sa.png" alt=""> SAR <b>13.30</b> <small>▲0.03%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/ae.png" alt=""> AED <b>13.65</b> <small>▲0.05%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/kw.png" alt=""> KWD <b>173.40</b> <small>▲0.21%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/qa.png" alt=""> QAR <b>13.70</b> <small>▼0.02%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/bh.png" alt=""> BHD <b>141.20</b> <small>▲0.07%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/br.png" alt=""> BRL <b>9.55</b> <small>▲0.12%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/mx.png" alt=""> MXN <b>2.85</b> <small>▲0.07%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/ar.png" alt=""> ARS <b>0.05</b> <small>▼0.03%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/pl.png" alt=""> PLN <b>14.20</b> <small>▲0.09%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/cz.png" alt=""> CZK <b>2.18</b> <small>▲0.04%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/hu.png" alt=""> HUF <b>0.14</b> <small>▼0.01%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/ro.png" alt=""> RON <b>11.05</b> <small>▲0.05%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/gr.png" alt=""> EUR <b>54.10</b> <small>▲0.08%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/pt.png" alt=""> EUR <b>54.10</b> <small>▲0.08%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/fi.png" alt=""> EUR <b>54.10</b> <small>▲0.08%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/is.png" alt=""> ISK <b>0.39</b> <small>▲0.02%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/pk.png" alt=""> PKR <b>0.19</b> <small>▲0.01%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/bd.png" alt=""> BDT <b>0.44</b> <small>▲0.03%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/ng.png" alt=""> NGN <b>0.03</b> <small>▼0.02%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/eg.png" alt=""> EGP <b>1.00</b> <small>▲0.00%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/us.png" alt=""> USD <b>53.20</b> <small>▲0.15%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/eu.png" alt=""> EUR <b>54.10</b> <small>▲0.08%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/gb.png" alt=""> GBP <b>63.40</b> <small>▲0.11%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/sa.png" alt=""> SAR <b>13.30</b> <small>▲0.03%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/ae.png" alt=""> AED <b>13.65</b> <small>▲0.05%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/kw.png" alt=""> KWD <b>173.40</b> <small>▲0.21%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/qa.png" alt=""> QAR <b>13.70</b> <small>▼0.02%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/bh.png" alt=""> BHD <b>141.20</b> <small>▲0.07%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/br.png" alt=""> BRL <b>9.55</b> <small>▲0.12%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/mx.png" alt=""> MXN <b>2.85</b> <small>▲0.07%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/ar.png" alt=""> ARS <b>0.05</b> <small>▼0.03%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/pl.png" alt=""> PLN <b>14.20</b> <small>▲0.09%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/cz.png" alt=""> CZK <b>2.18</b> <small>▲0.04%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/hu.png" alt=""> HUF <b>0.14</b> <small>▼0.01%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/ro.png" alt=""> RON <b>11.05</b> <small>▲0.05%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/gr.png" alt=""> EUR <b>54.10</b> <small>▲0.08%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/pt.png" alt=""> EUR <b>54.10</b> <small>▲0.08%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/fi.png" alt=""> EUR <b>54.10</b> <small>▲0.08%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/is.png" alt=""> ISK <b>0.39</b> <small>▲0.02%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/pk.png" alt=""> PKR <b>0.19</b> <small>▲0.01%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/bd.png" alt=""> BDT <b>0.44</b> <small>▲0.03%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/ng.png" alt=""> NGN <b>0.03</b> <small>▼0.02%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/eg.png" alt=""> EGP <b>1.00</b> <small>▲0.00%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/us.png" alt=""> USD <b>53.20</b> <small>▲0.15%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/eu.png" alt=""> EUR <b>54.10</b> <small>▲0.08%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/gb.png" alt=""> GBP <b>63.40</b> <small>▲0.11%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/sa.png" alt=""> SAR <b>13.30</b> <small>▲0.03%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/ae.png" alt=""> AED <b>13.65</b> <small>▲0.05%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/kw.png" alt=""> KWD <b>173.40</b> <small>▲0.21%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/qa.png" alt=""> QAR <b>13.70</b> <small>▼0.02%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/bh.png" alt=""> BHD <b>141.20</b> <small>▲0.07%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/br.png" alt=""> BRL <b>9.55</b> <small>▲0.12%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/mx.png" alt=""> MXN <b>2.85</b> <small>▲0.07%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/ar.png" alt=""> ARS <b>0.05</b> <small>▼0.03%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/pl.png" alt=""> PLN <b>14.20</b> <small>▲0.09%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/cz.png" alt=""> CZK <b>2.18</b> <small>▲0.04%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/hu.png" alt=""> HUF <b>0.14</b> <small>▼0.01%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/ro.png" alt=""> RON <b>11.05</b> <small>▲0.05%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/gr.png" alt=""> EUR <b>54.10</b> <small>▲0.08%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/pt.png" alt=""> EUR <b>54.10</b> <small>▲0.08%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/fi.png" alt=""> EUR <b>54.10</b> <small>▲0.08%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/is.png" alt=""> ISK <b>0.39</b> <small>▲0.02%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/pk.png" alt=""> PKR <b>0.19</b> <small>▲0.01%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/bd.png" alt=""> BDT <b>0.44</b> <small>▲0.03%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/ng.png" alt=""> NGN <b>0.03</b> <small>▼0.02%</small></span>
+
+<span><img src="https://flagcdn.com/24x18/eg.png" alt=""> EGP <b>1.00</b> <small>▲0.00%</small></span>
+</div>
+
+</div>
+
+  <!-- الشريط الثاني الثابت -->
+
+  <div class="info-bar">
+
+    <div class="info-content">
+
+      <span>📍 Cairo, Egypt</span>
+
+      <span>🌡️ <b id="temp">31°C</b></span>
+
+      <span>🕒 <b id="clock"></b></span>
+
+      <span>📅 <b id="date"></b></span>
+
+      <span>🌍 UTC <b id="utc"></b></span>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- Egyptian Civilization Timeline: يعرض عصور مصر القديمة في شكل تايم لاين مع روابط لكل عصر -->
+    <main class="flex-1 w-full max-w-[1440px] mx-auto p-6 lg:p-10">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Left Column: History Timeline -->
+<aside class="lg:col-span-4 bg-white dark:bg-[#121212] rounded-xl p-8 border border-slate-200 dark:border-[#393528] shadow-xl">
+<div class="flex flex-col gap-2 mb-8">
+<h3 class="text-2xl font-bold text-primary">civilisation of Time</h3>
+<p class="text-slate-500 dark:text-[#b9b29d] text-sm">Explore the eras of Egyptian civilization</p>
+</div>
+<div class="grid grid-cols-[40px_1fr] gap-x-4">
+<!-- Old Kingdom -->
+<div class="flex flex-col items-center gap-1 pt-1">
+<div class="flex items-center justify-center w-10 h-10 rounded-full bg-primary/10 text-primary border border-primary/30">
+<span class="material-symbols-outlined text-[22px]" translate="no">change_history</span>
+</div>
+<div class="w-[2px] bg-gradient-to-b from-primary/50 to-faience/50 h-24"></div>
+</div>
+<div class="flex flex-1 flex-col py-2 cursor-pointer group">
+<a href="./old-kingdom.html" class="text-lg font-bold group-hover:text-primary transition-colors">Old Kingdom </a>
+<p class="text-slate-500 dark:text-[#b9b29d] text-sm mt-1">Age of the Pyramids &amp; Architecture</p>
+<p class="text-faience text-xs font-bold mt-2 uppercase tracking-widest">2686–2181 BC</p>
+</div>
+<!-- Middle Kingdom -->
+<div class="flex flex-col items-center gap-1">
+<div class="flex items-center justify-center w-10 h-10 rounded-full bg-faience/10 text-faience border border-faience/30">
+<span class="material-symbols-outlined text-[22px]" translate="no">edit_note</span>
+</div>
+<div class="w-[2px] bg-gradient-to-b from-faience/50 to-primary/50 h-24"></div>
+</div>
+<div class="flex flex-1 flex-col py-2 cursor-pointer group">
+<a href="/meddle.html" class="text-lg font-bold group-hover:text-faience transition-colors">Middle Kingdom </a>
+<p class="text-slate-500 dark:text-[#b9b29d] text-sm mt-1">Renaissance of Art &amp; Literature</p>
+<p class="text-primary text-xs font-bold mt-2 uppercase tracking-widest">2055–1650 BC</p>
+</div>
+<!-- New Kingdom -->
+<div class="flex flex-col items-center gap-1 pb-3">
+<div class="flex items-center justify-center w-10 h-10 rounded-full bg-primary/10 text-primary border border-primary/30">
+<span class="material-symbols-outlined text-[22px]" translate="no">military_tech</span>
+</div>
+</div>
+<div class="flex flex-1 flex-col py-2 cursor-pointer group">
+<a href="/modern-kingdom.html" class="text-lg font-bold group-hover:text-primary transition-colors">New Kingdom</a>
+<p class="text-slate-500 dark:text-[#b9b29d] text-sm mt-1">Golden Age of the Empire</p>
+<p class="text-faience text-xs font-bold mt-2 uppercase tracking-widest">1550–present</p>
+</div>
+</div>
+
+<a href="./timeline.html"
+  class="w-full mt-8 py-3 rounded-lg border-2 border-primary/20 hover:border-primary/60 transition-all text-primary font-bold flex items-center justify-center gap-2">
+  
+  <span>View Full Timeline</span>
+  <span class="material-symbols-outlined text-sm" translate="no">arrow_forward</span>
+
+</a>
+
+</aside>
+
+<!-- Right Column: Booking Hero & Stats -->
+ <!----
+<div class="lg:col-span-8 flex flex-col gap-6">
+<!-- Hero Event Card -->
+ <!----
+<div class="relative overflow-hidden rounded-xl border border-slate-200 dark:border-[#393528] shadow-2xl bg-stone-900 group">
+<div class="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent z-10"></div>
+<div class="absolute right-0 top-0 bottom-0 w-2/3 overflow-hidden">
+  
+  <img src="/photo/bbaakk.png"
+       alt="Tutankhamun mask"
+       class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+
+</div>
+<div class="relative z-20 p-8 lg:p-12 max-w-lg flex flex-col gap-6">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary text-[#181611] text-xs font-bold uppercase tracking-wider">
+<span class="material-symbols-outlined text-[14px]">nightlight</span>
+                                Limited Event
+                            </div>
+<div>
+<h1 class="text-3xl lg:text-5xl font-black text-white leading-tight mb-4">
+                                    Echoes of the Nile: <br>
+<span class="text-primary italic">A Night at the Museum</span>
+</h1>
+<p class="text-xl font-bold text-slate-100 mb-2">Name of Event</p>
+<p class="text-slate-300 text-lg">Exclusive evening tour including the Tutankhamun gallery under the stars.</p>
+</div>
+<div class="flex flex-wrap gap-4 items-center">
+<button class="flex min-w-[180px] items-center justify-center rounded-lg h-14 px-8 bg-primary hover:bg-white hover:text-black transition-all text-black text-lg font-bold shadow-lg shadow-primary/20">
+                                    Secure Ticket 
+                                </button>
+<div class="flex flex-col text-white">
+<span class="text-xs uppercase opacity-60">Starting from</span>
+<span class="text-2xl font-bold">450 EGP</span>
+</div>
+      
+</div>
+
+</div>
+</div>
+
+<!--video hero-->
+
+<div class="lg:col-span-8 flex flex-col gap-6">
+
+  <div class="relative h-full min-h-[500px] overflow-hidden rounded-xl border border-slate-200 dark:border-[#393528] shadow-2xl bg-stone-900">
+
+    <!-- Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent z-10 pointer-events-none"></div>
+
+    <!-- Slide 1 : Video -->
+    <div class="slide absolute inset-0 z-0">
+      <video
+        class="w-full h-full object-cover"
+        controls
+        poster="/photo/cover.png">
+        <source src="video/v1.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <!-- Slide 2 : Image -->
+    <div class="slide hidden absolute inset-0 z-0">
+      <img
+        src="/photo/Alexandria_.webp"
+        class="w-full h-full object-cover"
+        alt="">
+    </div>
+
+    <!-- Slide 3 : Image -->
+    <div class="slide hidden absolute inset-0 z-0">
+      <img
+        src="/photo/Grand Egyptian Museum - Nour El Refai.jpg"
+        class="w-full h-full object-cover"
+        alt="">
+    </div>
+    <div class="slide hidden absolute inset-0 z-0">
+      <img
+        src="/photo/khan.avif"
+        class="w-full h-full object-cover"
+        alt="">
+    </div>
+    <div class="slide hidden absolute inset-0 z-0">
+      <img
+        src="/photo/SalahElDin-Citadel.png"
+        class="w-full h-full object-cover"
+        alt="">
+    </div>
+    <div class="slide hidden absolute inset-0 z-0">
+      <img
+        src="/photo/Memphis-City.jpg"
+        class="w-full h-full object-cover"
+        alt="">
+    </div>
+
+    <!-- Prev Button -->
+    <button
+      id="prev"
+      class="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-black/50 hover:bg-black/70 text-white w-12 h-12 rounded-full flex items-center justify-center">
+      ❮
+    </button>
+
+    <!-- Next Button -->
+    <button
+      id="next"
+      class="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-black/50 hover:bg-black/70 text-white w-12 h-12 rounded-full flex items-center justify-center">
+      ❯
+    </button>
+
+  </div>
+
+</div>
+</div>
+<!-- Dashboard Title -->
+<h1 class="text-3xl font-bold mb-6 text-center text-primary">
+  Museum Dashboard
+</h1>
+
+<!-- Bottom Section: Stats & Quick Actions -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Museum Status Stats -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+  
+<div class="flex flex-col gap-2 rounded-xl p-6 border border-slate-200 dark:border-[#544d3b] bg-white dark:bg-[#121212]/50">
+<div class="flex justify-between items-start">
+  
+<p class="text-slate-500 dark:text-[#b9b29d] text-sm font-medium">Museum Status</p>
+<span class="material-symbols-outlined text-faience" translate="no">door_open</span>
+</div>
+<p id="museumStatus" class="text-2xl font-black leading-tight">Open</p>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 border border-slate-200 dark:border-[#544d3b] bg-white dark:bg-[#121212]/50">
+<div class="flex justify-between items-start">
+<p class="text-slate-500 dark:text-[#b9b29d] text-sm font-medium">Capacity</p>
+<span class="material-symbols-outlined text-primary" translate="no">groups</span>
+</div>
+<p id="museumCapacity" class="text-2xl font-black leading-tight">0% Full</p>
+<div class="w-full bg-slate-200 dark:bg-stone-800 h-1.5 rounded-full mt-1 overflow-hidden">
+<div id="capacityBar" class="bg-primary h-full w-[0%]"></div>
+</div>
+</div>
+</div>
+
+<!-- Info Bars -->
+<div class="flex gap-4 p-4 rounded-xl bg-slate-100 dark:bg-[#27241c] border border-slate-200 dark:border-[#393528] justify-around items-center">
+<div class="flex flex-col items-center gap-2 text-center group">
+<div class="rounded-full bg-white dark:bg-[#393528] p-3 text-primary shadow-md group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" translate="no">schedule</span>
+</div>
+<p class="text-xs font-bold opacity-80">
+<span id="cityName">Cairo</span>: 
+<span id="cairoTime"></span>
+</p>
+</div>
+<div class="w-[1px] h-12 bg-slate-300 dark:bg-[#544d3b]"></div>
+<div onclick="openTour()" class="cursor-pointer flex flex-col items-center gap-2">
+  <div class="rounded-full bg-white dark:bg-[#393528] p-3 text-primary shadow-md hover:scale-110 transition-transform">
+    <span class="material-symbols-outlined" translate="no">360</span>
+  </div>
+  <p class="text-xs font-bold opacity-80">Virtual Tour</p>
+</div>
+<div id="tourModal" class="fixed inset-0 bg-black/90 hidden z-50 flex items-center justify-center">
+
+  <!-- زرار قفل -->
+  <button onclick="closeTour()" 
+    class="absolute top-4 right-4 bg-red-500 text-white px-4 py-2 rounded z-50">
+    ✕ Close
+  </button>
+  
+
+  <!-- Slider Container -->
+  <div class="relative w-[90%] h-[90%] overflow-hidden rounded-xl">
+  
+      <h1>Virtual Tour 360</h1>
+  
+
+    <div id="tourSlider" class="flex transition-transform duration-500 h-full">
+      
+<!--tour 1-->
+    <iframe 
+  class="min-w-full h-full"
+  title="Grand Egyptian Museum Tour"
+  src="https://www.google.com/maps/embed?pb=!4v1775258219706!6m8!1m7!1sCAoSHENJQUJJaEJyNkxaZWtaeG1PUGFYbmdQLVh5VVk.!2m2!1d29.99501107546448!2d31.11927299644327!3f289.5620624135267!4f17.802004996876946!5f0.7820865974627469" translate="no">
+</iframe>
+
+<!-- Tour 2 -->
+ <iframe
+  class="min-w-full h-full"
+  title="Pyramids Virtual Tour"
+  src="https://www.google.com/maps/embed?pb=!4v1710000000000!6m8!1m7!1sANOTHER_LOCATION!2m2!1d29.976!2d31.131!3f100!4f0!5f0.4" translate="no">
+</iframe>
+      
+      <!-- Tour 3 -->
+      <iframe 
+        class="min-w-full h-full"
+        title="big hall museum"
+        src="https://www.google.com/maps/embed?pb=!4v1775242852112!6m8!1m7!1sCAoSF0NJSE0wb2dLRUlDQWdNQ0EwdWl5clFF!2m2!1d29.9942887415985!2d31.11941576322243!3f346.81266153545863!4f-9.941135521291756!5f0.4000000000000002" translate="no">
+      </iframe>
+
+     
+
+    </div>
+
+    <!-- سهم شمال -->
+    <button onclick="prevTour()" 
+      class="absolute left-3 top-1/2 -translate-y-1/2 bg-black/50 text-white p-3 rounded-full">
+      ❮
+    </button>
+
+    <!-- سهم يمين -->
+    <button onclick="nextTour()" 
+      class="absolute right-3 top-1/2 -translate-y-1/2 bg-black/50 text-white p-3 rounded-full">
+      ❯
+    </button>
+
+  </div>
+
+</div>
+<div class="w-[1px] h-12 bg-slate-300 dark:bg-[#544d3b]"></div>
+<div class="flex flex-col items-center gap-2 text-center group relative">
+
+<div id="langIcon" class="rounded-full bg-white dark:bg-[#393528] p-3 text-primary shadow-md group-hover:scale-110 transition-transform cursor-pointer">
+
+<span class="material-symbols-outlined" translate="no">translate</span>
+
+</div>
+
+<p class="text-xs font-bold opacity-80">Bilingual</p>
+
+<div id="languageMenuIcon" class="hidden absolute bottom-14 w-44 bg-black/80 backdrop-blur-md text-white rounded-lg border border-gray-700 p-2 space-y-1 z-50">
+
+<button class="block w-full text-left px-3 py-2 hover:bg-primary/30 rounded">العربية</button>
+
+<button class="block w-full text-left px-3 py-2 hover:bg-primary/30 rounded">English</button>
+
+<button class="block w-full text-left px-3 py-2 hover:bg-primary/30 rounded">Français</button>
+
+<button class="block w-full text-left px-3 py-2 hover:bg-primary/30 rounded">Deutsch</button>
+
+<button class="block w-full text-left px-3 py-2 hover:bg-primary/30 rounded">Español</button>
+
+<button class="block w-full text-left px-3 py-2 hover:bg-primary/30 rounded">Italiano</button>
+
+<button class="block w-full text-left px-3 py-2 hover:bg-primary/30 rounded">中文</button>
+
+<button class="block w-full text-left px-3 py-2 hover:bg-primary/30 rounded">日本語</button>
+
+<button class="block w-full text-left px-3 py-2 hover:bg-primary/30 rounded">한국어</button>
+
+<button class="block w-full text-left px-3 py-2 hover:bg-primary/30 rounded">Русский</button>
+
+<button class="block w-full text-left px-3 py-2 hover:bg-primary/30 rounded">Português</button>
+
+<button class="block w-full text-left px-3 py-2 hover:bg-primary/30 rounded">Türkçe</button>
+
+</div>
+
+</div>
+</div>
+</div>
+   
+
+
+<!-- SECTION: 3D MODELS -->
+<div class="relative w-full overflow-hidden mt-10">
+
+  <!-- Slider -->
+  <div id="slider" class="flex transition-transform duration-500">
+
+    <!-- 🔹 Slide 1 -->
+    <div class="min-w-full grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+
+      <!-- النص -->
+      <div class="text-left px-6">
+        <h3 class="text-3xl font-bold text-primary mb-4">
+          Tutankhamun Mask
+        </h3>
+
+        <p class="text-white mb-3">
+          The golden mask of Tutankhamun is one of the most iconic symbols of ancient Egypt.
+        </p>
+
+        <p class="text-yellow-400">
+          القناع الذهبي لتوت عنخ آمون من أعظم كنوز مصر القديمة.
+        </p>
+
+        <button onclick="playVoice1()" 
+          class="mt-4 px-6 py-2 bg-primary text-black rounded-lg">
+          ▶ Play Voice
+        </button>
+      </div>
+
+      <!-- الموديل -->
+      <model-viewer
+        src="3D/source/tut hunyuan.glb"
+        auto-rotate
+        camera-controls
+       class="model3d">
+      </model-viewer>
+
+    </div>
+
+    <!-- 🔹 Slide 2 -->
+    <div class="min-w-full grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+
+      <!-- النص -->
+      <div class="text-left px-6">
+        <h3 class="text-3xl font-bold text-primary mb-4">
+          Pyramid of Menkaure
+        </h3>
+
+        <p class="text-white mb-3">
+          The Pyramid of Menkaure is the smallest of the three pyramids of Giza.
+        </p>
+
+        <p class="text-yellow-400">
+          هرم منقرع هو أصغر أهرامات الجيزة الثلاثة لكنه يحمل عظمة الحضارة المصرية.
+        </p>
+
+        <button onclick="playVoice2()" 
+          class="mt-4 px-6 py-2 bg-primary text-black rounded-lg">
+          ▶ Play Voice
+        </button>
+      </div>
+
+      <!-- الموديل -->
+      <model-viewer
+        src="./3D 2/pyramid_of_menkaure_giza_pyramid_complex_egypt.glb"
+        auto-rotate
+        camera-controls
+        class="model3d">
+      </model-viewer>
+
+    </div>
+
+  </div>
+<audio id="voicePlayer"></audio>
+  <!-- الأسهم -->
+  <button onclick="prevSlide()" 
+    class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/60 text-white p-3 rounded-full">
+    ❮
+  </button>
+
+  <button onclick="nextSlide()" 
+    class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/60 text-white p-3 rounded-full">
+    ❯
+  </button>
+
+</div>
+
+
+
+<!-- Upcoming Artifact Spotlight -->
+<div class="bg-white dark:bg-[#121212] rounded-xl p-6 border border-slate-200 dark:border-[#393528]">
+<div class="flex items-center justify-between mb-4">
+<h4 class="font-bold text-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-faience">explore</span>
+                                History Explorer
+                            </h4>
+<a class="text-primary text-xs font-bold underline" href="#">Explore All</a>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+
+  <!-- Jewelry -->
+  <div class="card-bg jewelry-card">
+    <div class="overlay">
+      <a href="/jelwry.html" class="label">Jewelry</a>
+    </div>
+  </div>
+
+  <!-- Clothes -->
+  <div class="card-bg clothes-card">
+    <div class="overlay">
+      <a href="/clothing.html" class="label">Clothes</a>
+    </div>
+  </div>
+
+  <!-- Language -->
+  <div class="card-bg language-card">
+    <div class="overlay">
+      <a href="/language.html" class="label">Ancient<br>language</a>
+    </div>
+  </div>
+  <div class="card-bg lifestyle-card">
+    <div class="overlay">
+      <a href="/lifestyle.html" class="label">life<br>style</a>
+    </div>
+  </div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-slate-200 dark:border-[#393528] py-8 px-10">
+<div class="max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between items-center gap-6 opacity-60">
+<p class="text-sm">© 2026 Egypt Discover. All Rights Reserved.</p>
+<div class="flex gap-6">
+
+<a class="text-xs hover:text-primary transition-colors" href="/privacy-policy.html">Privacy Policy</a>
+<a class="text-xs hover:text-primary transition-colors" href="/terms-of-service.html">Terms of Service</a>
+<a class="text-xs hover:text-primary transition-colors" href="/contact.html">Contact Support</a>
+</div>
+</div>
+</footer>
+</div>
+
+<!-- ================= IMHOTEP AI ================= -->
+
+<div class="imhotep-ai" id="openChat">
+  <img src="/photo/imhotop ai.png" alt="Imhotep AI Assistant">
+</div>
+
+<div id="chatbotModal" class="chatbot-modal hidden">
+
+  <div class="chatbot-container">
+
+    <!-- HEADER -->
+    <div class="chat-header">
+
+      <div class="flex items-center gap-3">
+        <img title="chatbot" src="/photo/imhotop ai.png" class="w-12 h-12 rounded-full">
+        
+        <div>
+          <h2>Imhotep AI</h2>
+          <p>Your Egypt Guide</p>
+        </div>
+      </div>
+
+      <button id="closeChat">✕</button>
+
+    </div>
+
+    <!-- BODY -->
+    <div class="chat-body" id="chat-body">
+
+      <div class="welcome-box">
+
+        <h3>Welcome to Egypt Discover ✨</h3>
+
+        <p>
+          Ask anything about Ancient Egypt,
+          museums, pyramids, kings and history.
+        </p>
+
+      </div>
+
+      <!-- FAQ -->
+      <div id="faq-container" class="faq-grid"></div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="chat-footer">
+
+      <input
+        type="text"
+        id="chat-input"
+        placeholder="Ask Imhotep AI..."
+      >
+
+      <button onclick="sendMessage()">
+        Send
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+<script src="script-home.js">
+
+
+</script>
+<div id="google_translate_element" class="google""></div>
+
+
+<script>
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'en'
+  }, 'google_translate_element');
+}
+function openGallery() {
+  document.getElementById("galleryModal").classList.remove("hidden");
+  document.getElementById("galleryModal").classList.add("flex");
+}
+
+function closeGallery() {
+  document.getElementById("galleryModal").classList.add("hidden");
+  document.getElementById("galleryModal").classList.remove("flex");
+}
+</script>
+
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script src="auth.js"></script>
+</body>
+</html>

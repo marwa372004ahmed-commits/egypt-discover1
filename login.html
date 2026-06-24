@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+    <head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Bilingual Pharaonic Login Form</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@100..900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ecb613",
+                        "background-light": "#f8f8f6",
+                        "background-dark": "#181611",
+                        "limestone": "#27241c",
+                        "papyrus-dark": "#2a261d",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"],
+                        "arabic": ["Noto Sans Arabic", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .textured-bg {
+            background-image: radial-gradient(circle at 2px 2px, rgba(236, 182, 19, 0.05) 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+        .arabic-text {
+            direction: rtl;
+        }
+        .bg-cover{
+          background-image: url(./photo/bbaakk.png);
+        }
+    </style>
+
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-white selection:bg-primary selection:text-background-dark overflow-x-hidden">
+<div class="flex min-h-[884px] w-full flex-col lg:flex-row overflow-hidden" data-stitch-vh="min-h-[884px]===min-h-screen">
+<div class="relative hidden lg:flex lg:w-1/2 xl:w-3/5 bg-limestone overflow-hidden border-r border-[#393528]">
+<div class="absolute inset-0 z-0 opacity-40 mix-blend-overlay textured-bg"></div>
+<div class="absolute inset-0 bg-center bg-no-repeat bg-cover transition-transform duration-1000 hover:scale-105"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark/90 via-transparent to-transparent"></div>
+<div class="relative z-10 flex flex-col justify-end p-16 w-full">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary text-4xl">temple_hindu</span>
+<h2 class="text-2xl font-bold tracking-tight text-white uppercase">Egyptian Museum</h2>
+</div>
+<h1 class="text-5xl xl:text-7xl font-black leading-tight tracking-tighter text-white max-w-2xl">
+                Behold the <span class="text-primary italic">Eternal</span> Legacy.
+            </h1>
+<p class="mt-6 text-lg text-[#b9b29d] max-w-lg leading-relaxed">
+                Step into the digital vault and explore three millennia of human history, preserved for the future.
+            </p>
+</div>
+</div>
+<div class="flex flex-1 flex-col justify-center px-6 py-12 lg:px-24 bg-background-light dark:bg-background-dark relative">
+<div class="absolute top-8 left-8 flex items-center gap-3 lg:hidden">
+<span class="material-symbols-outlined text-primary text-3xl">temple_hindu</span>
+<h2 class="text-xl font-bold tracking-tight text-white uppercase">Egyptian Museum</h2>
+</div>
+<div class="mx-auto w-full max-w-md">
+<div class="mb-10 text-left">
+<h2 class="text-3xl font-black tracking-tight text-white lg:text-4xl flex flex-col gap-1">
+<span>Enter the Vault</span>
+<span class="font-arabic text-2xl font-bold text-primary">مرحبا بك في مصر</span>
+</h2>
+<p class="mt-4 text-base text-[#b9b29d]">Welcome to Egypt</p>
+</div>
+<form id="loginForm" class="space-y-6">
+<div class="flex flex-col gap-2">
+<div class="flex items-baseline justify-between">
+<label class="text-[10px] md:text-xs font-semibold text-[#b9b29d] uppercase tracking-wider">EMAIL ADDRESS</label>
+<label class="font-arabic text-sm font-medium text-primary/80">عنوان البريد الإلكتروني</label>
+</div>
+<div class="relative flex items-center group">
+<div class="absolute left-4 text-[#b9b29d] group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined">mail</span>
+</div>
+<input id="email" class="w-full h-14 bg-limestone/50 border border-[#393528] rounded-lg pl-12 pr-4 text-white focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-[#544d3b]" placeholder="name@legacy.com" type="email">
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex items-baseline justify-between">
+<div class="flex gap-2 items-baseline">
+<label class="text-[10px] md:text-xs font-semibold text-[#b9b29d] uppercase tracking-wider">SECRET KEY</label>
+<span class="text-[#393528]">|</span>
+<label class="font-arabic text-sm font-medium text-primary/80">الرمز السري</label>
+</div>
+<a class="text-xs font-bold text-primary hover:text-white transition-colors uppercase" href="#">Lost access?</a>
+</div>
+<div class="relative flex items-center group">
+<div class="absolute left-4 text-[#b9b29d] group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined">key</span>
+</div>
+<input id="password" class="w-full h-14 bg-limestone/50 border border-[#393528] rounded-lg pl-12 pr-12 text-white focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-[#544d3b]" placeholder="••••••••" type="password">
+<button id="togglePassword"
+  class="absolute right-4 text-[#544d3b] hover:text-primary transition-colors"
+  type="button">
+
+  <span id="eyeIcon" class="material-symbols-outlined">
+    visibility
+  </span>
+
+</button>
+</div>
+</div>
+
+<button type="submit"
+  class="w-full h-14 bg-primary text-black font-bold rounded-lg hover:bg-white transition-all">
+  
+  <div class="flex flex-col items-center justify-center">
+    <span class="text-xs font-black uppercase tracking-[0.2em]">Authenticate Access</span>
+    <span class="font-arabic text-lg font-bold">تحقق من الدخول</span>
+  </div>
+
+</button>
+</form>
+<div class="relative my-10">
+<div aria-hidden="true" class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-[#393528]"></div>
+</div>
+<div class="relative flex justify-center text-sm uppercase tracking-widest font-bold">
+<span class="bg-background-dark px-4 text-[#544d3b]">Or continue with</span>
+</div>
+</div>
+<div class="flex items-center justify-center gap-6">
+<button class="flex items-center justify-center w-14 h-14 rounded-full border border-primary/30 bg-primary/5 hover:bg-primary/20 hover:border-primary transition-all group">
+<span class="material-symbols-outlined text-[#b9b29d] group-hover:text-primary">language</span>
+</button>
+<button class="flex items-center justify-center w-14 h-14 rounded-full border border-primary/30 bg-primary/5 hover:bg-primary/20 hover:border-primary transition-all group">
+<span class="material-symbols-outlined text-[#b9b29d] group-hover:text-primary">fingerprint</span>
+</button>
+<button class="flex items-center justify-center w-14 h-14 rounded-full border border-primary/30 bg-primary/5 hover:bg-primary/20 hover:border-primary transition-all group">
+<span class="material-symbols-outlined text-[#b9b29d] group-hover:text-primary">hub</span>
+</button>
+</div>
+<p class="mt-12 text-center text-sm text-[#b9b29d]">
+                New to the archives? 
+                <a class="font-bold text-primary hover:underline decoration-2 underline-offset-4" href="/register.html">Request Access</a>
+</p>
+</div>
+<div class="absolute bottom-8 left-0 right-0 text-center text-[10px] uppercase tracking-[0.2em] text-[#544d3b]">
+            © 2024 The Grand Egyptian Museum • Cairo, Egypt
+        </div>
+</div>
+</div>
+<button id="themeToggle"
+  class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-[#27241c] hover:bg-primary/20 transition-all text-primary border border-slate-200 dark:border-[#393528]">
+  
+  <span id="themeIcon" class="material-symbols-outlined text-[20px]">
+    dark_mode
+  </span>
+
+</button>
+<script>
+const form = document.getElementById("loginForm");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value.trim();
+
+  // ✅ Validation
+  if (!email || !password) {
+    alert("Enter email & password ❌");
+    return;
+  }
+
+  try {
+    const response = await fetch("https://egyptdiscover2.runasp.net/api/Account/Login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password
+      })
+    });
+
+    // 🔥 استقبل الرد كنص الأول
+    const text = await response.text();
+
+    let data;
+    try {
+      data = JSON.parse(text);
+    } catch {
+      data = { message: text };
+    }
+
+    console.log("SERVER RESPONSE:", data);
+
+    if (response.ok) {
+
+      // 🔥 أهم سطر (زي الصفحة التانية)
+      const token = data.token || data.message;
+
+      if (!token) {
+        alert("No token received ❌");
+        return;
+      }
+
+      // 💾 تخزين التوكن
+      localStorage.setItem("token", token);
+
+      console.log("TOKEN:", token);
+
+      alert("Login Success 👑");
+
+      // 🔄 تحويل
+     const redirect = localStorage.getItem("redirectAfterLogin");
+
+if (redirect) {
+  localStorage.removeItem("redirectAfterLogin");
+  window.location.href = redirect;
+} else {
+  window.location.href = "home.html";
+}
+
+    } else {
+      alert(data.message || "Wrong email or password ❌");
+    }
+
+  } catch (error) {
+    console.error("ERROR:", error);
+    alert("❌ Cannot connect to server");
+  }
+});
+const toggleBtn = document.getElementById("themeToggle");
+const icon = document.getElementById("themeIcon");
+
+// تحميل الثيم المحفوظ
+if (
+  localStorage.getItem("theme") === "dark" ||
+  (!localStorage.getItem("theme") &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches)
+) {
+  document.documentElement.classList.add("dark");
+
+  if (icon) {
+    icon.textContent = "light_mode";
+  }
+} else {
+  document.documentElement.classList.remove("dark");
+
+  if (icon) {
+    icon.textContent = "dark_mode";
+  }
+}
+
+// تغيير الوضع
+if (toggleBtn) {
+  toggleBtn.addEventListener("click", () => {
+    document.documentElement.classList.toggle("dark");
+
+    if (document.documentElement.classList.contains("dark")) {
+      localStorage.setItem("theme", "dark");
+
+      if (icon) {
+        icon.textContent = "light_mode";
+      }
+    } else {
+      localStorage.setItem("theme", "light");
+
+      if (icon) {
+        icon.textContent = "dark_mode";
+      }
+    }
+  });
+}
+const passwordInput = document.getElementById("password");
+
+const togglePassword =
+  document.getElementById("togglePassword");
+
+const eyeIcon =
+  document.getElementById("eyeIcon");
+
+togglePassword.addEventListener("click", () => {
+
+  if (passwordInput.type === "password") {
+
+    passwordInput.type = "text";
+
+    eyeIcon.textContent = "visibility_off";
+
+  } else {
+
+    passwordInput.type = "password";
+
+    eyeIcon.textContent = "visibility";
+
+  }
+
+});
+localStorage.setItem("token", result.token);
+localStorage.setItem("userName", result.userName);
+localStorage.setItem("role", result.role);
+/////ت
+
+setInterval(() => {
+  const before = new Date().getTime();
+  debugger;
+  const after = new Date().getTime();
+
+  if (after - before > 100) {
+    document.body.innerHTML = "";
+    window.location.href = "about:blank";
+  }
+}, 1000);
+
+document.addEventListener('contextmenu', e => e.preventDefault());
+
+document.onkeydown = function(e) {
+  if (
+    e.keyCode === 123 ||
+    (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key)) ||
+    (e.ctrlKey && e.key === 'U')
+  ) {
+    return false;
+  }
+};
+
+</script>
+
+</body>
+</html>

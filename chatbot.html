@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/chatbot.css">
+   
+   
+</head>
+<body>
+    <div class="imhotep-ai" id="openChat">
+  <img src="/photo/imhotop ai.png" alt="Imhotep AI">
+</div>
+
+<div id="chatbotModal" class="chatbot-modal hidden">
+
+  <div class="chatbot-container">
+
+    <div class="chat-header">
+
+      <div class="chat-info">
+        <img title="chatbot" src="/photo/imhotop ai.png" class="chat-avatar">
+
+        <div>
+          <h2>Imhotep AI</h2>
+          <p>Your Egypt Guide</p>
+        </div>
+      </div>
+
+      <button id="closeChat">✕</button>
+
+    </div>
+
+    <div class="chat-body" id="chat-body">
+
+      <div class="welcome-box">
+        <h3>Welcome to Egypt Discover ✨</h3>
+
+        <p>
+          Ask anything about Ancient Egypt,
+          museums, pyramids, kings and history.
+        </p>
+      </div>
+
+      <div id="faq-container"></div>
+
+    </div>
+
+    <div class="chat-footer">
+
+      <input
+        type="text"
+        id="chat-input"
+        placeholder="Ask Imhotep AI..."
+      >
+
+      <button id="sendBtn">
+        Send
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+ <script src="/chatbot.js" ></script>
+</body>
+</html>
